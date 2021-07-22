@@ -11,14 +11,23 @@ $(() => {
     $('.phone-mask').mask('8 (000) 000-00-00');
     $('.price-mask').mask("000 000 000 000 000", {reverse: true});
 
-    // $('.filter__main-section--type .list-flats__text').on('click', (e) => {
-    //     e.preventDefault();
-    //     $(e.target).closest('li').removeClass('active');
-    // })
+    $(".list-flats__text").off('click').on('click', e => {
+        e.preventDefault();
+        let li = e.currentTarget.closest('li'), subMenu = li.querySelector('.list-flats__submenu');
+        $('.list-flats > li').removeClass('active');
+        if (li.classList.contains('active')) {
+            li.classList.remove('active');
+            // console.log(subMenu);
+        } else {
+            li.classList.add('active');
+            // console.log(subMenu);
+        }
+        $(e.currentTarget).closest(".filter__main-section").find(".filter__main-select-title").text($(e.currentTarget).text())
+        $('#AdvertisementCategoryId').val(e.currentTarget.dataset.categoryId).trigger('change');
 
-    $(".list-flats__text input").off('change').on("change", e => {
-        e.target.checked && $(e.target).closest(".filter__main-section").find(".filter__main-select-title").text($(e.target).val())
-        $('#AdvertisementCategoryId').val(e.target.dataset.categoryId).trigger('change');
+        // $(this).parent().hasClass("active") ? ($(this).parent().removeClass("active"),
+        //     $(this).parent().find(".list-flats__submenu").hide()) : ($(this).parent().addClass("active"),
+        //     $(this).parent().find(".list-flats__submenu").show())
     })
 
     $('.favorites-action').off('click');
