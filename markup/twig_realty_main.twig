@@ -62,7 +62,7 @@
 													<strong>0 ₽</strong></span></div>
                     </div>
                     <div class="services__item-btn">
-                        <a class="btn btn-default" href="#popup-callback_2" data-fancybox>Оставить заявку</a>
+                        <a class="btn btn-default" href="#popup-callback" data-fancybox>Оставить заявку</a>
                     </div>
                 </div>
             </div>
@@ -254,7 +254,7 @@
                                         <div class="row">
                                             <div class="col col-12 col-md-6">
                                                 <div class="cards__item-info">
-                                                    <strong>{{ adSeo.pattern_title(item)|e }}</strong>
+                                                    <strong class="content_block" title="{{ adSeo.pattern_title(item)|e }}">{{ adSeo.pattern_title(item)|e }}</strong>
                                                 </div>
                                             </div>
                                             {% set paramsValues = item.CategoryParamValues ?? [] %}
