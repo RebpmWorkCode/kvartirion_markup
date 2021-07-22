@@ -11,10 +11,13 @@ $(() => {
     $('.phone-mask').mask('8 (000) 000-00-00');
     $('.price-mask').mask("000 000 000 000 000", {reverse: true});
 
-    $('.filter__main-section--type .list-flats__text').on('click', (e) => {
-        e.preventDefault();
-        $(e.target).closest('li').removeClass('active');
-        $(e.target).closest(".filter__main-section").find(".filter__main-select-title").text($(e.target).text());
+    // $('.filter__main-section--type .list-flats__text').on('click', (e) => {
+    //     e.preventDefault();
+    //     $(e.target).closest('li').removeClass('active');
+    // })
+
+    $(".list-flats__text input").off('change').on("change", e => {
+        e.target.checked && $(e.target).closest(".filter__main-section").find(".filter__main-select-title").text($(e.target).val())
         $('#AdvertisementCategoryId').val(e.target.dataset.categoryId).trigger('change');
     })
 

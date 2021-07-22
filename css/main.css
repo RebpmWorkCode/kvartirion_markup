@@ -97,10 +97,6 @@
     display: none;
 }
 
-a.list-flats__text:hover {
-    text-decoration: none;
-}
-
 .popup-parametrs.active {
     height: 600px;
     overflow-x: auto;

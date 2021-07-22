@@ -14,7 +14,11 @@
                         {{ form.hidden('Advertisement.category_id') }}
                         <ul class="list-flats">
                         {% for categoryId, categoryName in categories %}
-                            <li>{{ html.link(categoryName, '#', {'class': 'list-flats__text', 'data-category-id': categoryId}) }}</li>
+                            <li>
+                                <label class="list-flats__text">
+                                    <input type="radio"  value="{{ categoryName }}" data-category-id="{{ categoryId }}" hidden> {{ categoryName }}
+                                </label>
+                            </li>
                         {% endfor %}
                         </ul>
                     </div>
