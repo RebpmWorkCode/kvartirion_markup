@@ -1,0 +1,39 @@
+{{ form.create('FeedbackMessage', {
+    'url': {'plugin': 'feedback', 'controller': 'feedback', 'action': 'send', '0': 'order_call'},
+    'inputDefaults': {'div': false, 'label': false}
+}) }}
+    {{ flash.render() }}
+    <p class="form-desc">Введите контактные данные<br>и наш менеджер свяжется с вами<br>в ближайшее время</p>
+    {{ form.input('name', {
+        'placeholder': 'Ваше имя',
+        'class': 'ui-input cleared-value',
+        'type': 'text'
+    }) }}
+    {{ form.input('phone', {
+        'placeholder': 'Ваш номер телефона',
+        'class': 'ui-input cleared-value phone-mask',
+        'type': 'tel'
+    }) }}
+    <label class="ui-checkbox">
+        {{ form.checkbox('confirmation', {
+            'checked': true,
+            'hidden': true,
+            'hiddenField': false,
+            'value': 1
+        }) }}
+        <span class="ui-checkbox__icon"><span class="icon-check_dark"></span></span>
+        <span class="ui-checkbox__text">заполняя данную форму, <br>вы даете <a href="#popup-policy" data-fancybox>согласие на обработку ваших данных</a></span>
+    </label>
+    <div class="popup-callback__bottom">
+        <div class="row flex-md-row-reverse">
+            <div class="col-md-6">
+                {% if recaptcha.hasKey() %}
+                    {{ recaptcha.display_form({'id': 'order_call', 'div': 'recaptcha-block'}) }}
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                {{ form.button('Отправить', {'class': 'btn btn-default', 'type': 'submit'}) }}
+            </div>
+        </div>
+    </div>
+{{ form.end() }}

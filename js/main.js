@@ -26,6 +26,9 @@ $(() => {
                 if (Is2bFavorite.action === 'remove') {
                     fEl.data('action', 'add');
                     fEl.removeClass('active');
+                    if(fEl.hasClass('in-favorites-action')){
+                        fEl.closest('.catalog__item').remove();
+                    }
                 } else {
                     fEl.data('action', 'remove');
                     fEl.addClass('active');
@@ -40,16 +43,29 @@ $(() => {
         $contactWithAgent.find('.cleared-value').val('');
         $('.phone-mask', $contactWithAgent).mask('8 (000) 000-00-00');
     })
+    $('[href="#order_call"]').on('click', e => {
+        $('#order_call').find('.cleared-value').val('');
+    })
+    $('[href="#popup-favorites"]').on('click', e => {
+        $.ajax({
+            type: 'GET',
+            url: '/favorites?ajax_twig=1',
+            success: function (result) {
+                console.log(result)
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        })
+    })
 
-
-
-    $('#AdvertisementMessageContactWithAgentAdvertisementForm').on('submit', event => {
+    $('#AdvertisementMessageContactWithAgentAdvertisementForm,#FeedbackMessageSendForm').on('submit', event => {
         event.preventDefault();
         $.ajax({
             type: "POST",
             url: event.target.getAttribute('action'),
             data: $(event.target).serialize(),
-            dataType: 'json',
+            // dataType: 'json',
             success: function (result) {
                 console.log(result);
             },
@@ -58,6 +74,7 @@ $(() => {
             }
         })
     });
+
     let categoriesParams =  $('.params-filter');
     if(categoriesParams.length > 0){
         categoriesParams.addClass('hidden');
