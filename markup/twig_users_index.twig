@@ -13,10 +13,10 @@
                 </div>
                 <div class="team__item-details">
                     <div class="card-informers__item"><span class="icon-tel_white card-informers__item-icon"></span>
-                        <a href="tel:84842400088">{{ user.User.phone }}</a>
+                        <a href="tel:{{ user.User.phone }}">{{ user.User.phone }}</a>
                     </div>
                     <div class="card-informers__item"><span class="icon-mail_white card-informers__item-icon"></span>
-                        <a href="mailto:kvartirion@mail.ru">{{ user.User.email }}</a>
+                        <a href="mailto:{{ user.User.email }}">{{ user.User.email }}</a>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
     <div class="pagination">
         {{ paginator.first('<<') }}
         {{ paginator.prev('<') }}
-        {{ paginator.numbers({'separator': '', 'modulus': 7}) }}
+        {{ paginator.numbers({'separator': '', 'modulus': 3}) }}
         {{ paginator.next('>') }}
         {{ paginator.last('>>') }}
     </div>
@@ -64,93 +64,24 @@
                 <a class="btn btn-pink" href="#modal-add-testimonial" data-fancybox>Оставить отзыв</a>
             </div>
         </div>
-        <div class="section-title">15 отзывов </div>
+
+        {% for review in last_reviews %}
+
+{#        <div class="section-title">15 отзывов </div>#}
         <div>
             <div class="testimonials__item">
                 <div class="testimonials__item-info">
-                    <div class="testimonials__item-name">Екатерина</div>
-                    <div class="testimonials__item-date">06.2021</div>
-                    <div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_gray"></div>
-                    </div>
+                    <div class="testimonials__item-name">{{ review.Review.sender }}</div>
+                    <div class="testimonials__item-date">{{ review.Review.updated }}</div>
+
                 </div>
                 <div class="testimonials__item-text">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis </p>
-                </div>
-            </div>
-            <div class="testimonials__item">
-                <div class="testimonials__item-info">
-                    <div class="testimonials__item-name">Екатерина</div>
-                    <div class="testimonials__item-date">06.2021</div>
-                    <div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_gray"></div>
-                    </div>
-                </div>
-                <div class="testimonials__item-text">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
-                </div>
-            </div>
-            <div class="testimonials__item">
-                <div class="testimonials__item-info">
-                    <div class="testimonials__item-name">Екатерина</div>
-                    <div class="testimonials__item-date">06.2021</div>
-                    <div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_gray"></div>
-                    </div>
-                </div>
-                <div class="testimonials__item-text">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis </p>
-                </div>
-            </div>
-            <div class="testimonials__item">
-                <div class="testimonials__item-info">
-                    <div class="testimonials__item-name">Екатерина</div>
-                    <div class="testimonials__item-date">06.2021</div>
-                    <div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_gray"></div>
-                    </div>
-                </div>
-                <div class="testimonials__item-text">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
-                </div>
-            </div>
-            <div class="testimonials__item">
-                <div class="testimonials__item-info">
-                    <div class="testimonials__item-name">Екатерина</div>
-                    <div class="testimonials__item-date">06.2021</div>
-                    <div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_blue"></div>
-                        <div class="icon-star_gray"></div>
-                    </div>
-                </div>
-                <div class="testimonials__item-text">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis </p>
+                    <strong>{{ review.Review.annotation }}</strong><br>
+                    {{ review.Review.text }}
                 </div>
             </div>
         </div>
-        <div class="pagination">
-            <a href="#">1</a>
-            <a class="current" href="#">2</a>
-            <a href="#">3</a><span>...</span>
-        </div>
+        {% endfor %}
+
     </div>
 </div>
