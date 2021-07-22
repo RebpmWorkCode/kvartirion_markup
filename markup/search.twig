@@ -1,0 +1,200 @@
+{{ form.create('Advertisement', {'url': {'plugin' : 'agency','controller' : 'realty', 'action' : 'index'}, 'class': 'search-block'}) }}
+    <div class="container">
+        {% set filterTitle = 'Заглушка' %}
+        <div class="heading-base text-right search-block__heading">{{ filterTitle }}</div>
+        <div class="filter">
+            <ul class="filter__tabs"><li class="active"><a href="#">Купить</a></li><li><a href="/agency/realty/add{##popup-public#}" {#data-fancybox#}>Продать</a></li></ul>
+            <div class="filter__main">
+                <div class="filter__main-section filter__main-section--type">
+                    <div class="filter__main-select">
+                        <div class="filter__main-select-title">{{ categories[categoryId] ?? 'Не выбрано' }}</div>
+                        <span class="icon-expand-down_blue"></span>
+                    </div>
+                    <div class="filter__modal">
+                        {{ form.hidden('Advertisement.category_id') }}
+                        <ul class="list-flats">
+                        {% for categoryId, categoryName in categories %}
+                            <li>{{ html.link(categoryName, '#', {'class': 'list-flats__text', 'data-category-id': categoryId}) }}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% set complexCategorySearch = _view.loadHelper('ComplexCategories.ComplexCategorySearch') %}
+
+                <div class="filter__main-section filter__main-section--rooms {{ complexCategorySearch.getClassesFilter(null, searchFields.rooms_num)|join(' ')|replace({'input ': ''}) }}">
+                    <div class="filter__main-select">
+                        <div class="filter__main-select-title">Комнат</div><span class="icon-expand-down_blue"></span>
+                    </div>
+                    <div class="filter__modal">
+                        {% set roomsCheckbox = rooms|map((name, value) => {'name': name, 'value': value, 'hidden': true}) %}
+                        {{ form.input('Advertisement.rooms_num', {
+                            'type': 'select',
+                            'multiple': 'checkbox',
+                            'label': false,
+                            'div': false,
+                            'hiddenField': false,
+                            'options': roomsCheckbox,
+                            'class': 'checkbox-filter',
+                        }) }}
+                    </div>
+                </div>
+                <div class="filter__main-section filter__main-section--price">
+                    <div class="filter__main-select">
+                        <div class="filter__main-select-title">Цена</div><span class="icon-expand-down_blue"></span>
+                    </div>
+                    <div class="filter__modal">
+                        <div class="row">
+                            <div class="col col-6">
+                                <div class="input-wrap">
+                                    {{ form.input('Advertisement.price_from', {
+                                        'type': 'text',
+                                        'div': false,
+                                        'label': false,
+                                        'placeholder': 'от',
+                                        'class': 'input-filter price_mask'
+                                    }) }}
+                                    <span class="input-wrap__cur">₽</span>
+                                </div>
+                            </div>
+                            <div class="col col-6">
+                                <div class="input-wrap">
+                                    {{ form.input('Advertisement.price_to', {
+                                        'type': 'text',
+                                        'div': false,
+                                        'label': false,
+                                        'placeholder': 'до',
+                                        'class': 'input-filter price_mask'
+                                    }) }}
+                                    <span class="input-wrap__cur">₽</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter__main-section filter__main-section--enter">
+                    {{ form.input('Advertisement.search', {
+                        'type': 'textarea',
+                        'placeholder': 'Адрес или ЖК',
+                        'div': 'textarea-wrapper',
+                        'rows': false,
+                        'cols': false,
+                        'class': 'textarea-enter',
+                        'label': false
+                    }) }}
+                </div>
+            </div>
+            <div class="filter__btn-more">
+                <a class="js-btn-window" href="#popup-parametrs">Больше параметров</a>
+            </div>
+            <div class="filter__bar">
+                <div class="filter__bar-btn">
+                    {{ form.button(html.tag('span', '', {'class': 'icon icon-location-place_white'}) ~ 'на карте', {'class': 'btn btn-default btn-default--mini btn-default--show-map', 'type': 'submit', 'formaction': '/agency/realty/map'}) }}
+                </div>
+                <div class="filter__bar-btn">
+                    {{ form.button(html.tag('span', '', {'class': 'icon icon-loop_blue'}) ~ 'Найти', {'class': 'btn btn-default btn-default--mini btn-default--dark', 'type': 'submit'}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup-parametrs js-window" id="popup-parametrs">
+        <div class="heading-base heading-base--medium">Больше параметров</div>
+        {% for searchFieldAlias, searchFieldItem in searchFields %}
+            {% if searchFieldAlias not in ['Advertisement.category_id','Advertisement.country_id','Advertisement.location_region_id','Advertisement.district_id','Advertisement.locality_id','Advertisement.sub_locality_id','Advertisement.micro_district_id','Advertisement.street_id','Advertisement.metro_id','Advertisement.house','Advertisement.rent','Advertisement.term_rent_id','Advertisement.price','Advertisement.id','Advertisement.show_in_hot','Advertisement.exclusive','Advertisement.polygon','Advertisement.currency_id','Advertisement.search','Advertisement.reservation','rooms_num'] %}
+                <div class="row popup-parametrs__row {{ complexCategorySearch.getClassesFilter(null, searchFieldItem)|join(' ')|replace({'input ': ''}) }}">
+                    <div class="col-md-5 popup-parametrs__title">{{ searchFieldItem.label }}</div>
+                    <div class="col-md-7">
+                        {% if attribute(searchFieldItem, 'param-type') == -1 %}
+                            <div class="row popup-parametrs__inputs-row">
+                                <div class="col col-12">
+                                    <label class="btn-check">
+                                        {{ form.checkbox('Advertisement.' ~ attribute(searchFieldItem, 'param-id'), {
+                                            'hidden': true,
+                                            'div': false,
+                                            'label': false,
+                                            'hiddenField': false,
+                                        }) }}
+                                        <span class="btn-check__icon"><span class="icon icon-check"></span></span>
+                                        <span class="btn-check__text">Да</span>
+                                    </label>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if attribute(searchFieldItem, 'param-type') == 0 %}
+                            <div class="row popup-parametrs__inputs-row">
+                                <div class="col col-6">
+                                    <div class="input-wrap input-wrap--medium">
+                                        {{ form.input('Advertisement.' ~ searchFieldItem.alias ~ '_from', {
+                                            'type': 'text',
+                                            'div': false,
+                                            'label': false,
+                                            'class': 'input-filter',
+                                            'placeholder': 'от',
+                                        }) }}
+                                        {% if searchFieldItem.alias in ['area', 'live_area', 'kitchen_area'] %}
+                                            <div class="input-wrap__cur">м²</div>
+                                        {% endif %}
+                                        {% if searchFieldItem.alias in ['site_area'] %}
+                                            <div class="input-wrap__cur">сот</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col col-6">
+                                    <div class="input-wrap input-wrap--medium">
+                                        {{ form.input('Advertisement.' ~ searchFieldItem.alias ~ '_to', {
+                                            'type': 'text',
+                                            'div': false,
+                                            'label': false,
+                                            'class': 'input-filter',
+                                            'placeholder': 'до',
+                                        }) }}
+                                        {% if searchFieldItem.alias in ['area', 'live_area', 'kitchen_area'] %}
+                                            <div class="input-wrap__cur">м²</div>
+                                        {% endif %}
+                                        {% if searchFieldItem.alias in ['site_area'] %}
+                                            <div class="input-wrap__cur">сот</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if attribute(searchFieldItem, 'param-type') == 1 %}
+                            <div class="row popup-parametrs__inputs-row">
+                                <div class="col col-12">
+                                    <div class="input-wrap input-wrap--medium">
+                                        {{ form.input('Advertisement.' ~ searchFieldItem.alias, {
+                                            'type': 'text',
+                                            'div': false,
+                                            'label': false,
+                                            'class': 'input-filter',
+                                        }) }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if attribute(searchFieldItem, 'param-type') == 2 %}
+                            <ul class="sorting__list">
+                                {% for id, title in _view.get(attribute(searchFieldItem, 'data-options')) %}
+                                    <li>
+                                        <label class="btn-check">
+                                            {{ form.checkbox('Advertisement.' ~ searchFieldItem.alias ~'.', {
+                                                'hidden': true,
+                                                'div': false,
+                                                'value': id,
+                                                'id': form.domId('Advertisement.' ~ searchFieldItem.alias) ~ form.domIdSuffix(id, 'html5'),
+                                                'checked': id in _view.request.query(searchFieldItem.alias),
+                                                'label': false,
+                                                'hiddenField': false,
+                                            }) }}
+                                            <span class="btn-check__icon"><span class="icon icon-check"></span></span>
+                                            <span class="btn-check__text">{{ title }}</span>
+                                        </label>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{{ form.end() }}

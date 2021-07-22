@@ -1,0 +1,65 @@
+<header class="header">
+    <div class="container">
+        <div class="header__logo"><a href="/"><img class="pixelated" src="/uploads/assets/images/logo.png" alt="" srcset="/uploads/assets/images/logo@2x.png 2x"></a></div>
+        <div class="header__contacts is-lg-visible">
+            <div class="contact-item">
+                <a class="contact-item__link" href="tel:{{ config.Site.phone }}">
+                    <span class="contact-item__icon"><span class="icon-tel_blue"></span></span>
+                    <span>{{ config.Site.phone }}</span>
+                </a>
+            </div>
+            <div class="contact-item">
+                <a class="contact-item__link" href="mailto:{{ config.Site.email }}">
+                    <span class="contact-item__icon"><span class="icon-mail_blue"></span></span>
+                    <span>{{ config.Site.email }}</span>
+                </a>
+            </div>
+        </div>
+        <div class="header__bar is-lg-visible">
+            <ul class="header__bar-btns">
+                <li><a class="btn" href="#popup-callback" data-fancybox><span class="icon-callback_blue"></span></a></li>
+                <li><a class="btn" href="#popup-favorites" data-fancybox><span class="icon-heart_blue"></span></a></li>
+            </ul>
+            <a class="btn btn-default" href="#popup-public" data-fancybox>+ Подать объявление</a>
+        </div>
+        <div class="header__adress is-lg-visible">
+            <span class="icon-location_blue header__adress-icon"></span>
+            <span>{{ config.Site.address }}.<br>Ежедневно {{ config.Site.schedule }}.</span>
+        </div>
+        <a class="btn btn-mob-menu js-mob-menu-open is-lg-hidden"><span> </span></a>
+    </div>
+    <div class="mobile-menu is-lg-hidden">
+        <div class="header__bar">
+            <ul class="header__bar-btns">
+                <li><a class="btn" href="#popup-callback" data-fancybox><span class="icon-callback_blue"></span></a></li>
+                <li><a class="btn" href="#popup-favorites" data-fancybox><span class="icon-heart_blue"></span></a></li>
+            </ul>
+            <a class="btn btn-default" href="#popup-public" data-fancybox>+ Подать объявление</a>
+        </div>
+        <div class="header__contacts">
+            <div class="contact-item">
+                <a class="contact-item__link" href="tel:{{ config.Site.phone }}">
+                    <span class="contact-item__icon"><span class="icon-tel_blue"></span></span>
+                    <span>{{ config.Site.phone }}</span>
+                </a>
+            </div>
+            <div class="contact-item">
+                <a class="contact-item__link" href="mailto:{{ config.Site.email }}">
+                    <span class="contact-item__icon"><span class="icon-mail_blue"></span></span>
+                    <span>{{ config.Site.email }}</span>
+                </a>
+            </div>
+        </div>
+        <div class="header__adress">
+            <span class="icon-location_blue header__adress-icon"></span>
+            <span>{{ config.Site.address }}.<br>Ежедневно {{ config.Site.schedule }}.</span>
+        </div>
+        <ul class="footer__links">
+            <li><a href="/agency/realty">Каталог недвижимости</a></li>
+            <li><a href="/users">Наша команда</a></li>
+            <li><a href="#popup-policy" data-fancybox>Согласие на обработку персональных данных</a></li>
+        </ul>
+        <div class="mobile-menu__close"><a class="btn btn-menu-close"><span></span></a></div>
+    </div>
+</header>
+<main class="main">

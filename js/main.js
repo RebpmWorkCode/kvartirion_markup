@@ -21,22 +21,16 @@ $(() => {
     $('.favorites-action').off('click');
     Is2bFavorite.init('.favorites-action', {
         callback: function () {
-            let dataFavorite = Is2bFavorite.a.get(0).dataset, favoriteEl = $(`.favorites-action[data-id=${dataFavorite.id}]`);
-
-            if (Is2bFavorite.action === 'remove') {
-                console.log(favoriteEl);
-            } else {
-                console.log(favoriteEl);
-            }
-
-
-            // $(`.favorites-action[data-id=${dataFavorite.id}]`).forEach(el => {
-            //     if (Is2bFavorite.action === 'remove') {
-            //         $(el).data('action', 'add').addClass('active');
-            //     } else {
-            //         $(el).data('action', 'remove').addClass('active');
-            //     }
-            // })
+            $(`.favorites-action[data-id=${Is2bFavorite.a.get(0).dataset.id}]`).each((index, element) => {
+                let fEl = $(element);
+                if (Is2bFavorite.action === 'remove') {
+                    fEl.data('action', 'add');
+                    fEl.removeClass('active');
+                } else {
+                    fEl.data('action', 'remove');
+                    fEl.addClass('active');
+                }
+            });
         }
     });
 

@@ -1,0 +1,68 @@
+</main>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col col-12 col-md-8">
+                <div class="row">
+                    <div class="col-md-5">
+                        <img src="/uploads/assets/images/logo_white.png" alt="" srcset="/uploads/assets/images/logo_white@2x.png 2x">
+                    </div>
+                    <div class="col-md-7">
+                        <ul class="footer__links">
+                            <li><a href="/agency/realty">Каталог недвижимости</a></li>
+                            <li><a href="/users">Наша команда</a></li>
+                            <li><a href="#popup-policy" data-fancybox>Согласие на обработку персональных данных</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__form">
+                    <div class="form-title">Есть вопросы?</div>
+                    {{ form.create('Message', {'url': {'plugin':'contacts','controller':'messages','action':'footer_message'},'class':'row','inputDefaults': {'label': false}}) }}
+                        {{ form.input('name', {'class':'ui-input','type': 'text','placeholder': 'ФИО*','div': 'col-md-6'}) }}
+                        {{ form.input('phone', {'class':'ui-input','type': 'tel','placeholder': 'Телефон*','div': 'col-md-6'}) }}
+                        {{ form.input('text', {'class':'ui-textarea','type': 'textarea','placeholder': 'Ваше сообщение','div': 'col-md-8'}) }}
+                        {{ html.div('col-md-4 footer__form-btn') }}
+                            {{ form.button('Отправить', {'type': 'submit', 'class': 'btn btn-default btn--fullwidth'}) }}
+                        {{ html.useTag('tagend', 'div') }}
+                    {{ form.end() }}
+                    <div class="form-warning">* Обязательные поля</div>
+                </div>
+            </div>
+            <div class="col col-12 col-md-4 footer__info">
+                {% if(config.Site.instagram or config.Site.vk or config.Site.facebook) %}
+                <div class="footer__title">Мы в соцсетях</div>
+                <ul class="footer__socials">
+                    {% if(config.Site.instagram) %}
+                        <li><a class="btn btn-social" href="{{ config.Site.instagram }}" target="_blank"><span class="icon-instagram_white"></span></a></li>
+                    {% endif %}
+                    {% if(config.Site.vk) %}
+                        <a class="btn btn-social" href="{{ config.Site.vk }}" target="_blank"><span class="icon-vk_white"></span></a>
+                    {% endif %}
+                    {% if(config.Site.facebook) %}
+                        <a class="btn btn-social" href="{{ config.Site.facebook }}" target="_blank"><span class="icon-facebook_white"></span></a>
+                    {% endif %}
+                </ul>
+                {% endif %}
+                <div class="footer__title">Наши контакты</div>
+                <ul class="footer__contacts">
+                    <li>
+                        <span class="icon-location_white footer__contacts-icon"></span>
+                        <span>{{ config.Site.address }}</span>
+                    </li>
+                    <li>
+                        <span class="icon-clock_white footer__contacts-icon"></span>
+                        <span>{{ config.Site.schedule }}</span>
+                    </li>
+                    <li>
+                        <span class="icon-tel_white footer__contacts-icon"></span>
+                        <span>{{ siteInfo.renderTel(config.Site.phone) }}<br>Ежедневно, с 9:00 до 23:00</span>
+                    </li>
+                    <li>
+                        <span class="icon-mail_white footer__contacts-icon"></span>
+                        <span><a href="mailto:{{config.Site.email}}">{{ config.Site.email }}</a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
