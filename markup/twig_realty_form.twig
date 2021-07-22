@@ -15,7 +15,7 @@
         <div class="heading-base heading-base--medium">Подать объявление на продажу</div>
         {{ form.input('category_id') }}
         {% set temp = location.setDefaultParams({'label': {'class': 'ui-label'}}, true) %}
-        {{ _view.element('Locations.Location/form') }}
+        {{ _view.element('Locations.Location/form', {'notUseLocationJS': true}) }}
 
         <div>
             <label class="ui-label">Регион страны *</label>
