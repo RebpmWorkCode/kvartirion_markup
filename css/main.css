@@ -117,3 +117,11 @@ a.list-flats__text:hover {
     visibility: hidden;
 }
 
+
+.content_block {
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
