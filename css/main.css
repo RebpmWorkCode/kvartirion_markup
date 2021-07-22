@@ -1,0 +1,119 @@
+.pagination > span {
+    font-size: 2.1rem;
+    color: #606060;
+    margin: 0 10px;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.pagination > span.current {
+    background-color: #e8f0f5;
+    color: #00a0ff;
+    font-weight: 700;
+}
+
+.pagination > span > a {
+    color: #606060;
+}
+
+.filter__main-section--enter .textarea-wrapper {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    margin: 0 0 2rem;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    padding-left: 7px;
+    padding-right: 15px;
+    align-items: center;
+}
+
+.filter__main-section--enter .textarea-enter {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+    color: #00a0ff;
+    font-weight: 400;
+    font-family: "Uni Sans", Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+    border: none;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    width: 100%;
+    resize: none;
+    height: 1.8rem;
+    vertical-align: bottom;
+    overflow: hidden;
+    word-break: keep-all;
+    background: 0 0;
+    outline: 0;
+    box-shadow: none;
+    font-size: 1.6rem;
+}
+
+.filter__main-section--enter .textarea-enter::placeholder {
+    color: #00a0ff;
+    font-weight: 400;
+}
+
+@media (min-width: 768px) {
+    .filter__main-section--enter .textarea-wrapper {
+        padding-left: 27px;
+        padding-right: 35px;
+    }
+}
+
+@media (min-width: 992px) {
+    .filter__main-section--enter .textarea-enter {
+        font-size: 1.8rem;
+    }
+}
+
+.checkbox-filter label {
+    background: #e8f0f5;
+    border-radius: 15px;
+    padding: 2px 6px;
+    font-size: 11px;
+    min-width: 22px;
+    transition: .25s;
+    height: 1.7rem;
+}
+
+.checkbox-filter input:checked + label {
+    background: #00a0ff;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
+}
+
+a.list-flats__text:hover {
+    text-decoration: none;
+}
+
+.popup-parametrs.active {
+    height: 600px;
+    overflow-x: auto;
+}
+
+.text-center {
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5vh;
+}
+
+.element-hidden {
+    position: absolute;
+    visibility: hidden;
+}
+

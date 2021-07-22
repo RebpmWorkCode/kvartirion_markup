@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html class="is-page-default" lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="no">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="apple-mobile-web-app-title" content="Site title">
+		<meta name="format-detection" content="telephone=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+		<link rel="manifest" href="images/favicon/manifest.json">
+		<meta name="msapplication-TileImage" content="images/favicon/ms-icon-144x144.png">
+		<title>Карта объектов - Квартирион</title>
+		<link rel="stylesheet" href="css/app.min.css">
+	</head>
+	<body>
+		<div class="app">
+			<!-- Header :: Start-->
+			<header class="header">
+				<div class="container">
+					<div class="header__logo">
+						<a href="#">
+							<img class="pixelated" src="images/logo.png" alt="" srcset="images/logo@2x.png 2x">
+						</a>
+					</div>
+					<div class="header__contacts is-lg-visible">
+						<div class="contact-item">
+							<a class="contact-item__link" href="tel:+74842400088"><span class="contact-item__icon"><span class="icon-tel_blue"></span></span><span>+7 (4842) 40-00-88</span></a>
+						</div>
+						<div class="contact-item">
+							<a class="contact-item__link" href="mailto:kvartirion@mail.ru"><span class="contact-item__icon"><span class="icon-mail_blue"></span></span><span>kvartirion@mail.ru</span></a>
+						</div>
+					</div>
+					<div class="header__bar is-lg-visible">
+						<ul class="header__bar-btns">
+							<li>
+								<a class="btn" href="#popup-callback" data-fancybox><span class="icon-callback_blue"></span></a>
+							</li>
+							<li>
+								<a class="btn" href="#popup-favorites" data-fancybox><span class="icon-heart_blue"></span></a>
+							</li>
+							<li>
+								<a class="btn" href="#popup-notifications" data-fancybox><span class="icon-alarm_blue"></span></a>
+							</li>
+						</ul>
+						<a class="btn btn-default" href="#popup-public" data-fancybox>+ Подать объявление</a>
+					</div>
+					<div class="header__adress is-lg-visible"><span class="icon-location_blue header__adress-icon"></span><span>Калуга, ул. Кирова 2,<br>Бизнес-центр SK Plaza, 4 этаж.<br>Ежедневно с 9:00 до 23:00.</span></div>
+					<a class="btn btn-mob-menu js-mob-menu-open is-lg-hidden"><span> </span></a>
+				</div>
+				<div class="mobile-menu is-lg-hidden">
+					<div class="header__bar">
+						<ul class="header__bar-btns">
+							<li>
+								<a class="btn" href="#popup-callback" data-fancybox><span class="icon-callback_blue"></span></a>
+							</li>
+							<li>
+								<a class="btn" href="#popup-favorites" data-fancybox><span class="icon-heart_blue"></span></a>
+							</li>
+							<li>
+								<a class="btn" href="#popup-notifications" data-fancybox><span class="icon-alarm_blue"></span></a>
+							</li>
+						</ul>
+						<a class="btn btn-default" href="#popup-public" data-fancybox>+ Подать объявление</a>
+					</div>
+					<div class="header__contacts">
+						<div class="contact-item">
+							<a class="contact-item__link" href="tel:+74842400088"><span class="contact-item__icon"><span class="icon-tel_blue"></span></span><span>+7 (4842) 40-00-88</span></a>
+						</div>
+						<div class="contact-item">
+							<a class="contact-item__link" href="mailto:kvartirion@mail.ru"><span class="contact-item__icon"><span class="icon-mail_blue"></span></span><span>kvartirion@mail.ru</span></a>
+						</div>
+					</div>
+					<div class="header__adress"><span class="icon-location_blue header__adress-icon"></span><span>Калуга, ул. Кирова 2,<br>Бизнес-центр SK Plaza, 4 этаж.<br>Ежедневно с 9:00 до 23:00.</span></div>
+					<ul class="footer__links">
+						<li>
+							<a href="#">Каталог недвижимости</a>
+						</li>
+						<li>
+							<a href="#">Наша команда</a>
+						</li>
+						<li>
+							<a href="#popup-policy" data-fancybox>Согласие на обработку персональных данных</a>
+						</li>
+					</ul>
+					<div class="mobile-menu__close">
+						<a class="btn btn-menu-close"><span></span></a>
+					</div>
+				</div>
+			</header>
+			<!-- Header :: End-->
+			<!-- Main :: Start-->
+			<main class="main">
+				<div class="search-block">
+					<div class="container">
+						<div class="heading-base text-right search-block__heading">Купить 1-комнатную<br>квартиру в Калуге</div>
+						<div class="filter">
+							<ul class="filter__tabs">
+								<li class="active">
+									<a href="#">Купить</a>
+								</li>
+								<li>
+									<a href="#popup-public" data-fancybox>Продать </a>
+								</li>
+							</ul>
+							<div class="filter__main">
+								<div class="filter__main-section filter__main-section--type">
+									<div class="filter__main-select">
+										<div class="filter__main-select-title">Квартиру</div><span class="icon-expand-down_blue"></span>
+									</div>
+									<div class="filter__modal">
+										<ul class="list-flats">
+											<li><span class="list-flats__text"><span>Квартира</span><span class="icon-arrow-down_gray list-flats__arrow"></span></span>
+												<ul class="list-flats__submenu">
+													<li> 
+														<label class="list-flats__text">
+															<input type="radio" name="flats-type" value="Новостройка" hidden>Новостройка
+														</label>
+													</li>
+													<li> 
+														<label class="list-flats__text">
+															<input type="radio" name="flats-type" value="Вторичка" hidden>Вторичка
+														</label>
+													</li>
+												</ul>
+											</li>
+											<li> 
+												<label class="list-flats__text">
+													<input type="radio" name="flats-type" value="Комнату" hidden>Комнату
+												</label>
+											</li>
+											<li> 
+												<label class="list-flats__text">
+													<input type="radio" name="flats-type" value="Дом, дачу, коттедж" hidden>Дом, дачу, коттедж
+												</label>
+											</li>
+											<li> 
+												<label class="list-flats__text">
+													<input type="radio" name="flats-type" value="Участок" hidden>Участок
+												</label>
+											</li>
+											<li> 
+												<label class="list-flats__text">
+													<input type="radio" name="flats-type" value="Гараж, машиноместо" hidden>Гараж, машиноместо
+												</label>
+											</li>
+											<li> 
+												<label class="list-flats__text">
+													<input type="radio" name="flats-type" value="Коммерческую недвижимость" hidden>Коммерческую недвижимость
+												</label>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="filter__main-section filter__main-section--rooms">
+									<div class="filter__main-select">
+										<div class="filter__main-select-title">Комнат</div><span class="icon-expand-down_blue"></span>
+									</div>
+									<div class="filter__modal">
+										<label class="checkbox-filter">
+											<input type="checkbox" checked hidden><span class="checkbox-filter__text">1</span>
+										</label>
+										<label class="checkbox-filter">
+											<input type="checkbox" hidden><span class="checkbox-filter__text">2</span>
+										</label>
+										<label class="checkbox-filter">
+											<input type="checkbox" hidden><span class="checkbox-filter__text">3</span>
+										</label>
+										<label class="checkbox-filter">
+											<input type="checkbox" hidden><span class="checkbox-filter__text">4+</span>
+										</label>
+										<label class="checkbox-filter">
+											<input type="checkbox" hidden><span class="checkbox-filter__text">студия</span>
+										</label>
+									</div>
+								</div>
+								<div class="filter__main-section filter__main-section--price">
+									<div class="filter__main-select">
+										<div class="filter__main-select-title">Цена</div><span class="icon-expand-down_blue"></span>
+									</div>
+									<div class="filter__modal">
+										<div class="row">
+											<div class="col col-6">
+												<div class="input-wrap">
+													<input class="input-filter" type="tel" placeholder="от"><span class="input-wrap__cur">₽</span>
+												</div>
+											</div>
+											<div class="col col-6">
+												<div class="input-wrap">
+													<input class="input-filter" type="tel" placeholder="до"><span class="input-wrap__cur">₽</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="filter__main-section filter__main-section--enter">
+									<select multiple data-placeholder="Адрес или ЖК">
+										<option>Adress 1</option>
+										<option>Adress long long long long long long long long long long long long long long long 2</option>
+										<option>Adress 3</option>
+										<option>Adress 4</option>
+										<option>Adress 5</option>
+										<option>Adress 6</option>
+										<option>Adress 7</option>
+									</select>
+								</div>
+							</div>
+							<div class="filter__btn-more">
+								<a class="js-btn-window" href="#popup-parametrs">Больше параметров</a>
+							</div>
+							<div class="filter__bar">
+								<div class="filter__bar-btn">
+									<a class="btn btn-default btn-default--mini btn-default--show-map" href="map-objects.html"><span class="icon icon-location-place_white"></span>на карте</a>
+								</div>
+								<div class="filter__bar-btn">
+									<a class="btn btn-default btn-default--mini btn-default--dark" href="catalog.html"><span class="icon icon-loop_blue"></span>Показать X объект</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup-parametrs js-window" id="popup-parametrs">
+						<div class="heading-base heading-base--medium">Больше параметров</div>
+						<div class="row popup-parametrs__row">
+							<div class="col-md-5 popup-parametrs__title">Площадь</div>
+							<div class="col-md-7">
+								<div class="row popup-parametrs__inputs-row">
+									<div class="col col-6">
+										<div class="input-wrap input-wrap--medium">
+											<input class="input-filter" type="tel" placeholder="от">
+											<div class="input-wrap__cur">м²</div>
+										</div>
+									</div>
+									<div class="col col-6">
+										<div class="input-wrap input-wrap--medium">
+											<input class="input-filter" type="tel" placeholder="до">
+											<div class="input-wrap__cur">м²</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row popup-parametrs__row">
+							<div class="col-md-5 popup-parametrs__title">Площадь кухни</div>
+							<div class="col-md-7">
+								<div class="row popup-parametrs__inputs-row">
+									<div class="col col-6">
+										<div class="input-wrap input-wrap--medium">
+											<input class="input-filter" type="tel" placeholder="от">
+											<div class="input-wrap__cur">м²</div>
+										</div>
+									</div>
+									<div class="col col-6">
+										<div class="input-wrap input-wrap--medium">
+											<input class="input-filter" type="tel" placeholder="до">
+											<div class="input-wrap__cur">м²</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row popup-parametrs__row">
+							<div class="col-md-5 popup-parametrs__title">Этажность</div>
+							<div class="col-md-7">
+								<div class="row popup-parametrs__inputs-row">
+									<div class="col col-6">
+										<div class="input-wrap input-wrap--medium">
+											<input class="input-filter" type="tel" placeholder="от">
+										</div>
+									</div>
+									<div class="col col-6">
+										<div class="input-wrap input-wrap--medium">
+											<input class="input-filter" type="tel" placeholder="до">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row popup-parametrs__row">
+							<div class="col-md-5 popup-parametrs__title">Этаж</div>
+							<div class="col-md-7">
+								<div class="row popup-parametrs__inputs-row">
+									<div class="col col-6">
+										<div class="input-wrap input-wrap--medium">
+											<input class="input-filter" type="tel" placeholder="от">
+										</div>
+									</div>
+									<div class="col col-6">
+										<div class="input-wrap input-wrap--medium">
+											<input class="input-filter" type="tel" placeholder="до">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row popup-parametrs__row">
+							<div class="col-md-5 popup-parametrs__title">Материал стен</div>
+							<div class="col-md-7">
+								<ul class="sorting__list">
+									<li>
+										<label class="btn-check">
+											<input type="checkbox" checked name="walls-material" hidden><span class="btn-check__icon"><span class="icon icon-check"></span></span><span class="btn-check__text">Кирпич</span>
+										</label>
+									</li>
+									<li>
+										<label class="btn-check">
+											<input type="checkbox" name="walls-material" hidden><span class="btn-check__icon"><span class="icon icon-check"></span></span><span class="btn-check__text">Брус</span>
+										</label>
+									</li>
+									<li>
+										<label class="btn-check">
+											<input type="checkbox" name="walls-material" hidden><span class="btn-check__icon"><span class="icon icon-check"></span></span><span class="btn-check__text">Бревно</span>
+										</label>
+									</li>
+									<li>
+										<label class="btn-check">
+											<input type="checkbox" name="walls-material" hidden><span class="btn-check__icon"><span class="icon icon-check"></span></span><span class="btn-check__text">Сэндвич-панели</span>
+										</label>
+									</li>
+									<li>
+										<label class="btn-check">
+											<input type="checkbox" name="walls-material" hidden><span class="btn-check__icon"><span class="icon icon-check"></span></span><span class="btn-check__text">Ж/б-панели</span>
+										</label>
+									</li>
+									<li>
+										<label class="btn-check">
+											<input type="checkbox" name="walls-material" hidden><span class="btn-check__icon"><span class="icon icon-check"></span></span><span class="btn-check__text">Панельный</span>
+										</label>
+									</li>
+									<li>
+										<label class="btn-check">
+											<input type="checkbox" name="walls-material" hidden><span class="btn-check__icon"><span class="icon icon-check"></span></span><span class="btn-check__text">Монолитный</span>
+										</label>
+									</li>
+									<li>
+										<label class="btn-check">
+											<input type="checkbox" name="walls-material" hidden><span class="btn-check__icon"><span class="icon icon-check"></span></span><span class="btn-check__text">Кирпично-монолитный</span>
+										</label>
+									</li>
+									<li>
+										<label class="btn-check">
+											<input type="checkbox" name="walls-material" hidden><span class="btn-check__icon"><span class="icon icon-check"></span></span><span class="btn-check__text">Другой</span>
+										</label>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="catalog">
+					<div class="container">
+						<div class="heading-base heading-base--medium text-center">Карта объектов</div>
+						<div class="map-objects"></div>
+					</div>
+				</div>
+			</main>
+			<!-- Main :: End-->
+			<!-- Footer :: Start-->
+			<footer class="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col col-12 col-md-8">
+							<div class="row">
+								<div class="col-md-5">
+									<img src="images/logo_white.png" alt="" srcset="images/logo_white@2x.png 2x">
+								</div>
+								<div class="col-md-7">
+									<ul class="footer__links">
+										<li>
+											<a href="catalog.html">Каталог недвижимости</a>
+										</li>
+										<li>
+											<a href="team.html">Наша команда</a>
+										</li>
+										<li>
+											<a href="#popup-policy" data-fancybox>Согласие на обработку персональных данных</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="footer__form">
+								<div class="form-title">Есть вопросы?</div>
+								<form class="row">
+									<div class="col-md-6">
+										<input class="ui-input" type="text" placeholder="ФИО*">
+									</div>
+									<div class="col-md-6">
+										<input class="ui-input" type="tel" placeholder="Телефон*">
+									</div>
+									<div class="col-md-8">
+										<textarea class="ui-textarea" placeholder="Ваше сообщение"></textarea>
+									</div>
+									<div class="col-md-4 footer__form-btn">
+										<input class="btn btn-default btn--fullwidth" type="submit" value="Отправить">
+									</div>
+								</form>
+								<div class="form-warning">* Обязательные поля</div>
+							</div>
+						</div>
+						<div class="col col-12 col-md-4 footer__info">
+							<div class="footer__title">Мы в соцсетях</div>
+							<ul class="footer__socials">
+								<li>
+									<a class="btn btn-social" href="#" target="_blank"><span class="icon-instagram_white"></span></a>
+								</li>
+								<li>
+									<a class="btn btn-social" href="#" target="_blank"><span class="icon-vk_white"></span></a>
+								</li>
+								<li>
+									<a class="btn btn-social" href="#" target="_blank"><span class="icon-facebook_white"></span></a>
+								</li>
+							</ul>
+							<div class="footer__title">Наши контакты</div>
+							<ul class="footer__contacts">
+								<li><span class="icon-location_white footer__contacts-icon"></span><span>
+										 Калуга, ул. Кирова, д. 2, <br>Бизнес-центр SK Plaza, 4 этаж.</span></li>
+								<li><span class="icon-clock_white footer__contacts-icon"></span><span>
+										 Пн-Пт: с 9:00 до 18:00<br>Сбт: с 9:00 до 15:00 <br>Вскр: выходной</span></li>
+								<li><span class="icon-tel_white footer__contacts-icon"></span><span>
+										<a href="tel:+74842400088">+7 (4842) 40-00-88</a><br>Ежедневно, с 9:00 до 23:00</span></li>
+								<li><span class="icon-mail_white footer__contacts-icon"></span><span>
+										<a href="mailto:kvartirion@mail.ru">kvartirion@mail.ru </a></span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- Footer :: End-->
+			<!-- Popups :: Start-->
+			<div class="fancybox-is-hidden popup-advt" id="popup-advt">
+				<div>
+					<div class="heading-base heading-base--medium heading-base--mod-margin">Объявление	</div>
+					<div class="catalog__item">
+						<div class="catalog__item-gallery is-lg-visible">
+							<div>
+								<div class="catalog__item-gallery-items">
+									<div>
+										<img src="images/room.jpg" alt="">
+									</div>
+									<div>
+										<img src="images/room.jpg" alt="">
+									</div>
+									<div>
+										<img src="images/room.jpg" alt="">
+									</div>
+								</div>
+								<div class="catalog__item-buttons">
+									<a class="btn btn-card btn-card--large" href="#"><span class="icon-heart_white"></span></a>
+									<a class="btn btn-card btn-card--large" href="#"><span class="icon-alarm_white"></span></a>
+								</div>
+								<div class="catalog__item-btn-request">
+									<a class="btn btn-default btn-default--medium" href="#">Подать заявку на ипотеку</a>
+								</div>
+							</div>
+						</div>
+						<div class="catalog__item-section">
+							<div class="catalog__item-main">
+								<div class="catalog__item-main-section">
+									<div class="catalog__item-info-section">
+										<div class="catalog__item-title">Уютная однушка<br>в центре</div>
+										<div class="catalog__item-adress">Калуга, ул. Спартака, д. 15</div>
+										<div class="card-informers">
+											<div class="card-informers__item"><span class="icon-stages_gray card-informers__item-icon"></span><span>Этаж 
+													<strong>15/17</strong></span></div>
+											<div class="card-informers__item"><span class="icon-bed_gray card-informers__item-icon"></span><span>
+													<strong>3</strong> комнаты</span></div>
+											<div class="card-informers__item"><span class="icon-house_gray card-informers__item-icon"></span><span>
+													<strong>86</strong>м²</span></div>
+										</div>
+									</div>
+									<div class="catalog__item-prices">
+										<div class="price price--size-large"><span class="price__main">23 000 000 </span><span class="price__currency">₽</span></div>
+										<div class="price price--size-large"><span class="price__main">50 000 </span><span class="price__currency">₽</span><span class="price__footage">м²</span></div>
+										<div class="catalog__item-gallery is-lg-hidden">
+											<div>
+												<div class="catalog__item-gallery-items">
+													<div>
+														<img src="images/room.jpg" alt="">
+													</div>
+													<div>
+														<img src="images/room.jpg" alt="">
+													</div>
+													<div>
+														<img src="images/room.jpg" alt="">
+													</div>
+												</div>
+												<div class="catalog__item-buttons">
+													<a class="btn btn-card btn-card--large" href="#"><span class="icon-heart_white"></span></a>
+													<a class="btn btn-card btn-card--large" href="#"><span class="icon-alarm_white"></span></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="catalog__item-agent">
+									<div class="catalog__item-agent-photo">
+										<img src="images/team-gallery_1.jpg" alt="">
+									</div>
+									<div class="catalog__item-agent-main">
+										<div>ваш агент</div>
+										<div class="catalog__item-agent-name">
+											<strong>Анна Яковлева</strong>
+										</div>
+										<div class="contact-item contact-item--size-mini">
+											<a class="contact-item__link" href="tel:+74842400088"><span class="contact-item__icon"><span class="icon-tel_blue"></span></span><span>+7 (4842) 40-00-88</span></a>
+										</div>
+										<div class="contact-item contact-item--size-mini">
+											<a class="contact-item__link" href="mailto:kvartirion@mail.ru"><span class="contact-item__icon"><span class="icon-mail_blue"></span></span><span>kvartirion@mail.ru</span></a>
+										</div>
+										<div class="catalog__item-agent-btn">
+											<a class="btn btn-default btn-default--medium" href="#popup-callback_2" data-fancybox>Связаться с агентом</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="catalog__item-bottom">
+								<div class="catalog__item-desc">
+									<p>Продается 3-комнатная квартира в районе площади Победы, ул. Максима Горького, дом 8. <br>Площадь 60/45/6 кв.м. <br>Комнаты смежно-изолированные, санузел раздельный. <br>Отопление центральное, горячая вода-колонка. <br>Рядом детские сады, школы, детский дом творчества "Юность", аптеки, банки, скверы, <br>кафе, магазины, университет, остановки общественного транспорта. №33839<br><span class="text-hidden">Lorem ipsum dolor sit amet consectetur</span></p>
+									<p class="text-hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+								</div>
+								<div class="expand-text">
+									<a class="btn"> <span class="icon-expand-down_large_blue"></span></a>
+								</div>
+								<div class="catalog__item-date">12 часов назад</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row popup-advt__about">
+					<div class="col-12 col-md-4 col-xl-3">
+						<div class="popup-advt__about-map">map</div>
+					</div>
+					<div class="col-12 col-md-8 col-xl-9">
+						<div class="popup-advt__about-info">
+							<div class="popup-advt__about-inner styled-scrollbar">
+								<div class="heading-base heading-base--medium">Сведения о недвижимости</div>
+								<div class="popup-advt__about-row">
+									<div class="popup-advt__about-col">
+										<div>
+											<label class="ui-label">ID</label>
+											<input class="ui-input" type="text">
+										</div>
+										<div>
+											<label class="ui-label">Доля в квартире</label>
+											<input class="ui-input" type="text">
+										</div>
+										<div>
+											<label class="ui-label">Комнат в квартире</label>
+											<input class="ui-input" type="text">
+										</div>
+										<div>
+											<label class="ui-label">Площадь, кв.м.</label>
+											<input class="ui-input" type="text">
+										</div>
+										<div>
+											<label class="ui-label">Площадь, кв.м.</label>
+											<input class="ui-input" type="text">
+										</div>
+										<div>
+											<label class="ui-label">Площадь, кв.м.</label>
+											<input class="ui-input" type="text">
+										</div>
+									</div>
+									<div class="popup-advt__about-col">
+										<div>
+											<label class="ui-label">Этаж</label>
+											<input class="ui-input" type="text">
+										</div>
+										<div>
+											<label class="ui-label">Этажность</label>
+											<input class="ui-input" type="text">
+										</div>
+										<div>
+											<label class="ui-label">Материал стен</label>
+											<input class="ui-input" type="text">
+										</div>
+										<div>
+											<label class="ui-label">Стоимость в валюте</label>
+											<input class="ui-input" type="text">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="heading-base heading-base--medium heading-base--mod-margin">Похожие предложения</div>
+					<div class="row cards-carousel">
+						<div class="col-md-4">
+							<div class="cards__item">
+								<div class="cards__item-section">
+									<div class="cards__item-top">
+										<a class="btn btn-card" href="#"><span class="icon-heart_white"></span></a>
+										<a class="btn btn-card" href="#"><span class="icon-alarm_white"></span></a>
+									</div>
+									<div class="cards__item-gallery">
+										<div>
+											<img src="images/room.jpg" alt="">
+										</div>
+										<div>
+											<img src="images/room.jpg" alt="">
+										</div>
+										<div>
+											<img src="images/room.jpg" alt="">
+										</div>
+									</div>
+									<div class="cards__item-desc">
+										<div class="row">
+											<div class="col col-12 col-md-6">
+												<div class="cards__item-info">
+													<strong>Уютная однушка в центре</strong>
+												</div>
+											</div>
+											<div class="col col-12 col-md-6">
+												<div class="price"><span class="price__main">23 000 000 </span><span class="price__currency">₽</span></div>
+											</div>
+										</div>
+										<div class="cards__item-info row">
+											<div class="col col-12 col-md-6">Калуга, <br>ул. Спартака, д. 15</div>
+											<div class="col col-12 col-md-6 price"><span class="price__main">50 000 </span><span class="price__currency">₽</span><span class="price__footage"> м²</span></div>
+										</div>
+									</div>
+								</div>
+								<div class="cards__item-details card-informers">
+									<div class="card-informers__item"><span class="icon-stages_white card-informers__item-icon"></span><span>Этаж 
+											<strong>15/17</strong></span></div>
+									<div class="card-informers__item"><span class="icon-bed_white card-informers__item-icon"></span><span>
+											<strong>3</strong> комнаты</span></div>
+									<div class="card-informers__item"><span class="icon-house_white card-informers__item-icon"></span><span>
+											<strong>86</strong>м²</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="cards__item">
+								<div class="cards__item-section">
+									<div class="cards__item-top">
+										<a class="btn btn-card" href="#"><span class="icon-heart_white"></span></a>
+										<a class="btn btn-card" href="#"><span class="icon-alarm_white"></span></a>
+									</div>
+									<div class="cards__item-gallery">
+										<div>
+											<img src="images/room.jpg" alt="">
+										</div>
+										<div>
+											<img src="images/room.jpg" alt="">
+										</div>
+										<div>
+											<img src="images/room.jpg" alt="">
+										</div>
+									</div>
+									<div class="cards__item-desc">
+										<div class="row">
+											<div class="col col-12 col-md-6">
+												<div class="cards__item-info">
+													<strong>Уютная однушка в центре</strong>
+												</div>
+											</div>
+											<div class="col col-12 col-md-6">
+												<div class="price"><span class="price__main">23 000 000 </span><span class="price__currency">₽</span></div>
+											</div>
+										</div>
+										<div class="cards__item-info row">
+											<div class="col col-12 col-md-6">Калуга, <br>ул. Спартака, д. 15</div>
+											<div class="col col-12 col-md-6 price"><span class="price__main">50 000 </span><span class="price__currency">₽</span><span class="price__footage"> м²</span></div>
+										</div>
+									</div>
+								</div>
+								<div class="cards__item-details card-informers">
+									<div class="card-informers__item"><span class="icon-stages_white card-informers__item-icon"></span><span>Этаж 
+											<strong>15/17</strong></span></div>
+									<div class="card-informers__item"><span class="icon-bed_white card-informers__item-icon"></span><span>
+											<strong>3</strong> комнаты</span></div>
+									<div class="card-informers__item"><span class="icon-house_white card-informers__item-icon"></span><span>
+											<strong>86</strong>м²</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="cards__item">
+								<div class="cards__item-section">
+									<div class="cards__item-top">
+										<a class="btn btn-card" href="#"><span class="icon-heart_white"></span></a>
+										<a class="btn btn-card" href="#"><span class="icon-alarm_white"></span></a>
+									</div>
+									<div class="cards__item-gallery">
+										<div>
+											<img src="images/room.jpg" alt="">
+										</div>
+										<div>
+											<img src="images/room.jpg" alt="">
+										</div>
+										<div>
+											<img src="images/room.jpg" alt="">
+										</div>
+									</div>
+									<div class="cards__item-desc">
+										<div class="row">
+											<div class="col col-12 col-md-6">
+												<div class="cards__item-info">
+													<strong>Уютная однушка в центре</strong>
+												</div>
+											</div>
+											<div class="col col-12 col-md-6">
+												<div class="price"><span class="price__main">23 000 000 </span><span class="price__currency">₽</span></div>
+											</div>
+										</div>
+										<div class="cards__item-info row">
+											<div class="col col-12 col-md-6">Калуга, <br>ул. Спартака, д. 15</div>
+											<div class="col col-12 col-md-6 price"><span class="price__main">50 000 </span><span class="price__currency">₽</span><span class="price__footage"> м²</span></div>
+										</div>
+									</div>
+								</div>
+								<div class="cards__item-details card-informers">
+									<div class="card-informers__item"><span class="icon-stages_white card-informers__item-icon"></span><span>Этаж 
+											<strong>15/17</strong></span></div>
+									<div class="card-informers__item"><span class="icon-bed_white card-informers__item-icon"></span><span>
+											<strong>3</strong> комнаты</span></div>
+									<div class="card-informers__item"><span class="icon-house_white card-informers__item-icon"></span><span>
+											<strong>86</strong>м²</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="cards__item">
+								<div class="cards__item-section">
+									<div class="cards__item-top">
+										<a class="btn btn-card" href="#"><span class="icon-heart_white"></span></a>
+										<a class="btn btn-card" href="#"><span class="icon-alarm_white"></span></a>
+									</div>
+									<div class="cards__item-gallery">
+										<div>
+											<img src="images/room.jpg" alt="">
+										</div>
+										<div>
+											<img src="images/room.jpg" alt="">
+										</div>
+										<div>
+											<img src="images/room.jpg" alt="">
+										</div>
+									</div>
+									<div class="cards__item-desc">
+										<div class="row">
+											<div class="col col-12 col-md-6">
+												<div class="cards__item-info">
+													<strong>Уютная однушка в центре</strong>
+												</div>
+											</div>
+											<div class="col col-12 col-md-6">
+												<div class="price"><span class="price__main">23 000 000 </span><span class="price__currency">₽</span></div>
+											</div>
+										</div>
+										<div class="cards__item-info row">
+											<div class="col col-12 col-md-6">Калуга, <br>ул. Спартака, д. 15</div>
+											<div class="col col-12 col-md-6 price"><span class="price__main">50 000 </span><span class="price__currency">₽</span><span class="price__footage"> м²</span></div>
+										</div>
+									</div>
+								</div>
+								<div class="cards__item-details card-informers">
+									<div class="card-informers__item"><span class="icon-stages_white card-informers__item-icon"></span><span>Этаж 
+											<strong>15/17</strong></span></div>
+									<div class="card-informers__item"><span class="icon-bed_white card-informers__item-icon"></span><span>
+											<strong>3</strong> комнаты</span></div>
+									<div class="card-informers__item"><span class="icon-house_white card-informers__item-icon"></span><span>
+											<strong>86</strong>м²</span></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<a class="btn btn-close" data-fancybox-close><span class="icon icon-close"> </span></a>
+			</div>
+			<div class="fancybox-is-hidden popup popup-callback popup-callback--mod-corners" id="modal-add-testimonial">
+				<div class="heading-base heading-base--medium">Оставить отзыв</div>
+				<p class="form-desc">Ваша честная оценка поможет <br>нам стать лучше!</p>
+				<input class="ui-input" type="text" placeholder="Ваше имя">
+				<input class="ui-input" type="text" placeholder="Ваша фамилия">
+				<input class="ui-input" type="tel" placeholder="Телефон">
+				<input class="ui-input" type="email" placeholder="E-mail">
+				<textarea class="ui-textarea" placeholder="Ваш текст"></textarea>
+				<div>
+					<label class="ui-label ui-label--small">Ваша оценка</label>
+					<div class="rateit" aria-valuenow="0" data-rateit-mode="font" data-rateit-resetable="false"></div>
+				</div>
+				<div class="popup-callback__bottom">
+					<div class="row flex-md-row-reverse">
+						<div class="col-md-6">
+							<img src="images/robot.png" alt="">
+						</div>
+						<div class="col-md-6"> 
+							<input class="btn btn-default" type="submit" value="Отправить">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="fancybox-is-hidden popup popup-callback popup-callback--mod-corners" id="popup-callback_2">
+				<div class="heading-base heading-base--medium">Связаться</div>
+				<p class="form-desc">Введите контактные данные<br>и наш менеджер свяжется с вами<br>в ближайшее время</p>
+				<input class="ui-input" type="text" placeholder="Ваше имя">
+				<input class="ui-input" type="text" placeholder="Ваша фамилия">
+				<input class="ui-input" type="tel" placeholder="Телефон">
+				<input class="ui-input" type="email" placeholder="E-mail">
+				<textarea class="ui-textarea" placeholder="Ваше сообщение"></textarea>
+				<label class="ui-checkbox">
+					<input type="checkbox" checked hidden><span class="ui-checkbox__icon"><span class="icon-check_dark"></span></span><span class="ui-checkbox__text">заполняя данную форму, <br>вы даете 
+						<a href="#popup-policy" data-fancybox>согласие на обработку ваших данных</a></span>
+				</label>
+				<div class="popup-callback__bottom">
+					<div class="row flex-md-row-reverse">
+						<div class="col-md-6">
+							<img src="images/robot.png" alt="">
+						</div>
+						<div class="col-md-6"> 
+							<input class="btn btn-default" type="submit" value="Отправить">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="fancybox-is-hidden popup popup-callback" id="popup-callback">
+				<div class="heading-base heading-base--medium">Обратный звонок</div>
+				<p class="form-desc">Введите контактные данные<br>и наш менеджер свяжется с вами<br>в ближайшее время</p>
+				<input class="ui-input" type="text" placeholder="Ваше имя">
+				<input class="ui-input" type="tel" placeholder="Ваш номер телефона">
+				<label class="ui-checkbox">
+					<input type="checkbox" checked hidden><span class="ui-checkbox__icon"><span class="icon-check_dark"></span></span><span class="ui-checkbox__text">заполняя данную форму, <br>вы даете 
+						<a href="#popup-policy" data-fancybox>согласие на обработку ваших данных</a></span>
+				</label>
+				<div class="popup-callback__bottom">
+					<input class="btn btn-default" type="submit" value="Отправить">
+				</div>
+			</div>
+			<div class="fancybox-is-hidden popup popup-delete-favorites" id="popup-delete-favorites">
+				<div class="popup-title">Вы действительно хотите удалить все избранные объекты?</div>
+				<div class="row btns-row flex-md-row-reverse">
+					<div class="col-md-6">
+						<a class="btn btn-default btn-default--medium" href="#">Удалить все</a>
+					</div>
+					<div class="col-md-6">
+						<a class="btn btn-default btn-default--medium" data-fancybox-close>Вернуться</a>
+					</div>
+				</div>
+			</div>
+			<div class="fancybox-is-hidden popup popup-notifications" id="popup-notifications">
+				<div class="heading-base heading-base--medium">Оповещения</div>
+				<div class="popup-notifications__inner styled-scrollbar">
+					<div class="notification-item">
+						<label class="btn-check">
+							<input type="checkbox" checked hidden><span class="btn-check__icon"><span class="icon icon-check"></span></span>
+						</label>
+						<a class="notification" href="#popup-advt" data-fancybox>
+							<div class="notification__date">2 часа назад</div>
+							<div class="notification__event">Изменение цены</div>
+							<div class="notification__title">1-комнатная квартира</div>
+							<div class="row notification__info">
+								<div class="col-md-6">1-комнатная квартира</div>
+								<div class="col-md-6 text-right">Калуга,<br>ул. Манежная, д. 20</div>
+							</div>
+						</a>
+					</div>
+					<div class="notification-item">
+						<label class="btn-check">
+							<input type="checkbox" hidden><span class="btn-check__icon"><span class="icon icon-check"></span></span>
+						</label>
+						<a class="notification" href="#popup-advt" data-fancybox>
+							<div class="notification__date">2 часа назад</div>
+							<div class="notification__event">Изменение цены</div>
+							<div class="notification__title">1-комнатная квартира</div>
+							<div class="row notification__info">
+								<div class="col-md-6">1-комнатная квартира</div>
+								<div class="col-md-6 text-right">Калуга,<br>ул. Манежная, д. 20</div>
+							</div>
+						</a>
+					</div>
+					<div class="notification-item">
+						<label class="btn-check">
+							<input type="checkbox" hidden><span class="btn-check__icon"><span class="icon icon-check"></span></span>
+						</label>
+						<a class="notification" href="#popup-advt" data-fancybox>
+							<div class="notification__date">2 часа назад</div>
+							<div class="notification__event">Изменение цены</div>
+							<div class="notification__title">1-комнатная квартира</div>
+							<div class="row notification__info">
+								<div class="col-md-6">1-комнатная квартира</div>
+								<div class="col-md-6 text-right">Калуга,<br>ул. Манежная, д. 20</div>
+							</div>
+						</a>
+					</div>
+					<div class="notification-item">
+						<label class="btn-check">
+							<input type="checkbox" hidden><span class="btn-check__icon"><span class="icon icon-check"></span></span>
+						</label>
+						<a class="notification" href="#popup-advt" data-fancybox>
+							<div class="notification__date">2 часа назад</div>
+							<div class="notification__event">Изменение цены</div>
+							<div class="notification__title">1-комнатная квартира</div>
+							<div class="row notification__info">
+								<div class="col-md-6">1-комнатная квартира</div>
+								<div class="col-md-6 text-right">Калуга,<br>ул. Манежная, д. 20</div>
+							</div>
+						</a>
+					</div>
+					<div class="notification-item">
+						<label class="btn-check">
+							<input type="checkbox" hidden><span class="btn-check__icon"><span class="icon icon-check"></span></span>
+						</label>
+						<a class="notification" href="#popup-advt" data-fancybox>
+							<div class="notification__date">2 часа назад</div>
+							<div class="notification__event">Изменение цены</div>
+							<div class="notification__title">1-комнатная квартира</div>
+							<div class="row notification__info">
+								<div class="col-md-6">1-комнатная квартира</div>
+								<div class="col-md-6 text-right">Калуга,<br>ул. Манежная, д. 20</div>
+							</div>
+						</a>
+					</div>
+					<div class="notification-item">
+						<label class="btn-check">
+							<input type="checkbox" hidden><span class="btn-check__icon"><span class="icon icon-check"></span></span>
+						</label>
+						<a class="notification" href="#popup-advt" data-fancybox>
+							<div class="notification__date">2 часа назад</div>
+							<div class="notification__event">Изменение цены</div>
+							<div class="notification__title">1-комнатная квартира</div>
+							<div class="row notification__info">
+								<div class="col-md-6">1-комнатная квартира</div>
+								<div class="col-md-6 text-right">Калуга,<br>ул. Манежная, д. 20</div>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="row popup-notifications__bottom">
+					<div class="col-md-2">
+						<label class="btn btn-items btn-items--check notifications-check-all">
+							<input type="checkbox" hidden><span class="btn-items__inner"><span class="icon-rect"><span class="icon-check"></span></span><span class="icon-expand-down_blue"></span></span><span class="btn-items__tooltip">Выбрать все</span>
+						</label>
+					</div>
+					<div class="col-md-8 text-center">
+						<a class="btn btn-default" href="#">Отметить как прочитанные </a>
+					</div>
+				</div>
+			</div>
+			<div class="fancybox-is-hidden popup popup-policy" id="popup-policy">
+				<div class="heading-base heading-base--medium">Согласие на обработку<br>персональных данных</div>
+				<div class="policy-wrapper styled-scrollbar">
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos mollitia aliquid dicta ullam, corrupti est nemo omnis quo ipsa incidunt adipisci dolorem voluptatibus quasi quia ex et, odio voluptate tempora.</p>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos mollitia aliquid dicta ullam, corrupti est nemo omnis quo ipsa incidunt adipisci dolorem voluptatibus quasi quia ex et, odio voluptate tempora.</p>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos mollitia aliquid dicta ullam, corrupti est nemo omnis quo ipsa incidunt adipisci dolorem voluptatibus quasi quia ex et, odio voluptate tempora.p Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos mollitia aliquid dicta ullam, corrupti est nemo omnis quo ipsa incidunt adipisci dolorem voluptatibus quasi quia ex et, odio voluptate tempora.</p>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos mollitia aliquid dicta ullam, corrupti est nemo omnis quo ipsa incidunt adipisci dolorem voluptatibus quasi quia ex et, odio voluptate tempora.</p>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos mollitia aliquid dicta ullam, corrupti est nemo omnis quo ipsa incidunt adipisci dolorem voluptatibus quasi quia ex et, odio voluptate tempora.p Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos mollitia aliquid dicta ullam, corrupti est nemo omnis quo ipsa incidunt adipisci dolorem voluptatibus quasi quia ex et, odio voluptate tempora.</p>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos mollitia aliquid dicta ullam, corrupti est nemo omnis quo ipsa incidunt adipisci dolorem voluptatibus quasi quia ex et, odio voluptate tempora.</p>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos mollitia aliquid dicta ullam, corrupti est nemo omnis quo ipsa incidunt adipisci dolorem voluptatibus quasi quia ex et, odio voluptate tempora.</p>
+				</div>
+			</div>
+			<div class="fancybox-is-hidden popup popup-public" id="popup-public">
+				<div class="row popup-public__row">
+					<div class="col col-12 col-lg-4 popup-public__col">
+						<div class="heading-base heading-base--medium">Подать объявление на продажу</div>
+						<div>
+							<label class="ui-label">Категория</label>
+							<div>
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Регион страны *</label>
+							<div>
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Район *</label>
+							<div>
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Населенный пункт *</label>
+							<div>
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Район города</label>
+							<div>
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Улица</label>
+							<div>
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-xl-6">
+								<label class="ui-label">Номер дома</label>
+								<input class="ui-input" type="text">
+							</div>
+							<div class="col-12 col-xl-6">
+								<label class="ui-label">Номер квартиры</label>
+								<input class="ui-input" type="text">
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Фамилия, Имя, Отчество *</label>
+							<input class="ui-input" type="text">
+						</div>
+						<div>
+							<label class="ui-label">Телефон *</label>
+							<input class="ui-input" type="tel">
+						</div>
+						<div>
+							<label class="ui-label">Электронная почта</label>
+							<input class="ui-input" type="email">
+						</div>
+						<div>
+							<label class="ui-label">Заголовок</label>
+							<input class="ui-input" type="text">
+						</div>
+						<div>
+							<label class="ui-label">Текст</label>
+							<textarea class="ui-textarea"></textarea>
+						</div>
+						<div>
+							<label class="ui-label">Стоимость *</label>
+							<input class="ui-input" type="text" placeholder="Выбирете или введите значение">
+						</div>
+					</div>
+					<div class="col col-12 col-lg-4 popup-public__col-gray offset-top-mod">
+						<div>
+							<label class="ui-label">Комнат в квартире *</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Площадь, кв.м. *</label>
+							<div>
+								<input class="ui-input ui-input--theme-white" type="text">
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Площадь, кв.м. *</label>
+							<div>
+								<input class="ui-input ui-input--theme-white" type="text">
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Площадь кухни, кв.м.</label>
+							<div>
+								<input class="ui-input ui-input--theme-white" type="text">
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Этаж *</label>
+							<div>
+								<input class="ui-input ui-input--theme-white" type="text">
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Этажность *</label>
+							<div>
+								<input class="ui-input ui-input--theme-white" type="text">
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Материал стен *</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Тип комнат</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Состояние</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Ремонт</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Лифт пассажирский</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Лифт грузовой</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Высота потолков м. </label>
+							<div>
+								<input class="ui-input ui-input--theme-white" type="text">
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Вид из окна</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Санузел</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col col-12 col-lg-4 popup-public__col-gray offset-top-mod">
+						<div>
+							<label class="ui-label">Балкон</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Угловая</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Кадастровый номер</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Год постройки</label>
+							<div>
+								<input class="ui-input ui-input--theme-white" type="text">
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Сообщения от Авито</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Возможность ипотеки</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Ставка аукциона Cian</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Доля в квартире</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Онлайн показ</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Статус Недвижимости Авито</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Отопление</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="ui-label">Видно только агентам - Циан</label>
+							<div class="select-theme-white">
+								<select>
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 99</option>
+								</select>
+							</div>
+						</div>
+						<div class="popup-public__confirm">
+							<label class="ui-checkbox ui-checkbox--theme-white">
+								<input type="checkbox" checked hidden><span class="ui-checkbox__icon"><span class="icon-check_dark"></span></span><span class="ui-checkbox__text">заполняя данную форму, <br>вы даете 
+									<a href="#popup-policy" data-fancybox>согласие на обработку<br>ваших данных</a></span>
+							</label>
+							<div>
+								<img src="images/robot.png" alt="">
+							</div>
+						</div>
+						<div class="popup-public__buttons">
+							<div class="row">
+								<div class="col col-12 col-xl-6">
+									<input class="btn btn-default" type="submit" value="Опубликовать">
+								</div>
+								<div class="col col-12 col-xl-6">
+									<a class="btn btn-default" href="#">Добавить фото</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="fancybox-is-hidden popup popup-favorites" id="popup-favorites">
+				<div class="popup-carousel">
+					<div class="cards__item cards__item--mod-large">
+						<div class="cards__item-section">
+							<div class="cards__item-top cards__item-top--mod">
+								<div class="heading-base heading-base--medium">Избранное</div>
+								<div>
+									<a class="btn btn-card active" href="#"><span class="icon-heart_white"></span></a>
+									<a class="btn btn-card" href="#"><span class="icon-alarm_white"></span></a>
+								</div>
+							</div>
+							<div class="cards__item-gallery">
+								<div>
+									<img src="images/room.jpg" alt="">
+								</div>
+								<div>
+									<img src="images/room.jpg" alt="">
+								</div>
+								<div>
+									<img src="images/room.jpg" alt="">
+								</div>
+							</div>
+							<div class="cards__item-desc">
+								<div class="row">
+									<div class="col col-12 col-md-6">
+										<div class="cards__item-info">
+											<strong>Уютная однушка в центре</strong>
+										</div>
+									</div>
+									<div class="col col-12 col-md-6">
+										<div class="price"><span class="price__main">23 000 000 </span><span class="price__currency">₽</span></div>
+									</div>
+								</div>
+								<div class="cards__item-info row">
+									<div class="col col-12 col-md-6">Калуга, <br>ул. Спартака, д. 15</div>
+									<div class="col col-12 col-md-6 price"><span class="price__main">50 000 </span><span class="price__currency">₽</span><span class="price__footage"> м²</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="cards__item-details">
+							<div class="card-informers">
+								<div class="card-informers__item"><span class="icon-stages_white card-informers__item-icon"></span><span>Этаж 
+										<strong>15/17</strong></span></div>
+								<div class="card-informers__item"><span class="icon-bed_white card-informers__item-icon"></span><span>
+										<strong>3</strong> комнаты</span></div>
+								<div class="card-informers__item"><span class="icon-house_white card-informers__item-icon"></span><span>
+										<strong>86</strong>м²</span></div>
+							</div>
+							<div class="cards__item-details-btn">
+								<a class="btn btn-default btn-default--medium" href="favorites.html">Перейти в избранное </a>
+							</div>
+						</div>
+					</div>
+					<div class="cards__item cards__item--mod-large">
+						<div class="cards__item-section">
+							<div class="cards__item-top cards__item-top--mod">
+								<div class="heading-base heading-base--medium">Избранное</div>
+								<div>
+									<a class="btn btn-card active" href="#"><span class="icon-heart_white"></span></a>
+									<a class="btn btn-card" href="#"><span class="icon-alarm_white"></span></a>
+								</div>
+							</div>
+							<div class="cards__item-gallery">
+								<div>
+									<img src="images/room.jpg" alt="">
+								</div>
+								<div>
+									<img src="images/room.jpg" alt="">
+								</div>
+								<div>
+									<img src="images/room.jpg" alt="">
+								</div>
+							</div>
+							<div class="cards__item-desc">
+								<div class="row">
+									<div class="col col-12 col-md-6">
+										<div class="cards__item-info">
+											<strong>Уютная однушка в центре</strong>
+										</div>
+									</div>
+									<div class="col col-12 col-md-6">
+										<div class="price"><span class="price__main">23 000 000 </span><span class="price__currency">₽</span></div>
+									</div>
+								</div>
+								<div class="cards__item-info row">
+									<div class="col col-12 col-md-6">Калуга, <br>ул. Спартака, д. 15</div>
+									<div class="col col-12 col-md-6 price"><span class="price__main">50 000 </span><span class="price__currency">₽</span><span class="price__footage"> м²</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="cards__item-details">
+							<div class="card-informers">
+								<div class="card-informers__item"><span class="icon-stages_white card-informers__item-icon"></span><span>Этаж 
+										<strong>15/17</strong></span></div>
+								<div class="card-informers__item"><span class="icon-bed_white card-informers__item-icon"></span><span>
+										<strong>3</strong> комнаты</span></div>
+								<div class="card-informers__item"><span class="icon-house_white card-informers__item-icon"></span><span>
+										<strong>86</strong>м²</span></div>
+							</div>
+							<div class="cards__item-details-btn">
+								<a class="btn btn-default btn-default--medium" href="favorites.html">Перейти в избранное </a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Popups :: End-->
+		</div>
+		<!-- Scripts :: Start-->
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<script src="js/plugins.min.js"></script>
+		<script src="js/app.min.js"></script>
+		<!-- Scripts :: End-->
+	</body>
+</html>
