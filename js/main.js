@@ -71,6 +71,16 @@ $(() => {
         })
     })
 
+    // $("select").select2({
+    //         width: "100%", placeholder: function () {
+    //             $(this).data("placeholder")
+    //         }
+    //     })
+
+    $('[href="#create_object"]').on('click', e => {
+
+    })
+
     $('#AdvertisementMessageContactWithAgentAdvertisementForm,#FeedbackMessageSendForm').on('submit', event => {
         event.preventDefault();
         $.ajax({
