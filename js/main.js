@@ -97,7 +97,7 @@ $(() => {
     let categoriesParams =  $('.params-filter');
     if(categoriesParams.length > 0){
         categoriesParams.addClass('hidden');
-        let categoryId = $('#AdvertisementCategoryId');
+        let categoryId = $('#AdvertisementCategoryId', $('.search-block'));
         if(categoryId.val()) {
             $(`.params-filter.category-${categoryId.val()}`).removeClass('hidden');
         }
@@ -108,6 +108,32 @@ $(() => {
             $(`.params-filter.category-${categoryId.val()}`).removeClass('hidden');
         });
     }
+
+
+    $('#AdvertisementCategoryId', $('#AdvertisementAddForm')).on('change', e => {
+        let categoryId = $(e.target).val();
+        $.ajax({
+            url : `/agency/realty/category_params/${categoryId}?ajax_twig=1`,
+            statusCode: {
+                404: function () {
+                    alert("page /agency/realty/category_params/ not found");
+                },
+                403: function () {
+                    alert("Запрещен доступ к странице /agency/realty/category_params/");
+                }
+            },
+            success : function(data){
+                let $categoryParams = $('#categoryParams');
+                $categoryParams.replaceWith(data);
+                $categoryParams.find('select').select2({language: 'ru', width: '100%'});
+            }
+        });
+    })
+
+    $('.JS-add-photo').on('click', function (event) {
+        event.preventDefault();
+        $('.fileinput-button input').click();
+    });
 
     $('.cards__tabs').on('click', '.js-link-tab', e => {
         $('.cards__tabs > li').removeClass('current');

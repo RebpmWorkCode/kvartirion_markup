@@ -117,7 +117,6 @@ a.list-flats__text:hover {
     visibility: hidden;
 }
 
-
 .content_block {
     overflow: hidden;
     -webkit-line-clamp: 4;
@@ -125,3 +124,11 @@ a.list-flats__text:hover {
     -webkit-box-orient: vertical;
 }
 
+#AdvertisementPicture_list {display: flex;flex-wrap: wrap;}
+#AdvertisementPicture_list .template-download.in {display: grid;grid-template-areas:"picture picture""checkbox checkbox""rotate delete";width: 50%;padding: 10px;}
+#AdvertisementPicture_list .template-download.in .preview {grid-area: picture;}
+#AdvertisementPicture_list .template-download.in .preview a {display: block;}
+#AdvertisementPicture_list .template-download.in .preview a img {object-fit: cover;width: 100%;}
+#AdvertisementPicture_list .template-download.in .input.checkbox {grid-area: checkbox;margin-bottom: 10px;margin-top: 10px;}
+#AdvertisementPicture_list .template-download.in .rotate-model{grid-area: rotate;min-width: auto;}
+#AdvertisementPicture_list .template-download.in .delete-model {grid-area: delete;min-width: auto;}
