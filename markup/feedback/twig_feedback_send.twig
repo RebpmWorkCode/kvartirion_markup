@@ -1,3 +1,6 @@
 {% if feedback.Feedback.alias == 'order_call' %}
     {{ croogo_region alias = "twig_order_call" }}
 {% endif %}
+{% if feedback.Feedback.alias == 'order_callback' %}
+    {{ croogo_region alias = "twig_order_callback" }}
+{% endif %}
