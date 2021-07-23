@@ -1,0 +1,31 @@
+[
+    {
+        "Region": {
+            "id": "55",
+            "title": "Twig | page end js ",
+            "alias": "twig_end_page",
+            "description": null,
+            "block_count": "1"
+        },
+        "Block": [
+            {
+                "id": "53",
+                "region_id": "55",
+                "title": "Twig | page end js ",
+                "alias": "twig_end_page",
+                "body": "<\/div>\r\n<script src=\"\/uploads\/assets\/js\/jquery-3.3.1.min.js\"><\/script>\r\n<script src=\"\/uploads\/assets\/js\/plugins.min.js\"><\/script>\r\n<script src=\"\/uploads\/assets\/js\/app.min.js\"><\/script>\r\n{{ _view.fetch('script') }}\r\n<script src=\"\/agency\/js\/jquery.mask.min.js?v=146\"><\/script>\r\n{{ html.script('\/libraries\/lazyload\/lazyload.min.js') }}\r\n{{ html.script('\/libraries\/lazyload\/lazyload_init.js') }}\r\n{{ html.script('Favorites.favorite_site') }}\r\n<script src=\"\/uploads\/assets\/js\/locations.js\"><\/script>\r\n<script src=\"\/uploads\/assets\/js\/main.js\"><\/script>\r\n<\/body><\/html>",
+                "show_title": false,
+                "class": "",
+                "status": true,
+                "weight": "19",
+                "element": "",
+                "visibility_roles": "",
+                "visibility_paths": "",
+                "visibility_php": "",
+                "params": "disabledCkEditor=1",
+                "updated": "2021-07-23 15:08:44",
+                "created": "2021-07-20 12:17:59"
+            }
+        ]
+    }
+]
