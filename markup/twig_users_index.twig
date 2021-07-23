@@ -49,7 +49,9 @@
                 </div>
             </div>
             <div class="col col-md-6">
-                <div class="location__map"></div>
+                <div class="location__map">
+                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A751f5b5f8b89960d9fb535f7098265c255fd0913a434c07c8375eb2742f11f4a&amp;source=constructor" width="630" height="442" frameborder="0"></iframe>
+                </div>
             </div>
         </div>
     </div>
@@ -61,27 +63,28 @@
                 <div class="heading-base heading-base--medium text-center">Отзывы о нас</div>
             </div>
             <div class="col-md-3 text-right-md">
-                <a class="btn btn-pink" href="#modal-add-testimonial" data-fancybox>Оставить отзыв</a>
+                <a class="btn btn-pink" href="#order_review" data-fancybox>Оставить отзыв</a>
             </div>
         </div>
 
-        {% for review in last_reviews %}
+        <div class="section-title">{{ paginator.params.current }} отзывов </div>
 
-{#        <div class="section-title">15 отзывов </div>#}
+        {% for last in last_reviews %}
         <div>
             <div class="testimonials__item">
                 <div class="testimonials__item-info">
-                    <div class="testimonials__item-name">{{ review.Review.sender }}</div>
-                    <div class="testimonials__item-date">{{ review.Review.updated }}</div>
+                    <div class="testimonials__item-name">{{ last.Review.sender }}</div>
+                    <div class="testimonials__item-date">{{ last.Review.updated }}</div>
 
                 </div>
                 <div class="testimonials__item-text">
-                    <strong>{{ review.Review.annotation }}</strong><br>
-                    {{ review.Review.text }}
+                    <strong>{{ last.Review.annotation }}</strong><br>
+                    {{ last.Review.text }}
                 </div>
             </div>
         </div>
         {% endfor %}
 
     </div>
+
 </div>

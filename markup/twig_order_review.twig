@@ -1,0 +1,52 @@
+{{ form.create('Review', {
+    'url': {'plugin': 'reviews', 'controller': 'reviews', 'action': 'add', '0': 'order_review'},
+    'inputDefaults': {'div': false, 'label': false}
+}) }}
+{{ flash.render() }}
+
+<div class="heading-base heading-base--medium">Оставить отзыв</div>
+<p class="form-desc">Ваша честная оценка поможет <br>нам стать лучше!</p>
+{{ form.input('sender', {
+    'placeholder': 'Ваше имя',
+    'class': 'ui-input cleared-value',
+    'type': 'text'
+}) }}
+{{ form.input('phone', {
+    'placeholder': 'Телефон',
+    'class': 'ui-input cleared-value phone-mask',
+    'type': 'tel'
+}) }}
+{{ form.input('email', {
+    'placeholder': 'E-mail',
+    'class': 'ui-input cleared-value',
+    'type': 'text'
+}) }}
+{{ form.input('annotation', {
+    'placeholder': 'Заголовок',
+    'class': 'ui-input cleared-value',
+    'type': 'text'
+}) }}
+{{ form.input('text', {
+    'placeholder': 'Ваш текст',
+    'class': 'ui-input cleared-value',
+    'type': 'text'
+}) }}
+
+
+<div class="popup-callback__bottom">
+    <div class="row flex-md-row-reverse">
+        <div class="col-md-6">
+            {% if recaptcha.hasKey() %}
+                {{ recaptcha.display_form({'id': 'order_call', 'div': 'recaptcha-block'}) }}
+            {% endif %}
+        </div>
+        <div class="col-md-6">
+            {{ form.button('Отправить', {'class': 'btn btn-default', 'type': 'submit'}) }}
+        </div>
+    </div>
+</div>
+{{ form.end() }}
+
+
+
+
