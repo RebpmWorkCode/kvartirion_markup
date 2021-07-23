@@ -17,6 +17,10 @@
         {% set temp = location.setDefaultParams({'label': {'class': 'ui-label'}}, true) %}
         {{ _view.element('Locations.Location/form') }}
 
+        {{ form.input('Location.country_id', {
+            'data-field': ''
+        }) }}
+
         <div>
             <label class="ui-label">Регион страны *</label>
             <div>
