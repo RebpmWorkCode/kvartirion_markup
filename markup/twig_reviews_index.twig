@@ -1,0 +1,32 @@
+<div class="testimonials">
+    <div class="container">
+        <div class="row testimonials__top">
+            <div class="col-md-6 offset-md-3">
+                <div class="heading-base heading-base--medium text-center">Отзывы о нас</div>
+            </div>
+            <div class="col-md-3 text-right-md">
+                <a class="btn btn-pink" href="#order_review" data-fancybox>Оставить отзыв</a>
+            </div>
+        </div>
+
+        <div class="section-title">{{ paginator.params.current }} отзывов </div>
+
+        {% set reviews = _view.get('reviews') %}
+        {% for review in reviews %}
+            <div>
+                <div class="testimonials__item">
+                    <div class="testimonials__item-info">
+                        <div class="testimonials__item-name">{{ review.Review.sender }}</div>
+                        <div class="testimonials__item-date">{{ review.Review.updated }}</div>
+
+                    </div>
+                    <div class="testimonials__item-text">
+                        <strong>{{ review.Review.annotation }}</strong><br>
+                        {{ review.Review.text }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
