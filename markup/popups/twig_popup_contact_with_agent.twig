@@ -1,31 +1,29 @@
-<div class="fancybox-is-hidden popup popup-callback popup-callback--mod-corners" id="contact_with_agent">
-    <div class="heading-base heading-base--medium">Связаться</div>
-    {{ form.create('AdvertisementMessage', {
-        'url': {'plugin': 'agency', 'controller': 'realty', 'action': 'contact_with_agent_advertisement'},
-        'inputDefaults': {'div': false, 'label': false}
-    }) }}
-        <p class="form-desc">Введите контактные данные<br>и наш менеджер свяжется с вами<br>в ближайшее время</p>
-        {{ form.hidden('AdvertisementMessage.advertisement_id') }}
-        {{ form.input('AdvertisementMessage.fio', {'placeholder': 'Ваше ФИО', 'class': 'ui-input cleared-value', 'type': 'text'}) }}
-        {{ form.input('AdvertisementMessage.phone', {'placeholder': 'Телефон', 'class': 'ui-input cleared-value phone-mask', 'type': 'tel'}) }}
-        {{ form.input('AdvertisementMessage.email', {'placeholder': 'E-mail', 'class': 'ui-input cleared-value', 'type': 'email'}) }}
-        {{ form.input('AdvertisementMessage.text', {'placeholder': 'Ваше сообщение', 'class': 'ui-textarea cleared-value', 'type': 'textarea'}) }}
-        <label class="ui-checkbox">
-            {{ form.checkbox('AdvertisementMessage.confirmation', {'checked': true,'hidden': true,'hiddenField': false, 'value': 1,}) }}
-            <span class="ui-checkbox__icon"><span class="icon-check_dark"></span></span>
-            <span class="ui-checkbox__text">заполняя данную форму, <br>вы даете <a href="#popup-policy" data-fancybox>согласие на обработку ваших данных</a></span>
-        </label>
-        <div class="popup-callback__bottom">
-            <div class="row flex-md-row-reverse">
-                <div class="col-md-6">
-                    {% if recaptcha.hasKey() %}
-                        {{ recaptcha.display_form({'id': 'contact_with_agent_advertisement','div': 'recaptcha-block',}) }}
-                    {% endif %}
-                </div>
-                <div class="col-md-6">
-                    {{ form.button('Отправить', {'class': 'btn btn-default', 'type': 'submit'}) }}
-                </div>
+<div class="heading-base heading-base--medium">Связаться</div>
+{{ form.create('AdvertisementMessage', {
+    'url': {'plugin': 'agency', 'controller': 'realty', 'action': 'contact_with_agent_advertisement'},
+    'inputDefaults': {'div': false, 'label': false}
+}) }}
+    <p class="form-desc">Введите контактные данные<br>и наш менеджер свяжется с вами<br>в ближайшее время</p>
+    {{ form.hidden('AdvertisementMessage.advertisement_id') }}
+    {{ form.input('AdvertisementMessage.fio', {'placeholder': 'Ваше ФИО', 'class': 'ui-input cleared-value', 'type': 'text'}) }}
+    {{ form.input('AdvertisementMessage.phone', {'placeholder': 'Телефон', 'class': 'ui-input cleared-value phone-mask', 'type': 'tel'}) }}
+    {{ form.input('AdvertisementMessage.email', {'placeholder': 'E-mail', 'class': 'ui-input cleared-value', 'type': 'email'}) }}
+    {{ form.input('AdvertisementMessage.text', {'placeholder': 'Ваше сообщение', 'class': 'ui-textarea cleared-value', 'type': 'textarea'}) }}
+    <label class="ui-checkbox">
+        {{ form.checkbox('AdvertisementMessage.confirmation', {'checked': true,'hidden': true,'hiddenField': false, 'value': 1,}) }}
+        <span class="ui-checkbox__icon"><span class="icon-check_dark"></span></span>
+        <span class="ui-checkbox__text">заполняя данную форму, <br>вы даете <a href="#popup-policy" data-fancybox>согласие на обработку ваших данных</a></span>
+    </label>
+    <div class="popup-callback__bottom">
+        <div class="row flex-md-row-reverse">
+            <div class="col-md-6">
+                {% if recaptcha.hasKey() %}
+                    {{ recaptcha.display_form({'id': 'contact_with_agent_advertisement','div': 'recaptcha-block',}) }}
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                {{ form.button('Отправить', {'class': 'btn btn-default', 'type': 'submit'}) }}
             </div>
         </div>
-    {{ form.end() }}
-</div>
+    </div>
+{{ form.end() }}
