@@ -1,0 +1,31 @@
+[
+    {
+        "Region": {
+            "id": "88",
+            "title": "Twig Popup | Отзыв",
+            "alias": "twig_order_review",
+            "description": null,
+            "block_count": "0"
+        },
+        "Block": [
+            {
+                "id": "92",
+                "region_id": "88",
+                "title": "Twig Popup | Отзыв",
+                "alias": "twig_order_review",
+                "body": "{{ form.create('Review', {\n    'url': {'plugin': 'reviews', 'controller': 'reviews', 'action': 'add', '0': 'order_review'},\n    'inputDefaults': {'div': false, 'label': false}\n}) }}\n{{ flash.render() }}\n\n<div class=\"heading-base heading-base--medium\">Оставить отзыв<\/div>\n<p class=\"form-desc\">Ваша честная оценка поможет <br>нам стать лучше!<\/p>\n{{ form.input('sender', {\n    'placeholder': 'Ваше имя',\n    'class': 'ui-input cleared-value',\n    'type': 'text'\n}) }}\n{{ form.input('phone', {\n    'placeholder': 'Телефон',\n    'class': 'ui-input cleared-value phone-mask',\n    'type': 'tel'\n}) }}\n{{ form.input('email', {\n    'placeholder': 'E-mail',\n    'class': 'ui-input cleared-value',\n    'type': 'text'\n}) }}\n{{ form.input('annotation', {\n    'placeholder': 'Заголовок',\n    'class': 'ui-input cleared-value',\n    'type': 'text'\n}) }}\n{{ form.input('text', {\n    'placeholder': 'Ваш текст',\n    'class': 'ui-input cleared-value',\n    'type': 'text'\n}) }}\n\n\n<div class=\"popup-callback__bottom\">\n    <div class=\"row flex-md-row-reverse\">\n        <div class=\"col-md-6\">\n            {% if recaptcha.hasKey() %}\n                {{ recaptcha.display_form({'id': 'order_call', 'div': 'recaptcha-block'}) }}\n            {% endif %}\n        <\/div>\n        <div class=\"col-md-6\">\n            {{ form.button('Отправить', {'class': 'btn btn-default', 'type': 'submit'}) }}\n        <\/div>\n    <\/div>\n<\/div>\n{{ form.end() }}\n\n\n\n\n",
+                "show_title": true,
+                "class": null,
+                "status": false,
+                "weight": null,
+                "element": null,
+                "visibility_roles": null,
+                "visibility_paths": null,
+                "visibility_php": null,
+                "params": null,
+                "updated": "2021-07-23 17:17:27",
+                "created": "2021-07-23 17:17:28"
+            }
+        ]
+    }
+]

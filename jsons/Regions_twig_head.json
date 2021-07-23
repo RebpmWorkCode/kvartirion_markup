@@ -1,0 +1,31 @@
+[
+    {
+        "Region": {
+            "id": "54",
+            "title": "Twig | Head css, title page",
+            "alias": "twig_head",
+            "description": null,
+            "block_count": "1"
+        },
+        "Block": [
+            {
+                "id": "52",
+                "region_id": "54",
+                "title": "Twig | Head css, title page",
+                "alias": "twig_head",
+                "body": "<!DOCTYPE html>\r\n<html class=\"is-page-default\" lang=\"ru\">\r\n<head>\r\n    <meta charset=\"utf-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1,minimum-scale=1,user-scalable=no\">\r\n    <meta name=\"apple-mobile-web-app-capable\" content=\"no\">\r\n    <meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black-translucent\">\r\n    <meta name=\"apple-mobile-web-app-title\" content=\"Site title\">\r\n    <meta name=\"format-detection\" content=\"telephone=no\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\">\r\n    {{ meta.meta() }}\r\n    {{ siteInfo.favicon() }}\r\n    <title>{{ title_for_layout }} - Квартирион<\/title>\r\n    <link rel=\"stylesheet\" href=\"\/uploads\/assets\/css\/app.min.css\">\r\n    {{ _view.fetch('css')}}\r\n    <link rel=\"stylesheet\" href=\"\/uploads\/assets\/css\/main.css\">\r\n    <script src=\"\/uploads\/assets\/js\/jquery-3.3.1.min.js\"><\/script>\r\n<\/head>\r\n<body><div class=\"app\">",
+                "show_title": false,
+                "class": "",
+                "status": true,
+                "weight": "18",
+                "element": "",
+                "visibility_roles": "",
+                "visibility_paths": "",
+                "visibility_php": "",
+                "params": "disabledCkEditor=1",
+                "updated": "2021-07-23 16:18:12",
+                "created": "2021-07-20 12:17:59"
+            }
+        ]
+    }
+]

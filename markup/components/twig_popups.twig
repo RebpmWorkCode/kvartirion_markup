@@ -1,8 +1,8 @@
-{#{% if not (_view.request.controller == 'realty' and _view.request.action == 'add') %}
+{% if not (_view.request.controller == 'realty' and _view.request.action == 'add') %}
     <div class="fancybox-is-hidden popup popup-public" id="create_object">
         {{ croogo_region alias = "twig_realty_form" }}
     </div>
-{% endif %}#}
+{% endif %}
 
 <div class="fancybox-is-hidden popup popup-callback popup-callback--mod-corners" id="contact_with_agent">
     {{ croogo_region alias = "twig_popup_contact_with_agent" }}

@@ -1,0 +1,31 @@
+[
+    {
+        "Region": {
+            "id": "84",
+            "title": "Twig Popup | Связать с агентом",
+            "alias": "twig_popup_contact_with_agent",
+            "description": null,
+            "block_count": "0"
+        },
+        "Block": [
+            {
+                "id": "90",
+                "region_id": "84",
+                "title": "Twig Popup | Связать с агентом",
+                "alias": "twig_popup_contact_with_agent",
+                "body": "<div class=\"heading-base heading-base--medium\">Связаться<\/div>\n{{ form.create('AdvertisementMessage', {\n    'url': {'plugin': 'agency', 'controller': 'realty', 'action': 'contact_with_agent_advertisement'},\n    'inputDefaults': {'div': false, 'label': false}\n}) }}\n    <p class=\"form-desc\">Введите контактные данные<br>и наш менеджер свяжется с вами<br>в ближайшее время<\/p>\n    {{ form.hidden('AdvertisementMessage.advertisement_id') }}\n    {{ form.input('AdvertisementMessage.fio', {'placeholder': 'Ваше ФИО', 'class': 'ui-input cleared-value', 'type': 'text'}) }}\n    {{ form.input('AdvertisementMessage.phone', {'placeholder': 'Телефон', 'class': 'ui-input cleared-value phone-mask', 'type': 'tel'}) }}\n    {{ form.input('AdvertisementMessage.email', {'placeholder': 'E-mail', 'class': 'ui-input cleared-value', 'type': 'email'}) }}\n    {{ form.input('AdvertisementMessage.text', {'placeholder': 'Ваше сообщение', 'class': 'ui-textarea cleared-value', 'type': 'textarea'}) }}\n    <label class=\"ui-checkbox\">\n        {{ form.checkbox('AdvertisementMessage.confirmation', {'checked': true,'hidden': true,'hiddenField': false, 'value': 1,}) }}\n        <span class=\"ui-checkbox__icon\"><span class=\"icon-check_dark\"><\/span><\/span>\n        <span class=\"ui-checkbox__text\">заполняя данную форму, <br>вы даете <a href=\"#popup-policy\" data-fancybox>согласие на обработку ваших данных<\/a><\/span>\n    <\/label>\n    <div class=\"popup-callback__bottom\">\n        <div class=\"row flex-md-row-reverse\">\n            <div class=\"col-md-6\">\n                {% if recaptcha.hasKey() %}\n                    {{ recaptcha.display_form({'id': 'contact_with_agent_advertisement','div': 'recaptcha-block',}) }}\n                {% endif %}\n            <\/div>\n            <div class=\"col-md-6\">\n                {{ form.button('Отправить', {'class': 'btn btn-default', 'type': 'submit'}) }}\n            <\/div>\n        <\/div>\n    <\/div>\n{{ form.end() }}\n",
+                "show_title": true,
+                "class": null,
+                "status": false,
+                "weight": null,
+                "element": null,
+                "visibility_roles": null,
+                "visibility_paths": null,
+                "visibility_php": null,
+                "params": null,
+                "updated": "2021-07-23 17:12:14",
+                "created": "2021-07-23 17:12:15"
+            }
+        ]
+    }
+]
