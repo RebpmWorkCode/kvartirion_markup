@@ -1,30 +1,15 @@
 [
     {
         "Region": {
-            "id": "87",
             "title": "Twig Popup | Связаться",
-            "alias": "twig_order_callback",
-            "description": null,
-            "block_count": "0"
+            "alias": "twig_order_callback"
         },
         "Block": [
             {
-                "id": "91",
-                "region_id": "87",
                 "title": "Twig Popup | Связаться",
                 "alias": "twig_order_callback",
                 "body": "{{ form.create('FeedbackMessage', {\n    'url': {'plugin': 'feedback', 'controller': 'feedback', 'action': 'send', '0': 'order_callback'},\n    'inputDefaults': {'div': false, 'label': false}\n}) }}\n    {{ flash.render() }}\n    <div class=\"heading-base heading-base--medium\">Связаться<\/div>\n    <p class=\"form-desc\">Введите контактные данные<br>и наш менеджер свяжется с вами<br>в ближайшее время<\/p>\n    {{ form.input('name', {\n        'placeholder': 'Ваше имя',\n        'class': 'ui-input cleared-value',\n        'type': 'text'\n    }) }}\n\n    {{ form.input('phone', {\n        'placeholder': 'Ваш номер телефона',\n        'class': 'ui-input cleared-value phone-mask',\n        'type': 'tel'\n    }) }}\n\n    {{ form.input('name', {\n        'placeholder': 'E-mail',\n        'class': 'ui-input cleared-value',\n        'type': 'text'\n    }) }}\n    {{ form.input('name', {\n        'placeholder': 'Ваше сообщение',\n        'class': 'ui-input cleared-value',\n        'type': 'text'\n    }) }}\n    <label class=\"ui-checkbox\">\n            {{ form.checkbox('confirmation', {\n                'checked': true,\n                'hidden': true,\n                'hiddenField': false,\n                'value': 1\n            }) }}\n        <span class=\"ui-checkbox__icon\"><span class=\"icon-check_dark\"><\/span><\/span>\n        <span class=\"ui-checkbox__text\">заполняя данную форму, <br>вы даете <a href=\"#popup-policy\" data-fancybox>согласие на обработку ваших данных<\/a><\/span>\n    <\/label>\n    <div class=\"popup-callback__bottom\">\n        <div class=\"row flex-md-row-reverse\">\n            <div class=\"col-md-6\">\n                {% if recaptcha.hasKey() %}\n                    {{ recaptcha.display_form({'id': 'order_call', 'div': 'recaptcha-block'}) }}\n                {% endif %}\n            <\/div>\n            <div class=\"col-md-6\">\n                {{ form.button('Отправить', {'class': 'btn btn-default', 'type': 'submit'}) }}\n            <\/div>\n        <\/div>\n    <\/div>\n{{ form.end() }}\n\n",
-                "show_title": true,
-                "class": null,
-                "status": false,
-                "weight": null,
-                "element": null,
-                "visibility_roles": null,
-                "visibility_paths": null,
-                "visibility_php": null,
-                "params": null,
-                "updated": "2021-07-23 17:17:13",
-                "created": "2021-07-23 17:17:11"
+                "params": "disabledCkEditor=1"
             }
         ]
     }

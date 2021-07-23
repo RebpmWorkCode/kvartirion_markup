@@ -1,30 +1,15 @@
 [
     {
         "Region": {
-            "id": "82",
             "title": "Twig | Параметры категории для создания объекта",
-            "alias": "twig_category_params",
-            "description": null,
-            "block_count": "1"
+            "alias": "twig_category_params"
         },
         "Block": [
             {
-                "id": "88",
-                "region_id": "82",
                 "title": "Twig | Параметры категории для создания",
                 "alias": "twig_category_params",
                 "body": "<div class=\"col-12\" id=\"categoryParams\">\r\n    {% set fieldName = {\r\n        '0': {'fieldName': 'data_int', 'type': 'text', 'class': 'ui-input ui-input--theme-white'},\r\n        '1': {'fieldName': 'data_str', 'type': 'text', 'class': 'ui-input ui-input--theme-white'},\r\n        '2': {'fieldName': 'data_int', 'type': 'select', 'class': ''}\r\n    } %}\r\n    {% for categoryParam in categoryParams|batch(2) %}\r\n        <div class=\"row\">\r\n            {% for index,categoryParamItem in categoryParam %}\r\n                <div class=\"col col-12 col-lg-6\">\r\n                    {{ form.hidden('CategoryParamValue.'~index~'.category_param_id', {'value': categoryParamItem.CategoryParam.id}) }}\r\n                    {{ form.input('CategoryParamValue.'~index~'.'~ attribute(fieldName[categoryParamItem.CategoryParamType.type], 'fieldName'), {\r\n                        'type': attribute(fieldName[categoryParamItem.CategoryParamType.type], 'type'),\r\n                        'label': {'class': 'ui-label', 'text': complexCategory.getLabel(categoryParamItem)},\r\n                        'options': complexCategory.getOptions(categoryParamItem),\r\n                        'empty': '-------',\r\n                        'class': attribute(fieldName[categoryParamItem.CategoryParamType.type], 'class')\r\n                    }) }}\r\n                <\/div>\r\n            {% endfor %}\r\n        <\/div>\r\n    {% endfor %}\r\n<\/div>",
-                "show_title": false,
-                "class": "",
-                "status": true,
-                "weight": null,
-                "element": "",
-                "visibility_roles": "",
-                "visibility_paths": "",
-                "visibility_php": null,
-                "params": "disabledCkEditor=1",
-                "updated": "2021-07-23 16:10:34",
-                "created": "2021-07-23 14:20:09"
+                "params": "disabledCkEditor=1"
             }
         ]
     }

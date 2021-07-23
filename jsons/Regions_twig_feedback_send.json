@@ -1,30 +1,15 @@
 [
     {
         "Region": {
-            "id": "74",
             "title": "Twig | Обратная связь",
-            "alias": "twig_feedback_send",
-            "description": null,
-            "block_count": "1"
+            "alias": "twig_feedback_send"
         },
         "Block": [
             {
-                "id": "80",
-                "region_id": "74",
                 "title": "Twig | Обратная связь",
                 "alias": "twig_feedback_send",
                 "body": "{% if feedback.Feedback.alias == 'order_call' %}\r\n    {{ croogo_region alias = \"twig_order_call\" }}\r\n{% endif %}",
-                "show_title": false,
-                "class": "",
-                "status": true,
-                "weight": null,
-                "element": "",
-                "visibility_roles": "",
-                "visibility_paths": "",
-                "visibility_php": null,
-                "params": "disabledCkEditor=1",
-                "updated": "2021-07-22 12:57:04",
-                "created": "2021-07-22 12:48:33"
+                "params": "disabledCkEditor=1"
             }
         ]
     }
