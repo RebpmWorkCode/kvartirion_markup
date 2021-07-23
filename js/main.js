@@ -71,15 +71,12 @@ $(() => {
         })
     })
 
-    // $("select").select2({
-    //         width: "100%", placeholder: function () {
-    //             $(this).data("placeholder")
-    //         }
-    //     })
+    $('.location-select2').select2('destroy');
+    Location.init('.location-select2');
 
-    $('[href="#create_object"]').on('click', e => {
+    /*$('[href="#create_object"]').on('click', e => {
 
-    })
+    })*/
 
     $('#AdvertisementMessageContactWithAgentAdvertisementForm,#FeedbackMessageSendForm').on('submit', event => {
         event.preventDefault();
@@ -112,5 +109,12 @@ $(() => {
         });
     }
 
-//
+    $('.cards__tabs').on('click', '.js-link-tab', e => {
+        $('.cards__tabs > li').removeClass('current');
+        // console.log($(this).closest('li'));
+        let category = e.target.dataset.category;
+        $(`.realty-object`).addClass('element-hidden');
+        $(`.realty-object[data-category=${category}]`).removeClass('element-hidden');
+        $(e.target).closest('li').addClass("current");
+    });
 })
