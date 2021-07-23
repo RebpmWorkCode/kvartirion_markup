@@ -1,0 +1,16 @@
+[
+    {
+        "Region": {
+            "title": "Twig AJAX | Список избранного",
+            "alias": "ajax_twig_favorites_index"
+        },
+        "Block": [
+            {
+                "title": "Twig | Список избранного",
+                "alias": "twig_favorites_index",
+                "body": "{% set test = 'test' %} {{ test ~ ' 3' }}",
+                "params": "disabledCkEditor=1"
+            }
+        ]
+    }
+]
