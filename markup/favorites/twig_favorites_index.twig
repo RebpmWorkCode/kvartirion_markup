@@ -46,6 +46,7 @@
             {% set adSeo = _view.loadHelper('Agency.AdSeo') %}
             {% set price = _view.loadHelper('Agency.Price') %}
             {% set rusTime = _view.loadHelper('Fastadmin.RusTime') %}
+            {% set complexCategory = _view.loadHelper('ComplexCategories.ComplexCategory') %}
             {{ adView.setDefaults({default_picture: config.Site.no_photo_image}) }}
             {% for item in list %}
                 {% set offerItem = adView.getInfo(item) %}
