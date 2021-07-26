@@ -12,7 +12,9 @@
                 "body": "{% if feedback.Feedback.alias == 'order_call' %}\r\n    {{ croogo_region alias = \"twig_order_call\" }}\r\n{% endif %}\r\n{% if feedback.Feedback.alias == 'order_callback' %}\r\n    {{ croogo_region alias = \"twig_order_callback\" }}\r\n{% endif %}\r\n",
                 "status": true,
                 "params": "disabledCkEditor=1",
-                "show_title": false
+                "show_title": false,
+                "visibility_roles": "",
+                "visibility_paths": ""
             }
         ]
     }

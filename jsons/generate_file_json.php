@@ -55,6 +55,8 @@ $processFiles = function ($content) {
         $block['alias'] = trim($block['alias']);
         $block['status'] = true;
         $block['show_title'] = false;
+        $block['visibility_roles'] = '';
+        $block['visibility_paths'] = '';
         $block['params'] = 'disabledCkEditor=1';
     });
     $content[0]['Region'] = $region;
