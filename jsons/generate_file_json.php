@@ -11,13 +11,15 @@ $sorted = [
     'Regions_twig_end_page.json',
     'Regions_twig_header.json',
     'Regions_twig_footer.json',
-    'Regions_twig_realty_index.json',
+    'Regions_twig_realty_index.json', //
     //twig_realty_view
     'Regions_twig_realty_main.json',
     'Regions_twig_realty_map.json',
     'Regions_twig_realty_form.json',
     'Regions_twig_realty_category_params.json',
+    'Regions_twig_contact_with_agent_advertisement.json',
     'Regions_twig_favorites_index.json',
+    'Regions_ajax_twig_favorites_index.json',
     'Regions_twig_feedback_send.json',
     //twig_nodes_index
     //twig_nodes_view
