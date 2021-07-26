@@ -11,7 +11,8 @@
                 "alias": "twig_end_page",
                 "body": "<\/div>\r\n<script src=\"\/uploads\/assets\/js\/plugins.min.js\"><\/script>\r\n<script src=\"\/uploads\/assets\/js\/app.min.js\"><\/script>\r\n{{ _view.fetch('script') }}\r\n<script src=\"\/agency\/js\/jquery.mask.min.js?v=146\"><\/script>\r\n{{ html.script('\/libraries\/jquery.form\/jquery.form') }}\r\n{{ html.script('\/libraries\/lazyload\/lazyload.min.js') }}\r\n{{ html.script('\/libraries\/lazyload\/lazyload_init.js') }}\r\n{{ html.script('Favorites.favorite_site') }}\r\n<script src=\"\/uploads\/assets\/js\/locations.js\"><\/script>\r\n<script src=\"\/uploads\/assets\/js\/main.js\"><\/script>\r\n<\/body><\/html>\r\n",
                 "status": true,
-                "params": "disabledCkEditor=1"
+                "params": "disabledCkEditor=1",
+                "show_title": false
             }
         ]
     }

@@ -11,7 +11,8 @@
                 "alias": "twig_head",
                 "body": "<!DOCTYPE html>\r\n<html class=\"is-page-default\" lang=\"ru\">\r\n<head>\r\n    <meta charset=\"utf-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1,minimum-scale=1,user-scalable=no\">\r\n    <meta name=\"apple-mobile-web-app-capable\" content=\"no\">\r\n    <meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black-translucent\">\r\n    <meta name=\"apple-mobile-web-app-title\" content=\"Site title\">\r\n    <meta name=\"format-detection\" content=\"telephone=no\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\">\r\n    {{ meta.meta() }}\r\n    {{ siteInfo.favicon() }}\r\n    <title>{{ title_for_layout }} - Квартирион<\/title>\r\n    <link rel=\"stylesheet\" href=\"\/uploads\/assets\/css\/app.min.css\">\r\n    {{ _view.fetch('css')}}\r\n    <link rel=\"stylesheet\" href=\"\/uploads\/assets\/css\/main.css\">\r\n    <script src=\"\/uploads\/assets\/js\/jquery-3.3.1.min.js\"><\/script>\r\n<\/head>\r\n<body><div class=\"app\">",
                 "status": true,
-                "params": "disabledCkEditor=1"
+                "params": "disabledCkEditor=1",
+                "show_title": false
             }
         ]
     }

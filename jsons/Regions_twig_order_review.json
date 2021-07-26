@@ -11,7 +11,8 @@
                 "alias": "twig_order_review",
                 "body": "{{ form.create('Review', {\r\n    'url': {'plugin': 'reviews', 'controller': 'reviews', 'action': 'add', '0': 'order_review'},\r\n    'inputDefaults': {'div': false, 'label': false}\r\n}) }}\r\n{{ flash.render() }}\r\n\r\n<div class=\"heading-base heading-base--medium\">Оставить отзыв<\/div>\r\n<p class=\"form-desc\">Ваша честная оценка поможет <br>нам стать лучше!<\/p>\r\n{{ form.input('sender', {\r\n    'placeholder': 'Ваше имя',\r\n    'class': 'ui-input cleared-value',\r\n    'type': 'text'\r\n}) }}\r\n{{ form.input('phone', {\r\n    'placeholder': 'Телефон',\r\n    'class': 'ui-input cleared-value phone-mask',\r\n    'type': 'tel'\r\n}) }}\r\n{{ form.input('email', {\r\n    'placeholder': 'E-mail',\r\n    'class': 'ui-input cleared-value',\r\n    'type': 'text'\r\n}) }}\r\n{{ form.input('annotation', {\r\n    'placeholder': 'Заголовок',\r\n    'class': 'ui-input cleared-value',\r\n    'type': 'text'\r\n}) }}\r\n{{ form.input('text', {\r\n    'placeholder': 'Ваш текст',\r\n    'class': 'ui-input cleared-value',\r\n    'type': 'text'\r\n}) }}\r\n\r\n\r\n<div class=\"popup-callback__bottom\">\r\n    <div class=\"row flex-md-row-reverse\">\r\n        <div class=\"col-md-6\">\r\n            {% if recaptcha.hasKey() %}\r\n                {{ recaptcha.display_form({'id': 'order_call', 'div': 'recaptcha-block'}) }}\r\n            {% endif %}\r\n        <\/div>\r\n        <div class=\"col-md-6\">\r\n            {{ form.button('Отправить', {'class': 'btn btn-default', 'type': 'submit'}) }}\r\n        <\/div>\r\n    <\/div>\r\n<\/div>\r\n{{ form.end() }}",
                 "status": true,
-                "params": "disabledCkEditor=1"
+                "params": "disabledCkEditor=1",
+                "show_title": false
             }
         ]
     }
