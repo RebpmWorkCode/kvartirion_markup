@@ -72,10 +72,6 @@ $(() => {
     $('.location-select2').select2('destroy');
     Location.init('.location-select2');
 
-    /*$('[href="#create_object"]').on('click', e => {
-
-    })*/
-
     $('#AdvertisementMessageContactWithAgentAdvertisementForm,#FeedbackMessageSendForm').on('submit', event => {
         event.preventDefault();
         $.ajax({
@@ -107,9 +103,7 @@ $(() => {
         });
     }
 
-
-    $('#AdvertisementCategoryId', $('#AdvertisementAddForm')).on('change', e => {
-        let categoryId = $(e.target).val();
+    let loadParams = function (categoryId) {
         $.ajax({
             url : `/agency/realty/category_params/${categoryId}?ajax_twig=1`,
             statusCode: {
@@ -121,12 +115,17 @@ $(() => {
                 }
             },
             success : function(data){
-                let $categoryParams = $('#categoryParams');
-                $categoryParams.replaceWith(data);
-                $categoryParams.find('select').select2({language: 'ru', width: '100%'});
+                $('#categoryParams').replaceWith(data);
+                $('#categoryParams').find('select').select2({language: 'ru', width: '100%'});
             }
         });
-    })
+    }
+    let $AdvertisementCategoryId = $('#AdvertisementCategoryId', $('#AdvertisementAddForm'));
+    $AdvertisementCategoryId.on('change', e => {loadParams($(e.target).val())})
+    let categoryParams = $('[data-ajax-load]#categoryParams');
+    if(categoryParams.length > 0){
+        loadParams($AdvertisementCategoryId.val());
+    }
 
     $('.JS-add-photo').on('click', function (event) {
         event.preventDefault();

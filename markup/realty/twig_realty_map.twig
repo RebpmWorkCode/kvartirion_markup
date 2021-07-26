@@ -1,0 +1,55 @@
+{{ _view.assign('title', 'Поиск по карте') }}
+{{ html.script(['https://api-maps.yandex.ru/2.1/?lang=ru_RU', 'Agency.filter-map-site', 'YandexMaps.simplify'], {'inline': false}) }}
+{{ croogo_region alias = "twig_search_block" }}
+<div class="catalog">
+    <div class="container">
+        <div class="heading-base heading-base--medium text-center">Карта объектов</div>
+        <div class="map-objects" id="map-list"></div>
+    </div>
+</div>
+{{ html.scriptStart({'inline': false, 'safe': false}) }}
+let KlasterIs2bMapSite = {
+    url: null,
+    init: function (YandexMapCenter, url) {
+        this.url = url;
+        Is2bMap.init('map-list', YandexMapCenter, [], {'isAdmin': false});
+        let d = '';
+        this.loadObjects(d, true);
+
+        Is2bMap.map.events.add('boundschange', function (e) {
+            if (Is2bMap.block.hasClass('is2b-loaded-points')) {
+                return !1;
+            }
+            d = Is2bMap.dataMapKlaster();
+            KlasterIs2bMapSite.loadObjects(d, false);
+        });
+    },
+    setBounds: function () {
+        if (Is2bMap.geoObjects != null) {
+            if (Is2bMap.geoObjects.length > 0) {
+                console.log('set Bounsds');
+                console.log(Is2bMap.clusterer.getBounds());
+                Is2bMap.map.setBounds(Is2bMap.clusterer.getBounds(), {
+                    checkZoomRange: true
+                });
+            }
+        }
+    },
+    loadObjects: function (d, setBounds) {
+        Is2bMap.removeAllPoints();
+        $.ajax({
+            url: this.url + (d === '' ? '' : '&' + d),
+            dataType: 'json'
+        }).done(function (data) {
+            console.log(data.length);
+            Is2bMap.setPoints(data);
+            if (setBounds) {
+                KlasterIs2bMapSite.setBounds();
+            }
+        });
+    }
+};
+ymaps.ready(function () {
+    KlasterIs2bMapSite.init({{ yaMaps.YandexMapCenter() }}, window.location.protocol + '//' + window.location.hostname + '/agency/realty/map' + (window.location.search || '?1=1'));
+})
+{{ html.scriptEnd() }}
