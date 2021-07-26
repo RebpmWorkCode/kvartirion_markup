@@ -56,6 +56,9 @@ $(() => {
     $('[href="#order_call"]').on('click', e => {
         $('#order_call').find('.cleared-value').val('');
     })
+    $('[href="#order_callback"]').on('click', e => {
+        $('#order_callback').find('.cleared-value').val('');
+    })
     $('[href="#popup-favorites"]').on('click', e => {
         $.ajax({
             type: 'GET',
@@ -72,7 +75,7 @@ $(() => {
     $('.location-select2').select2('destroy');
     Location.init('.location-select2');
 
-    $('#AdvertisementMessageContactWithAgentAdvertisementForm,#FeedbackMessageSendForm').on('submit', event => {
+    $('#AdvertisementMessageContactWithAgentAdvertisementForm').on('submit', event => {
         event.preventDefault();
         $.ajax({
             type: "POST",
@@ -87,6 +90,26 @@ $(() => {
             }
         })
     });
+
+    let form = '';
+    $('[data-ajax-send-form]').ajaxForm({
+        type: "POST",
+        beforeSubmit: function (r, t, $xhr) {
+            form = $(t);
+            form.find('#flashMessage').remove();
+        },
+        success: function (result) {
+            let flashMessage = $(result).find('#flashMessage');
+            form.prepend(flashMessage);
+            if(!flashMessage.hasClass('error')){
+                setTimeout(() => {
+                    form.find('#flashMessage').remove();
+                    form.find('.cleared-value').val('');
+                    $.fancybox.close();
+                }, 2000)
+            }
+        }
+    })
 
     let categoriesParams =  $('.params-filter');
     if(categoriesParams.length > 0){

@@ -132,3 +132,7 @@ a.list-flats__text:hover {
 #AdvertisementPicture_list .template-download.in .input.checkbox {grid-area: checkbox;margin-bottom: 10px;margin-top: 10px;}
 #AdvertisementPicture_list .template-download.in .rotate-model{grid-area: rotate;min-width: auto;}
 #AdvertisementPicture_list .template-download.in .delete-model {grid-area: delete;min-width: auto;}
+
+#flashMessage.message {position: relative;padding: 1rem 1rem;margin-bottom: 1rem;border: 1px solid transparent;border-radius: .25rem;}
+#flashMessage.message.success {color: #0f5132;background-color: #d1e7dd;border-color: #badbcc;}
+#flashMessage.message.error {color: #842029;background-color: #f8d7da;border-color: #f5c2c7;}
