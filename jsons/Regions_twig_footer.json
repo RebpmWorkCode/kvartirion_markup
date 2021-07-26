@@ -2,7 +2,8 @@
     {
         "Region": {
             "title": "Twig | Footer ",
-            "alias": "twig_footer"
+            "alias": "twig_footer",
+            "block_count": 2
         },
         "Block": [
             {

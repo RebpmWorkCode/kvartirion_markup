@@ -2,7 +2,8 @@
     {
         "Region": {
             "title": "Twig | Обратная связь",
-            "alias": "twig_feedback_send"
+            "alias": "twig_feedback_send",
+            "block_count": 1
         },
         "Block": [
             {

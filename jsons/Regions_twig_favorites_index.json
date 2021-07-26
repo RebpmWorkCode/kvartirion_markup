@@ -2,7 +2,8 @@
     {
         "Region": {
             "title": "Twig | Список избранного",
-            "alias": "twig_favorites_index"
+            "alias": "twig_favorites_index",
+            "block_count": 1
         },
         "Block": [
             {

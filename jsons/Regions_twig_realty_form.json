@@ -2,7 +2,8 @@
     {
         "Region": {
             "title": "Twig | Создание объекта",
-            "alias": "twig_realty_form"
+            "alias": "twig_realty_form",
+            "block_count": 1
         },
         "Block": [
             {

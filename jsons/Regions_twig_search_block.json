@@ -2,7 +2,8 @@
     {
         "Region": {
             "title": "Twig | Фильтр",
-            "alias": "twig_search_block"
+            "alias": "twig_search_block",
+            "block_count": 1
         },
         "Block": [
             {

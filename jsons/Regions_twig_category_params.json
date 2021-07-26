@@ -2,7 +2,8 @@
     {
         "Region": {
             "title": "Twig | Параметры категории для создания объекта",
-            "alias": "twig_category_params"
+            "alias": "twig_category_params",
+            "block_count": 1
         },
         "Block": [
             {

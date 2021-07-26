@@ -2,7 +2,8 @@
     {
         "Region": {
             "title": "Twig | Head css, title page",
-            "alias": "twig_head"
+            "alias": "twig_head",
+            "block_count": 1
         },
         "Block": [
             {

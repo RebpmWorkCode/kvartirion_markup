@@ -2,7 +2,8 @@
     {
         "Region": {
             "title": "Twig | Head css, title page",
-            "alias": "twig_head"
+            "alias": "twig_head",
+            "block_count": 1
         },
         "Block": [
             {
@@ -16,7 +17,8 @@
     {
         "Region": {
             "title": "Twig | page end js ",
-            "alias": "twig_end_page"
+            "alias": "twig_end_page",
+            "block_count": 1
         },
         "Block": [
             {
@@ -30,7 +32,8 @@
     {
         "Region": {
             "title": "Twig | Header ",
-            "alias": "twig_header"
+            "alias": "twig_header",
+            "block_count": 1
         },
         "Block": [
             {
@@ -44,7 +47,8 @@
     {
         "Region": {
             "title": "Twig | Footer ",
-            "alias": "twig_footer"
+            "alias": "twig_footer",
+            "block_count": 2
         },
         "Block": [
             {
@@ -64,7 +68,8 @@
     {
         "Region": {
             "title": "Twig | Список объектов",
-            "alias": "twig_realty_index"
+            "alias": "twig_realty_index",
+            "block_count": 1
         },
         "Block": [
             {
@@ -78,7 +83,8 @@
     {
         "Region": {
             "title": "Twig | Главная",
-            "alias": "twig_realty_main"
+            "alias": "twig_realty_main",
+            "block_count": 1
         },
         "Block": [
             {
@@ -92,7 +98,8 @@
     {
         "Region": {
             "title": "Twig | Создание объекта",
-            "alias": "twig_realty_form"
+            "alias": "twig_realty_form",
+            "block_count": 1
         },
         "Block": [
             {
@@ -106,7 +113,8 @@
     {
         "Region": {
             "title": "Twig | Список избранного",
-            "alias": "twig_favorites_index"
+            "alias": "twig_favorites_index",
+            "block_count": 1
         },
         "Block": [
             {
@@ -120,7 +128,8 @@
     {
         "Region": {
             "title": "Twig | Обратная связь",
-            "alias": "twig_feedback_send"
+            "alias": "twig_feedback_send",
+            "block_count": 1
         },
         "Block": [
             {
@@ -134,7 +143,8 @@
     {
         "Region": {
             "title": "Twig | Список отзывов",
-            "alias": "twig_reviews_index"
+            "alias": "twig_reviews_index",
+            "block_count": 1
         },
         "Block": [
             {
@@ -148,7 +158,8 @@
     {
         "Region": {
             "title": "Twig | Список пользователей",
-            "alias": "twig_users_index"
+            "alias": "twig_users_index",
+            "block_count": 1
         },
         "Block": [
             {
@@ -162,12 +173,13 @@
     {
         "Region": {
             "title": "Twig AJAX | Список избранного",
-            "alias": "ajax_twig_favorites_index"
+            "alias": "ajax_twig_favorites_index",
+            "block_count": 1
         },
         "Block": [
             {
-                "title": "Twig | Список избранного",
-                "alias": "twig_favorites_index",
+                "title": "Twig AJAX | Список избранного",
+                "alias": "ajax_twig_favorites_index",
                 "body": "{% set test = 'test' %} {{ test ~ ' 3' }}",
                 "params": "disabledCkEditor=1"
             }
@@ -176,7 +188,8 @@
     {
         "Region": {
             "title": "Twig | Параметры категории для создания объекта",
-            "alias": "twig_category_params"
+            "alias": "twig_category_params",
+            "block_count": 1
         },
         "Block": [
             {
@@ -190,7 +203,8 @@
     {
         "Region": {
             "title": "Twig | Форма звонка",
-            "alias": "twig_order_call"
+            "alias": "twig_order_call",
+            "block_count": 1
         },
         "Block": [
             {
@@ -204,7 +218,8 @@
     {
         "Region": {
             "title": "Twig Popup | Связаться",
-            "alias": "twig_order_callback"
+            "alias": "twig_order_callback",
+            "block_count": 1
         },
         "Block": [
             {
@@ -218,7 +233,8 @@
     {
         "Region": {
             "title": "Twig Popup | Отзыв",
-            "alias": "twig_order_review"
+            "alias": "twig_order_review",
+            "block_count": 1
         },
         "Block": [
             {
@@ -232,7 +248,8 @@
     {
         "Region": {
             "title": "Twig | Политика",
-            "alias": "twig_policy"
+            "alias": "twig_policy",
+            "block_count": 1
         },
         "Block": [
             {
@@ -246,7 +263,8 @@
     {
         "Region": {
             "title": "Twig Popup | Связать с агентом",
-            "alias": "twig_popup_contact_with_agent"
+            "alias": "twig_popup_contact_with_agent",
+            "block_count": 1
         },
         "Block": [
             {
@@ -260,7 +278,8 @@
     {
         "Region": {
             "title": "Twig | Фильтр",
-            "alias": "twig_search_block"
+            "alias": "twig_search_block",
+            "block_count": 1
         },
         "Block": [
             {

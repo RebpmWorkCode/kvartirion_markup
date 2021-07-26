@@ -2,7 +2,8 @@
     {
         "Region": {
             "title": "Twig | Список отзывов",
-            "alias": "twig_reviews_index"
+            "alias": "twig_reviews_index",
+            "block_count": 1
         },
         "Block": [
             {
