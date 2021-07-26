@@ -56,6 +56,9 @@ $(() => {
     $('[href="#order_call"]').on('click', e => {
         $('#order_call').find('.cleared-value').val('');
     })
+    $('[href="#order_callback"]').on('click', e => {
+        $('#order_callback').find('.cleared-value').val('');
+    })
     $('[href="#popup-favorites"]').on('click', e => {
         $.ajax({
             type: 'GET',
@@ -125,11 +128,7 @@ $(() => {
     $('.location-select2').select2('destroy');
     Location.init('.location-select2');
 
-    /*$('[href="#create_object"]').on('click', e => {
-
-    })*/
-
-    $('#AdvertisementMessageContactWithAgentAdvertisementForm,#FeedbackMessageSendForm').on('submit', event => {
+    $('#AdvertisementMessageContactWithAgentAdvertisementForm').on('submit', event => {
         event.preventDefault();
         $.ajax({
             type: "POST",
@@ -144,6 +143,26 @@ $(() => {
             }
         })
     });
+
+    let form = '';
+    $('[data-ajax-send-form]').ajaxForm({
+        type: "POST",
+        beforeSubmit: function (r, t, $xhr) {
+            form = $(t);
+            form.find('#flashMessage').remove();
+        },
+        success: function (result) {
+            let flashMessage = $(result).find('#flashMessage');
+            form.prepend(flashMessage);
+            if(!flashMessage.hasClass('error')){
+                setTimeout(() => {
+                    form.find('#flashMessage').remove();
+                    form.find('.cleared-value').val('');
+                    $.fancybox.close();
+                }, 2000)
+            }
+        }
+    })
 
     let categoriesParams =  $('.params-filter');
     if(categoriesParams.length > 0){
@@ -160,9 +179,7 @@ $(() => {
         });
     }
 
-
-    $('#AdvertisementCategoryId', $('#AdvertisementAddForm')).on('change', e => {
-        let categoryId = $(e.target).val();
+    let loadParams = function (categoryId) {
         $.ajax({
             url : `/agency/realty/category_params/${categoryId}?ajax_twig=1`,
             statusCode: {
@@ -174,12 +191,17 @@ $(() => {
                 }
             },
             success : function(data){
-                let $categoryParams = $('#categoryParams');
-                $categoryParams.replaceWith(data);
-                $categoryParams.find('select').select2({language: 'ru', width: '100%'});
+                $('#categoryParams').replaceWith(data);
+                $('#categoryParams').find('select').select2({language: 'ru', width: '100%'});
             }
         });
-    })
+    }
+    let $AdvertisementCategoryId = $('#AdvertisementCategoryId', $('#AdvertisementAddForm'));
+    $AdvertisementCategoryId.on('change', e => {loadParams($(e.target).val())})
+    let categoryParams = $('[data-ajax-load]#categoryParams');
+    if(categoryParams.length > 0){
+        loadParams($AdvertisementCategoryId.val());
+    }
 
     $('.JS-add-photo').on('click', function (event) {
         event.preventDefault();

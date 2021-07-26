@@ -10,6 +10,7 @@
                 "title": "Twig | Обратная связь",
                 "alias": "twig_feedback_send",
                 "body": "{% if feedback.Feedback.alias == 'order_call' %}\r\n    {{ croogo_region alias = \"twig_order_call\" }}\r\n{% endif %}",
+                "status": true,
                 "params": "disabledCkEditor=1"
             }
         ]

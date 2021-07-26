@@ -1,46 +1,54 @@
 {{ form.create('FeedbackMessage', {
     'url': {'plugin': 'feedback', 'controller': 'feedback', 'action': 'send', '0': 'order_callback'},
+    'id': 'FeedbackMessageSendFormOrderCallback',
+    'data-ajax-send-form': true,
     'inputDefaults': {'div': false, 'label': false}
 }) }}
+    {% set flash = _view.loadHelper('Flash') %}
     {{ flash.render() }}
-    <div class="heading-base heading-base--medium">Связаться</div>
     <p class="form-desc">Введите контактные данные<br>и наш менеджер свяжется с вами<br>в ближайшее время</p>
     {{ form.input('name', {
         'placeholder': 'Ваше имя',
+        'id': 'FeedbackMessageNameOrderCallback',
         'class': 'ui-input cleared-value',
         'type': 'text'
     }) }}
-
     {{ form.input('phone', {
         'placeholder': 'Ваш номер телефона',
+        'id': 'FeedbackMessagePhoneOrderCallback',
         'class': 'ui-input cleared-value phone-mask',
         'type': 'tel'
     }) }}
-
-    {{ form.input('name', {
+    {{ form.input('email', {
         'placeholder': 'E-mail',
+        'id': 'FeedbackMessageEmailOrderCallback',
         'class': 'ui-input cleared-value',
         'type': 'text'
     }) }}
-    {{ form.input('name', {
+    {{ form.input('message', {
         'placeholder': 'Ваше сообщение',
-        'class': 'ui-input cleared-value',
-        'type': 'text'
+        'id': 'FeedbackMessageMessageOrderCallback',
+        'class': 'ui-textarea cleared-value',
+        'type': 'textarea'
     }) }}
 <label class="ui-checkbox">
     {{ form.checkbox('confirmation', {
         'checked': true,
+        'id': 'FeedbackMessageConfirmationOrderCallback',
         'hidden': true,
         'hiddenField': false,
         'value': 1
     }) }}
-    <span class="ui-checkbox__text">заполняя данную форму, <br>вы даете <a href="#popup-policy" data-fancybox>согласие на обработку ваших данных</a></span>
+    <span class="ui-checkbox__icon"><span class="icon-check_dark"></span></span>
+    <span class="ui-checkbox__text">
+        заполняя данную форму, <br>вы даете <a href="#popup-policy" data-fancybox>согласие на обработку ваших данных</a>
+    </span>
 </label>
 <div class="popup-callback__bottom">
     <div class="row flex-md-row-reverse">
         <div class="col-md-6">
             {% if recaptcha.hasKey() %}
-                {{ recaptcha.display_form({'id': 'order_call', 'div': 'recaptcha-block'}) }}
+                {{ recaptcha.display_form({'id': 'order_callback', 'div': 'recaptcha-block'}) }}
             {% endif %}
         </div>
         <div class="col-md-6">
@@ -49,5 +57,3 @@
     </div>
 </div>
 {{ form.end() }}
-
-

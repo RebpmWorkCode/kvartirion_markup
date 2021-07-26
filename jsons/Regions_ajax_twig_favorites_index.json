@@ -10,6 +10,7 @@
                 "title": "Twig AJAX | Список избранного",
                 "alias": "ajax_twig_favorites_index",
                 "body": "{% set test = 'test' %} {{ test ~ ' 3' }}",
+                "status": true,
                 "params": "disabledCkEditor=1"
             }
         ]
