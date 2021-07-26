@@ -75,22 +75,6 @@ $(() => {
     $('.location-select2').select2('destroy');
     Location.init('.location-select2');
 
-    $('#AdvertisementMessageContactWithAgentAdvertisementForm').on('submit', event => {
-        event.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: event.target.getAttribute('action'),
-            data: $(event.target).serialize(),
-            // dataType: 'json',
-            success: function (result) {
-                console.log(result);
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        })
-    });
-
     let form = '';
     $('[data-ajax-send-form]').ajaxForm({
         type: "POST",

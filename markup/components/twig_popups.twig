@@ -4,10 +4,6 @@
     </div>
 {% endif %}
 
-<div class="fancybox-is-hidden popup popup-callback popup-callback--mod-corners" id="contact_with_agent">
-    {{ croogo_region alias = "twig_popup_contact_with_agent" }}
-</div>
-
 <div class="fancybox-is-hidden popup popup-favorites" id="popup-favorites"></div>
 
 <div class="fancybox-is-hidden popup popup-policy" id="popup-policy">
@@ -16,19 +12,19 @@
         {{ croogo_region alias = "twig_policy" }}
     </div>
 </div>
-
+<div class="fancybox-is-hidden popup popup-callback popup-callback--mod-corners" id="contact_with_agent">
+    <div class="heading-base heading-base--medium">Связаться</div>
+    {{ croogo_region alias = "twig_contact_with_agent_advertisement" }}
+</div>
 <div class="fancybox-is-hidden popup popup-callback" id="order_callback">
     <div class="heading-base heading-base--medium">Оставить заявку</div>
     {{ croogo_region alias = "twig_order_callback" }}
 </div>
-
 <div class="fancybox-is-hidden popup popup-callback" id="order_call">
     <div class="heading-base heading-base--medium">Обратный звонок</div>
     {{ croogo_region alias = "twig_order_call" }}
 </div>
-
 <div class="fancybox-is-hidden popup popup-callback" id="order_review">
     <div class="heading-base heading-base--medium">Оставить отзыв</div>
     {{ croogo_region alias = "twig_order_review" }}
 </div>
-
