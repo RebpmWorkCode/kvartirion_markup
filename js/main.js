@@ -61,7 +61,60 @@ $(() => {
             type: 'GET',
             url: '/favorites?ajax_twig=1',
             success: function (result) {
-                console.log(result)
+                let wrapper = $('#popup-favorites');
+                $(".popup-carousel").slick('destroy');
+                $('#popup-favorites').find('.popup-carousel').html(result);
+                $(".cards__item-gallery", wrapper).slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: !1,
+                    dots: !0,
+                    fade: !1,
+                    adaptiveHeight: !0,
+                    infinite: !0,
+                    touchThreshold: 30,
+                    mobileFirst: !0,
+                    rows: 0,
+                    responsive: [{
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }]
+                })
+                $(".popup-carousel").slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: !0,
+                    dots: !1,
+                    fade: !1,
+                    adaptiveHeight: !1,
+                    infinite: !0,
+                    touchThreshold: 30,
+                    mobileFirst: !0,
+                    rows: 0,
+                    prevArrow: "<a class='slick-arrow slick-prev'><span class='icon-arrow-left'></span></a>",
+                    nextArrow: "<a class='slick-arrow slick-next'><span class='icon-arrow-right'></span></a>",
+                    swipe: !1,
+                    draggable: !1
+                });
+                Is2bFavorite.init('.favorites-action', {
+                    callback: function () {
+                        $(`.favorites-action[data-id=${Is2bFavorite.a.get(0).dataset.id}]`).each((index, element) => {
+                            let fEl = $(element);
+                            if (Is2bFavorite.action === 'remove') {
+                                fEl.data('action', 'add');
+                                fEl.removeClass('active');
+                                if(fEl.hasClass('in-favorites-action')){
+                                    fEl.closest('.catalog__item').remove();
+                                }
+                            } else {
+                                fEl.data('action', 'remove');
+                                fEl.addClass('active');
+                            }
+                        });
+                    }
+                });
             },
             error: function (error) {
                 console.log(error);
