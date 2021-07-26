@@ -2,7 +2,8 @@
     {
         "Region": {
             "title": "Twig Popup | Связаться",
-            "alias": "twig_order_callback"
+            "alias": "twig_order_callback",
+            "block_count": 1
         },
         "Block": [
             {

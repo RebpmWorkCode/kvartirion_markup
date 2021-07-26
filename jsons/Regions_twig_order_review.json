@@ -2,7 +2,8 @@
     {
         "Region": {
             "title": "Twig Popup | Отзыв",
-            "alias": "twig_order_review"
+            "alias": "twig_order_review",
+            "block_count": 1
         },
         "Block": [
             {

@@ -2,7 +2,8 @@
     {
         "Region": {
             "title": "Twig | Список пользователей",
-            "alias": "twig_users_index"
+            "alias": "twig_users_index",
+            "block_count": 1
         },
         "Block": [
             {

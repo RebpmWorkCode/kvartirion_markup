@@ -2,7 +2,8 @@
     {
         "Region": {
             "title": "Twig Popup | Связать с агентом",
-            "alias": "twig_popup_contact_with_agent"
+            "alias": "twig_popup_contact_with_agent",
+            "block_count": 1
         },
         "Block": [
             {

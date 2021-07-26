@@ -2,7 +2,8 @@
     {
         "Region": {
             "title": "Twig | Header ",
-            "alias": "twig_header"
+            "alias": "twig_header",
+            "block_count": 1
         },
         "Block": [
             {

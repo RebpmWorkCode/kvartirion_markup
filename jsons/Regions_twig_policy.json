@@ -2,7 +2,8 @@
     {
         "Region": {
             "title": "Twig | Политика",
-            "alias": "twig_policy"
+            "alias": "twig_policy",
+            "block_count": 1
         },
         "Block": [
             {

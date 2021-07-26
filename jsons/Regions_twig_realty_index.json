@@ -2,7 +2,8 @@
     {
         "Region": {
             "title": "Twig | Список объектов",
-            "alias": "twig_realty_index"
+            "alias": "twig_realty_index",
+            "block_count": 1
         },
         "Block": [
             {

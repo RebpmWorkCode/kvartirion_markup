@@ -13,8 +13,21 @@
                     <div class="filter__modal">
                         {{ form.hidden('Advertisement.category_id') }}
                         <ul class="list-flats">
-                            {% for categoryId, categoryName in categories %}
-                                <li>{{ html.link(categoryName, '#', {'class': 'list-flats__text', 'data-category-id': categoryId}) }}</li>
+                            {% for category in categoriesAll|cake_hash_nest %}
+                                <li>
+                                    {% set arrow = '' %}
+                                    {% if category.children %}
+                                        {% set arrow = '<span class="icon-arrow-down_gray list-flats__arrow"></span>' %}
+                                    {% endif %}
+                                    {{ html.link(category.Category.title ~ arrow, '#', {'class': 'list-flats__text', 'data-category-id': category.Category.id, 'escape': false}) }}
+                                    {% if category.children %}
+                                        <ul class="list-flats__submenu">
+                                            {% for subCategory in category.children %}
+                                                <li>{{ html.link(subCategory.Category.title, '#', {'class': 'list-flats__text', 'data-category-id': subCategory.Category.id}) }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </li>
                             {% endfor %}
                         </ul>
                     </div>

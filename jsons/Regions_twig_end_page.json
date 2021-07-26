@@ -2,7 +2,8 @@
     {
         "Region": {
             "title": "Twig | page end js ",
-            "alias": "twig_end_page"
+            "alias": "twig_end_page",
+            "block_count": 1
         },
         "Block": [
             {

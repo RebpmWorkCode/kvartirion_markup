@@ -2,7 +2,8 @@
     {
         "Region": {
             "title": "Twig | Главная",
-            "alias": "twig_realty_main"
+            "alias": "twig_realty_main",
+            "block_count": 1
         },
         "Block": [
             {
