@@ -89,78 +89,20 @@
             <div class="col col-md-6 col-lg-4 about-team__info">
                 <div class="heading-team">Наша<br>команда</div>
                 <div class="about-team__personal">
-                    <div>
-                        <div class="about-team__name">Анна Сергеевна
-                            <strong>ЯКОВЛЕВА</strong>
+                    {% for user in usersForSite %}
+                        <div>
+                            <div class="about-team__name">
+                                <strong>{{ user.User.username }}</strong>
+                            </div>
+                            <div class="about-team__post">{{ user.Role.title }}</div>
+                            <div class="about-team__contact">
+                                <a href="tel:{{ user.User.phone }}">{{ user.User.phone }}</a>
+                            </div>
+                            <div class="about-team__contact">
+                                <a href="mailto:{{ user.User.email }}">{{ user.User.email }}</a>
+                            </div>
                         </div>
-                        <div class="about-team__post">Генеральный директор</div>
-                        <div class="about-team__contact">
-                            <a href="tel:84842400088">8 (4842) 40-00-88</a>
-                        </div>
-                        <div class="about-team__contact">
-                            <a href="mailto:kvartirion@mail.ru">kvartirion@mail.ru</a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="about-team__name">Анна Сергеевна
-                            <strong>ЯКОВЛЕВА</strong>
-                        </div>
-                        <div class="about-team__post">Генеральный директор</div>
-                        <div class="about-team__contact">
-                            <a href="tel:84842400088">8 (4842) 40-00-88</a>
-                        </div>
-                        <div class="about-team__contact">
-                            <a href="mailto:kvartirion@mail.ru">kvartirion@mail.ru</a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="about-team__name">Анна Сергеевна
-                            <strong>ЯКОВЛЕВА</strong>
-                        </div>
-                        <div class="about-team__post">Генеральный директор</div>
-                        <div class="about-team__contact">
-                            <a href="tel:84842400088">8 (4842) 40-00-88</a>
-                        </div>
-                        <div class="about-team__contact">
-                            <a href="mailto:kvartirion@mail.ru">kvartirion@mail.ru</a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="about-team__name">Анна Сергеевна
-                            <strong>ЯКОВЛЕВА</strong>
-                        </div>
-                        <div class="about-team__post">Генеральный директор</div>
-                        <div class="about-team__contact">
-                            <a href="tel:84842400088">8 (4842) 40-00-88</a>
-                        </div>
-                        <div class="about-team__contact">
-                            <a href="mailto:kvartirion@mail.ru">kvartirion@mail.ru</a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="about-team__name">Анна Сергеевна
-                            <strong>ЯКОВЛЕВА</strong>
-                        </div>
-                        <div class="about-team__post">Генеральный директор</div>
-                        <div class="about-team__contact">
-                            <a href="tel:84842400088">8 (4842) 40-00-88</a>
-                        </div>
-                        <div class="about-team__contact">
-                            <a href="mailto:kvartirion@mail.ru">kvartirion@mail.ru</a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="about-team__name">Анна Сергеевна
-                            <strong>ЯКОВЛЕВА</strong>
-                        </div>
-                        <div class="about-team__post">Генеральный директор</div>
-                        <div class="about-team__contact">
-                            <a href="tel:84842400088">8 (4842) 40-00-88</a>
-                        </div>
-                        <div class="about-team__contact">
-                            <a href="mailto:kvartirion@mail.ru">kvartirion@mail.ru</a>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
                 <div>
                     <a class="btn btn-default btn-default--white" href="/users">Познакомиться со всеми</a>
@@ -168,36 +110,27 @@
             </div>
             <div class="col col-md-6 col-lg-8 about-team__gallery">
                 <div class="team-slider">
-                    <div class="team-slider__item">
-                        <div class="team-slider__item-inner">
-                            <img src="/uploads/assets/images/team-gallery_1.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="team-slider__item">
-                        <div class="team-slider__item-inner">
-                            <img src="/uploads/assets/images/team-gallery_2.png" alt="">
-                        </div>
-                    </div>
-                    <div class="team-slider__item">
-                        <div class="team-slider__item-inner">
-                            <img src="/uploads/assets/images/team-gallery_1.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="team-slider__item">
-                        <div class="team-slider__item-inner">
-                            <img src="/uploads/assets/images/team-gallery_2.png" alt="">
-                        </div>
-                    </div>
-                    <div class="team-slider__item">
-                        <div class="team-slider__item-inner">
-                            <img src="/uploads/assets/images/team-gallery_1.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="team-slider__item">
-                        <div class="team-slider__item-inner">
-                            <img src="/uploads/assets/images/team-gallery_2.png" alt="">
-                        </div>
-                    </div>
+                    {% set countUsers = usersForSite|length %}
+                    {% if countUsers < 4 %}
+                        {% set count = 4/countUsers %}
+                        {% for range in 0..count|round %}
+                            {% for user in usersForSite %}
+                                <div class="team-slider__item">
+                                    <div class="team-slider__item-inner">
+                                        <img data-src="/{{ user.User.image }}" alt="">
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    {% else %}
+                        {% for user in usersForSite %}
+                            <div class="team-slider__item">
+                                <div class="team-slider__item-inner">
+                                    <img data-src="/{{ user.User.image }}" alt="">
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>

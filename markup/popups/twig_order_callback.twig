@@ -27,28 +27,27 @@
         'class': 'ui-input cleared-value',
         'type': 'text'
     }) }}
-    <label class="ui-checkbox">
-            {{ form.checkbox('confirmation', {
-                'checked': true,
-                'hidden': true,
-                'hiddenField': false,
-                'value': 1
-            }) }}
-        <span class="ui-checkbox__icon"><span class="icon-check_dark"></span></span>
-        <span class="ui-checkbox__text">заполняя данную форму, <br>вы даете <a href="#popup-policy" data-fancybox>согласие на обработку ваших данных</a></span>
-    </label>
-    <div class="popup-callback__bottom">
-        <div class="row flex-md-row-reverse">
-            <div class="col-md-6">
-                {% if recaptcha.hasKey() %}
-                    {{ recaptcha.display_form({'id': 'order_call', 'div': 'recaptcha-block'}) }}
-                {% endif %}
-            </div>
-            <div class="col-md-6">
-                {{ form.button('Отправить', {'class': 'btn btn-default', 'type': 'submit'}) }}
-            </div>
+<label class="ui-checkbox">
+    {{ form.checkbox('confirmation', {
+        'checked': true,
+        'hidden': true,
+        'hiddenField': false,
+        'value': 1
+    }) }}
+    <span class="ui-checkbox__text">заполняя данную форму, <br>вы даете <a href="#popup-policy" data-fancybox>согласие на обработку ваших данных</a></span>
+</label>
+<div class="popup-callback__bottom">
+    <div class="row flex-md-row-reverse">
+        <div class="col-md-6">
+            {% if recaptcha.hasKey() %}
+                {{ recaptcha.display_form({'id': 'order_call', 'div': 'recaptcha-block'}) }}
+            {% endif %}
+        </div>
+        <div class="col-md-6">
+            {{ form.button('Отправить', {'class': 'btn btn-default', 'type': 'submit'}) }}
         </div>
     </div>
+</div>
 {{ form.end() }}
 
 
