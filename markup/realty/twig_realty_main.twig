@@ -45,7 +45,7 @@
 													<strong>2%</strong> от стоимости*</span></div>
                     </div>
                     <div class="services__item-btn">
-                        <a class="btn btn-default" href="#popup-public" data-fancybox>Подать объявление</a>
+                        <a class="btn btn-default" href="#create_object" data-fancybox>Подать объявление</a>
                     </div>
                 </div>
             </div>
@@ -116,7 +116,11 @@
                             {% for user in usersForSite %}
                                 <div class="team-slider__item">
                                     <div class="team-slider__item-inner">
-                                        <img data-src="/{{ user.User.image }}" alt="">
+                                        {% set userPicture = '/uploads/assets/images/user_2.png' %}
+                                        {% if user.User.image|default %}
+                                            {% set userPicture = '/'~user.User.image %}
+                                        {% endif %}
+                                        <img src="{{ userPicture }}" srcset="{{ userPicture }}" alt="">
                                     </div>
                                 </div>
                             {% endfor %}
@@ -125,7 +129,11 @@
                         {% for user in usersForSite %}
                             <div class="team-slider__item">
                                 <div class="team-slider__item-inner">
-                                    <img data-src="/{{ user.User.image }}" alt="">
+                                    {% set userPicture = '/uploads/assets/images/user_2.png' %}
+                                    {% if user.User.image|default %}
+                                        {% set userPicture = '/'~user.User.image %}
+                                    {% endif %}
+                                    <img src="{{ userPicture }}" srcset="{{ userPicture }}" alt="">
                                 </div>
                             </div>
                         {% endfor %}
@@ -139,20 +147,31 @@
     <div class="container">
         <div class="cards js-tabs-content">
             <div class="cards__top-row row">
-                <div class="heading-base text-center">Лучшие объявления</div><br>
-
-                <ul class="cards__tabs">
-                    {% for category in categoriesAll %}
-                        <li class="current">
-                            <a class="js-link-tab" href='#section-best' data-category="{{ category['Category']['alias']}}">{{ category['Category']['title'] }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
+                <div class="col-lg-4 col-xl-3 heading-base">Лучшие объявления</div>
+                <div class="col-lg-8 col-xl-9">
+                    <ul class="cards__tabs">
+                            <li class="current">
+                                <a class="js-link-tab" href="#section-best" data-category="kvartiry">Квартиры</a>
+                            </li>
+                            <li>
+                                <a class="js-link-tab" href="#section-best" data-category="komnaty">Комнаты</a>
+                            </li>
+                            <li>
+                                <a class="js-link-tab" href="#section-best" data-category="doma">Дома, дачи, коттеджи</a>
+                            </li>
+                            <li>
+                                <a class="js-link-tab" href="#section-best" data-category="kommercheskaya">Коммерческая недвижимость</a>
+                            </li>
+                    </ul>
+                </div>
             </div>
             <div class="tab-item current" id="tabs">
                 <div class="row">
+                    {% set favorite = _view.loadHelper('Favorites.Favorite') %}
                     {{ adView.setDefaults({default_picture: config.Site.no_photo_image}) }}
+                    {% set limitOffers = {} %}
                     {% for item in hotOffers %}
+                        {% if limitOffers[(item.Category.alias)] < 6 %}
                         <div class="col-12 col-md-6 col-xl-4 realty-object" data-category="{{ item.Category.alias }}">
                             <div class="cards__item">
                                 <div class="cards__item-section">
@@ -161,7 +180,7 @@
                                         {% set favoriteActiveClass = '' %}
                                         {% set favoriteAction = 'add' %}
                                         {% if favorite.has('Advertisement', item.Advertisement.id) %}
-                                            {% set favoriteActiveClass = 'active' %}
+                                            {% set favoriteActiveClass = ' active' %}
                                             {% set favoriteAction = 'remove' %}
                                         {% endif %}
                                         {{ html.link(html.tag('span', '', {'class': 'icon-heart_white'}), '#', {
@@ -215,6 +234,12 @@
                                 </div>
                             </div>
                         </div>
+                            {% if limitOffers[item.Category.alias] is empty %}
+                                {% set limitOffers = limitOffers|merge({(item.Category.alias) : 1}) %}
+                            {% else %}
+                                {% set limitOffers = limitOffers|merge({(item.Category.alias) : (limitOffers[item.Category.alias] + 1)}) %}
+                            {% endif %}
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

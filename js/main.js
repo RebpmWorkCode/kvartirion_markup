@@ -1,4 +1,12 @@
 $(() => {
+    //hidden hotOffers
+    $(`.realty-object`).addClass('element-hidden');
+    $(`.realty-object[data-category='kvartiry']`).removeClass('element-hidden');
+
+    //btn
+    $('.btn-send').setAttribute('disabled', true);
+
+
     //region sorting
     $('.sorting-list').on('change', (e) => {
         let url = new URL(location.href), value = e.target.value, values = value.split('_');
@@ -29,7 +37,8 @@ $(() => {
     })
 
     $('.favorites-action').off('click');
-    $('body').on('click', '.favorites-action', function () {
+    $('body').on('click', '.favorites-action', function (event) {
+        event.preventDefault();
         Is2bFavorite.a = $(this);
         Is2bFavorite.run({
             callback: function () {

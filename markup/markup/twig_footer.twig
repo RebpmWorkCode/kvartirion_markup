@@ -18,11 +18,24 @@
                 <div class="footer__form">
                     <div class="form-title">Есть вопросы?</div>
                     {{ form.create('Message', {'url': {'plugin':'contacts','controller':'messages','action':'footer_message'},'class':'row','inputDefaults': {'label': false}}) }}
-                        {{ form.input('name', {'class':'ui-input','type': 'text','placeholder': 'ФИО*','div': 'col-md-6'}) }}
-                        {{ form.input('phone', {'class':'ui-input','type': 'tel','placeholder': 'Телефон*','div': 'col-md-6'}) }}
-                        {{ form.input('text', {'class':'ui-textarea','type': 'textarea','placeholder': 'Ваше сообщение','div': 'col-md-8'}) }}
+                        {{ form.input('name', {'class':'ui-input','type': 'text', 'id': 'MessageName', 'placeholder': 'ФИО*','div': 'col-md-6'}) }}
+                        {{ form.input('email', {'class':'ui-input','type': 'email','id': 'MessageEmail', 'placeholder': 'E-mail*','div': 'col-md-6'}) }}
+                        {{ form.input('text', {'class':'ui-textarea','type': 'textarea','id': 'MessageText', 'placeholder': 'Ваше сообщение','div': 'col-md-8'}) }}
+                    <label class="ui-checkbox">
+                        {{ form.checkbox('confirmation', {
+                            'checked': true,
+                            'id': 'FeedbackMessageConfirmationOrderCall',
+                            'hidden': true,
+                            'hiddenField': false,
+                            'value': 1
+                        }) }}
+                        <span class="ui-checkbox__icon"><span class="icon-check_dark"></span></span>
+                        <span class="ui-checkbox__text">
+                            заполняя данную форму, <br>вы даете согласие на обработку ваших данных
+                        </span>
+                    </label>
                         {{ html.div('col-md-4 footer__form-btn') }}
-                            {{ form.button('Отправить', {'type': 'submit', 'class': 'btn btn-default btn--fullwidth'}) }}
+                            {{ form.button('Отправить', {'type': 'submit', 'class': 'btn btn-default btn--fullwidth btn-send'}) }}
                         {{ html.useTag('tagend', 'div') }}
                     {{ form.end() }}
                     <div class="form-warning">* Обязательные поля</div>
