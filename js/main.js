@@ -29,23 +29,26 @@ $(() => {
     })
 
     $('.favorites-action').off('click');
-    Is2bFavorite.init('.favorites-action', {
-        callback: function () {
-            $(`.favorites-action[data-id=${Is2bFavorite.a.get(0).dataset.id}]`).each((index, element) => {
-                let fEl = $(element);
-                if (Is2bFavorite.action === 'remove') {
-                    fEl.data('action', 'add');
-                    fEl.removeClass('active');
-                    if(fEl.hasClass('in-favorites-action')){
-                        fEl.closest('.catalog__item').remove();
+    $('body').on('click', '.favorites-action', function () {
+        Is2bFavorite.a = $(this);
+        Is2bFavorite.run({
+            callback: function () {
+                $(`.favorites-action[data-id=${Is2bFavorite.a.get(0).dataset.id}]`).each((index, element) => {
+                    let fEl = $(element);
+                    if (Is2bFavorite.action === 'remove') {
+                        fEl.data('action', 'add');
+                        fEl.removeClass('active');
+                        if(fEl.hasClass('in-favorites-action')){
+                            fEl.closest('.catalog__item').remove();
+                        }
+                    } else {
+                        fEl.data('action', 'remove');
+                        fEl.addClass('active');
                     }
-                } else {
-                    fEl.data('action', 'remove');
-                    fEl.addClass('active');
-                }
-            });
-        }
-    });
+                });
+            }
+        })
+    })
 
     $('[href="#contact_with_agent"]').on('click', e => {
         let $contactWithAgent = $('#contact_with_agent');
@@ -100,23 +103,6 @@ $(() => {
                     nextArrow: "<a class='slick-arrow slick-next'><span class='icon-arrow-right'></span></a>",
                     swipe: !1,
                     draggable: !1
-                });
-                Is2bFavorite.init('.favorites-action', {
-                    callback: function () {
-                        $(`.favorites-action[data-id=${Is2bFavorite.a.get(0).dataset.id}]`).each((index, element) => {
-                            let fEl = $(element);
-                            if (Is2bFavorite.action === 'remove') {
-                                fEl.data('action', 'add');
-                                fEl.removeClass('active');
-                                if(fEl.hasClass('in-favorites-action')){
-                                    fEl.closest('.catalog__item').remove();
-                                }
-                            } else {
-                                fEl.data('action', 'remove');
-                                fEl.addClass('active');
-                            }
-                        });
-                    }
                 });
             },
             error: function (error) {
