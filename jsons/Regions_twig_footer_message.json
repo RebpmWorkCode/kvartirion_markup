@@ -1,0 +1,21 @@
+[
+    {
+        "Region": {
+            "title": "Twig | Форма из подвала",
+            "alias": "twig_footer_message",
+            "block_count": 1
+        },
+        "Block": [
+            {
+                "title": "Twig | Форма из подвала",
+                "alias": "twig_footer_message",
+                "body": "{{ form.create('Message', {'url': {'plugin':'contacts','controller':'messages','action':'footer_message'},'data-ajax-send-form': true, 'class':'row','inputDefaults': {'label': false}}) }}\r\n    {% if submitMessage.class and submitMessage.text %}\r\n    <div id=\"flashMessage\" class=\"col-md-12 message {{ submitMessage.class }}\">{{ submitMessage.text }}<\/div>\r\n    {% endif %}\r\n    {{ form.input('name', {'class':'ui-input cleared-value','type': 'text', 'id': 'MessageName', 'placeholder': 'ФИО *', 'required': true,'div': 'col-md-6'}) }}\r\n    {{ form.input('email', {'class':'ui-input cleared-value','type': 'email','id': 'MessageEmail', 'placeholder': 'E-mail *', 'required': true, 'div': 'col-md-6'}) }}\r\n    {{ form.input('text', {'class':'ui-textarea cleared-value','type': 'textarea','id': 'MessageText', 'placeholder': 'Ваше сообщение','div': 'col-md-8'}) }}\r\n    <label class=\"ui-checkbox\">\r\n        {{ form.checkbox('confirmation', {\r\n        'checked': 'checked',\r\n        'id': 'MessageConfirmation',\r\n        'hidden': true,\r\n        'hiddenField': false,\r\n        'value': 1,\r\n        'class': 'confirmation-checkbox'\r\n    }) }}\r\n        <span class=\"ui-checkbox__icon\"><span class=\"icon-check_dark\"><\/span><\/span>\r\n        <span class=\"ui-checkbox__text\">заполняя данную форму, <br>вы даете согласие на обработку ваших данных<\/span>\r\n    <\/label>\r\n    {% if recaptcha.hasKey() %}\r\n        {{ recaptcha.display_form({'id': 'footer_message', 'div': 'recaptcha-block'}) }}\r\n    {% endif %}\r\n    {{ html.div('col-md-4 footer__form-btn') }}\r\n        {{ form.button('Отправить', {'type': 'submit', 'class': 'btn btn-default btn--fullwidth btn-send'}) }}\r\n    {{ html.useTag('tagend', 'div') }}\r\n{{ form.end() }}\r\n",
+                "status": true,
+                "params": "disabledCkEditor=1",
+                "show_title": false,
+                "visibility_roles": "",
+                "visibility_paths": ""
+            }
+        ]
+    }
+]
