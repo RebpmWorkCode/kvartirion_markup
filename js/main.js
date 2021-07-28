@@ -1,8 +1,4 @@
 $(() => {
-    //hidden hotOffers
-    $(`.realty-object`).addClass('element-hidden');
-    $(`.realty-object[data-category='kvartiry']`).removeClass('element-hidden');
-
     //region sorting
     $('.sorting-list').on('change', (e) => {
         let url = new URL(location.href), value = e.target.value, values = value.split('_');
@@ -183,7 +179,12 @@ $(() => {
         $('.fileinput-button input').click();
     });
 
+    //hidden hotOffers
+    $(`.realty-object`).addClass('element-hidden');
+    $(`.realty-object[data-category='kvartiry']`).removeClass('element-hidden');
+
     $('.cards__tabs').on('click', '.js-link-tab', e => {
+        e.preventDefault();
         $('.cards__tabs > li').removeClass('current');
         // console.log($(this).closest('li'));
         let category = e.target.dataset.category;
