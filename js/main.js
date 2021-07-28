@@ -3,10 +3,6 @@ $(() => {
     $(`.realty-object`).addClass('element-hidden');
     $(`.realty-object[data-category='kvartiry']`).removeClass('element-hidden');
 
-    //btn
-    $('.btn-send').setAttribute('disabled', true);
-
-
     //region sorting
     $('.sorting-list').on('change', (e) => {
         let url = new URL(location.href), value = e.target.value, values = value.split('_');

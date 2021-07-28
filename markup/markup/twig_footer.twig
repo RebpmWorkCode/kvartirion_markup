@@ -18,16 +18,17 @@
                 <div class="footer__form">
                     <div class="form-title">Есть вопросы?</div>
                     {{ form.create('Message', {'url': {'plugin':'contacts','controller':'messages','action':'footer_message'},'class':'row','inputDefaults': {'label': false}}) }}
-                        {{ form.input('name', {'class':'ui-input','type': 'text', 'id': 'MessageName', 'placeholder': 'ФИО*','div': 'col-md-6'}) }}
-                        {{ form.input('email', {'class':'ui-input','type': 'email','id': 'MessageEmail', 'placeholder': 'E-mail*','div': 'col-md-6'}) }}
+                        {{ form.input('name', {'class':'ui-input','type': 'text', 'id': 'MessageName', 'placeholder': 'ФИО *', 'required': true,'div': 'col-md-6'}) }}
+                        {{ form.input('email', {'class':'ui-input','type': 'email','id': 'MessageEmail', 'placeholder': 'E-mail *', 'required': true, 'div': 'col-md-6'}) }}
                         {{ form.input('text', {'class':'ui-textarea','type': 'textarea','id': 'MessageText', 'placeholder': 'Ваше сообщение','div': 'col-md-8'}) }}
                     <label class="ui-checkbox">
                         {{ form.checkbox('confirmation', {
-                            'checked': true,
-                            'id': 'FeedbackMessageConfirmationOrderCall',
+                            'checked': 'checked',
+                            'id': 'MessageConfirmation',
                             'hidden': true,
                             'hiddenField': false,
-                            'value': 1
+                            'value': 1,
+                            'class': 'confirmation-checkbox'
                         }) }}
                         <span class="ui-checkbox__icon"><span class="icon-check_dark"></span></span>
                         <span class="ui-checkbox__text">
