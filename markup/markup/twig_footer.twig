@@ -9,7 +9,11 @@
                     </div>
                     <div class="col-md-7">
                         <ul class="footer__links">
-                            <li><a href="/agency/realty">Каталог недвижимости</a></li>
+                            {% if _view.request.action is same as('main') %}
+                                <li><a href="/agency/realty">Каталог недвижимости</a></li>
+                            {% else %}
+                                <li><a href="/">Главная страница</a></li>
+                            {% endif %}
                             <li><a href="/users">Наша команда</a></li>
                             <li><a href="#popup-policy" data-fancybox>Согласие на обработку персональных данных</a></li>
                         </ul>

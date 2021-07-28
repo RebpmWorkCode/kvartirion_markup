@@ -137,7 +137,11 @@
                             {% if item.Rieltor.id %}
                                 <div class="catalog__item-agent">
                                     <div class="catalog__item-agent-photo">
-                                        <img src="/{{ item.Rieltor.image }}" alt="{{ item.Rieltor.name }}">
+                                        {% set userPicture = '/uploads/assets/images/user.png' %}
+                                        {% if item.Rieltor.image %}
+                                            {% set userPicture = '/'~item.Rieltor.image %}
+                                        {% endif %}
+                                        <img src="{{ userPicture }}" srcset="{{ userPicture }}" alt="{{ item.Rieltor.name }}">
                                     </div>
                                     <div class="catalog__item-agent-main">
                                         <div>ваш агент</div>
