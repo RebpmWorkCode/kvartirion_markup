@@ -57,7 +57,7 @@ $processFiles = function ($content) {
         $block['show_title'] = false;
         $block['visibility_roles'] = '';
         $block['visibility_paths'] = '';
-        $block['params'] = 'disabledCkEditor=1';
+        $block['params'] = $block['params'] ?: 'disabledCkEditor=1';
     });
     $content[0]['Region'] = $region;
     $content[0]['Block'] = $blocks;

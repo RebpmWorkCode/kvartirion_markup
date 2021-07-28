@@ -70,9 +70,7 @@
                 <a class="btn btn-pink" href="#order_review" data-fancybox>Оставить отзыв</a>
             </div>
         </div>
-
-        <div class="section-title">{{ paginator.params.current }} отзывов </div>
-
+        <div class="section-title">{{ last_reviews|length }} отзывов </div>
         {% for last in last_reviews %}
         <div>
             <div class="testimonials__item">
@@ -88,7 +86,6 @@
             </div>
         </div>
         {% endfor %}
-
     </div>
 
 </div>
