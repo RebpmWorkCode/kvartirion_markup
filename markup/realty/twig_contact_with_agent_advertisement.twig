@@ -5,6 +5,7 @@
 }) }}
     {% set flash = _view.loadHelper('Flash') %}
     {{ flash.render() }}
+    {{ flash.render('contact_with_agent') }}
     <p class="form-desc">Введите контактные данные<br>и наш менеджер свяжется с вами<br>в ближайшее время</p>
     {{ form.hidden('AdvertisementMessage.advertisement_id') }}
     {{ form.input('AdvertisementMessage.fio', {'placeholder': 'Ваше ФИО', 'class': 'ui-input cleared-value', 'type': 'text'}) }}

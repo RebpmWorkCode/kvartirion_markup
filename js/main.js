@@ -126,9 +126,17 @@ $(() => {
             form.find('#flashMessage').remove();
         },
         success: function (result) {
+            let flashContactMessage = $(result).find('#contact_with_agentMessage');
+            if (flashContactMessage.length > 0) {
+                let classMessage = 'success';
+                if(flashContactMessage.find('a').text().trim() === 'Попробовать снова'){
+                    classMessage = 'error';
+                }
+                form.prepend(`<div id="flashMessage" class="message ${classMessage}">${flashContactMessage.get(0).childNodes[0].textContent.trim()}</div>`)
+            }
             let flashMessage = $(result).find('#flashMessage');
             form.prepend(flashMessage);
-            if(!flashMessage.hasClass('error')){
+            if (!$('#flashMessage', form).hasClass('error')) {
                 setTimeout(() => {
                     form.find('#flashMessage').remove();
                     form.find('.cleared-value').val('');

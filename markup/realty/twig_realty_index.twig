@@ -139,7 +139,7 @@
                                     <div class="catalog__item-agent-photo">
                                         {% set userPicture = '/uploads/assets/images/user.png' %}
                                         {% if item.Rieltor.image %}
-                                            {% set userPicture = '/'~item.Rieltor.image %}
+                                            {% set userPicture = '/'~item.Rieltor.image|trim('/', 'left') %}
                                         {% endif %}
                                         <img src="{{ userPicture }}" srcset="{{ userPicture }}" alt="{{ item.Rieltor.name }}">
                                     </div>
