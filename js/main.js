@@ -63,6 +63,9 @@ $(() => {
     $('[href="#order_callback"]').on('click', e => {
         $('#order_callback').find('.cleared-value').val('');
     })
+    $('[href="#order_review"]').on('click', e => {
+        $('#order_review').find('.cleared-value').val('');
+    })
     $('[href="#popup-favorites"]').on('click', e => {
         $.ajax({
             type: 'GET',
@@ -130,7 +133,7 @@ $(() => {
                     form.find('#flashMessage').remove();
                     form.find('.cleared-value').val('');
                     $.fancybox.close();
-                }, 2000)
+                }, 5000)
             }
         }
     })

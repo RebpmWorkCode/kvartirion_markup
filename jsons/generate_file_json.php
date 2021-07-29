@@ -1,4 +1,5 @@
 <?php
+$generatedFileNameZip = 'Kvartirion.zip';
 $generatedFileName = 'Region_TwigTheme.json';
 $regions = [];
 
@@ -72,3 +73,10 @@ foreach ($sorted as $fileName) {
     $regions[] = $content[0];
 }
 file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . $generatedFileName, json_encode($regions, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+
+$r = exec('cd ..; cp jsons/Region_TwigTheme.json Region_TwigTheme.json');
+echo $r . PHP_EOL;
+$result = exec("cd ..; rm $generatedFileNameZip; zip $generatedFileNameZip css fonts images js sprites Region_TwigTheme.json");
+echo $result . PHP_EOL;
+$r = exec('cd ..; rm Region_TwigTheme.json');
+echo $r . PHP_EOL;

@@ -8,7 +8,7 @@
                     <div class="team__item-photo">
                         {% set userPicture = '/uploads/assets/images/user.png' %}
                         {% if user.User.image %}
-                            {% set userPicture = '/'~user.User.image %}
+                            {% set userPicture = '/'~user.User.image|trim('/', 'left') %}
                         {% endif %}
                         <img src="{{ userPicture }}" srcset="{{ userPicture }}" alt="">
                     </div>
