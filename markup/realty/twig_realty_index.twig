@@ -42,6 +42,7 @@
         <div>
             {{ adView.setDefaults({default_picture: config.Site.no_photo_image}) }}
             {% for item in list %}
+                {% set offerItem = adView.getInfo(item) %}
                 <div class="catalog__item">
                     <div class="catalog__item-gallery is-lg-visible">
                         <div>
@@ -78,7 +79,8 @@
                         <div class="catalog__item-main">
                             <div class="catalog__item-main-section">
                                 <div class="catalog__item-info-section">
-                                    <div class="catalog__item-title">{{ adSeo.pattern_title(item)|e }}</div>
+                                    {{ html.link(adSeo.pattern_title(item)|e, offerItem.url, {'class': 'catalog__item-title'}) }}
+
                                     <div class="catalog__item-adress">{{ item.Advertisement.location_full|e }} </div>
                                     <div class="card-informers">
                                         {% set paramsValues = item.CategoryParamValues ?? [] %}

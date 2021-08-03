@@ -202,7 +202,7 @@
                                         <div class="row">
                                             <div class="col col-12 col-md-6">
                                                 <div class="cards__item-info">
-                                                    <strong class="content_block" title="{{ adSeo.pattern_title(item)|e }}">{{ adSeo.pattern_title(item)|e }}</strong>
+                                                    {{ html.link(adSeo.pattern_title(item)|e, offerItem.url, {'class': 'content_block', 'title': adSeo.pattern_title(item)|e}) }}
                                                 </div>
                                             </div>
                                             {% set paramsValues = item.CategoryParamValues ?? [] %}
