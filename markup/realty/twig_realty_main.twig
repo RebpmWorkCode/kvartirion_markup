@@ -91,7 +91,7 @@
                     {% for user in usersForSite %}
                         <div>
                             <div class="about-team__name">
-                                <strong>{{ user.User.username }}</strong>
+                                <strong>{{ user.User.name }}</strong>
                             </div>
                             <div class="about-team__post">{{ user.Role.title }}</div>
                             <div class="about-team__contact">
@@ -186,7 +186,12 @@
                                     </div>
 
                                     <div class="cards__item-gallery">
-                                        {% set galleryList = adView.getGallery(item)['items'] %}
+                                        {% set gallery = adView.getGallery(item) %}
+                                        {% if gallery.items %}
+                                            {% set galleryList = gallery.items %}
+                                        {% else %}
+                                            {% set galleryList = [gallery.first] %}
+                                        {% endif %}
                                         {% set galleryList = imageResized.resizePicture(galleryList, {'width': '325', 'height': '275', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_list'}) %}
                                         {% for galleryItem in galleryList %}
                                             <div><img src="{{ galleryItem.src }}" alt="{{ galleryItem.description }}"></div>

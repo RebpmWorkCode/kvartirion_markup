@@ -42,12 +42,16 @@
         <div>
             {{ adView.setDefaults({default_picture: config.Site.no_photo_image}) }}
             {% for item in list %}
-                {% set offerItem = adView.getInfo(item) %}
                 <div class="catalog__item">
                     <div class="catalog__item-gallery is-lg-visible">
                         <div>
                             <div class="catalog__item-gallery-items">
-                                {% set galleryList = adView.getGallery(item)['items'] %}
+                                {% set gallery = adView.getGallery(item) %}
+                                {% if gallery.items %}
+                                    {% set galleryList = gallery.items %}
+                                {% else %}
+                                    {% set galleryList = [gallery.first] %}
+                                {% endif %}
                                 {% set galleryList = imageResized.resizePicture(galleryList, {'width': '325', 'height': '275', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_list'}) %}
                                 {% for galleryItem in galleryList %}
                                     <div><img src="{{ galleryItem.src }}" alt="{{ galleryItem.description }}"></div>
@@ -115,8 +119,6 @@
                                     <div class="catalog__item-gallery is-lg-hidden">
                                         <div>
                                             <div class="catalog__item-gallery-items">
-                                                {% set galleryList = adView.getGallery(item)['items'] %}
-                                                {% set galleryList = imageResized.resizePicture(galleryList, {'width': '325', 'height': '275', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_list'}) %}
                                                 {% for galleryItem in galleryList %}
                                                     <div><img src="{{ galleryItem.src }}" alt="{{ galleryItem.description }}"></div>
                                                 {% endfor %}
@@ -174,7 +176,7 @@
                             {% endif %}
                         </div>
                         <div class="catalog__item-bottom">
-                            <div class="catalog__item-desc">{{ adView.getSiteText(item)|e }}</div>
+                            <div class="catalog__item-desc">{{ adView.getSiteText(item)|striptags }}</div>
                             <div class="catalog__item-date">{{ rusTime.formatDate(item.Advertisement.created)|e }}</div>
                         </div>
                     </div>

@@ -12,8 +12,8 @@ $sorted = [
     'Regions_twig_end_page.json',
     'Regions_twig_header.json',
     'Regions_twig_footer.json',
-    'Regions_twig_realty_index.json', //
-    //twig_realty_view
+    'Regions_twig_realty_index.json',
+    'Regions_twig_realty_view.json',
     'Regions_twig_realty_main.json',
     'Regions_twig_realty_map.json',
     'Regions_twig_realty_form.json',
@@ -76,7 +76,7 @@ file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . $generatedFileName, json_encod
 
 $r = exec('cd ..; cp jsons/Region_TwigTheme.json Region_TwigTheme.json');
 echo $r . PHP_EOL;
-$result = exec("cd ..; rm $generatedFileNameZip; zip $generatedFileNameZip css fonts images js sprites Region_TwigTheme.json");
+$result = exec("cd ..; rm $generatedFileNameZip; zip $generatedFileNameZip -r css/ fonts/ images/ js/ sprites/ Region_TwigTheme.json");
 echo $result . PHP_EOL;
 $r = exec('cd ..; rm Region_TwigTheme.json');
 echo $r . PHP_EOL;

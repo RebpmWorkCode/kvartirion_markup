@@ -1,0 +1,281 @@
+{{ html.script(['https://api-maps.yandex.ru/2.1/?lang=ru_RU', 'Agency.filter-map-site.js', 'YandexMaps.view-map.js'], {'inline': false}) }}
+{% set adView = _view.loadHelper('Agency.AdView') %}
+{% set favorite = _view.loadHelper('Favorites.Favorite') %}
+{{ adView.setDefaults({default_picture: config.Site.no_photo_image}) }}
+<div id="view_object_data">
+    <div>
+        <div class="heading-base heading-base--medium heading-base--mod-margin">Объявление</div>
+        <div class="catalog__item">
+            <div class="catalog__item-gallery is-lg-visible">
+                <div>
+                    <div class="catalog__item-gallery-items">
+                        {% set gallery = adView.getGallery(advertisement) %}
+                        {% if gallery.items %}
+                            {% set galleryList = gallery.items %}
+                        {% else %}
+                            {% set galleryList = [gallery.first] %}
+                        {% endif %}
+                        {% set galleryList = imageResized.resizePicture(galleryList, {'width': '325', 'height': '275', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_list'}) %}
+                        {% for galleryItem in galleryList %}
+                            <div><img src="{{ galleryItem.src }}" alt="{{ galleryItem.description }}"></div>
+                        {% endfor %}
+                    </div>
+                    <div class="catalog__item-buttons">
+                        {% set favoriteActiveClass = '' %}
+                        {% set favoriteAction = 'add' %}
+                        {% if favorite.has('Advertisement', advertisement.Advertisement.id) %}
+                            {% set favoriteActiveClass = ' active' %}
+                            {% set favoriteAction = 'remove' %}
+                        {% endif %}
+                        {{ html.link(html.tag('span', '', {'class': 'icon-heart_white'}), '#', {
+                            'class': 'favorites-action btn btn-card' ~ favoriteActiveClass,
+                            'escape': false,
+                            'data-model': 'Advertisement',
+                            'data-id': advertisement.Advertisement.id,
+                            'data-action': favoriteAction
+                        }) }}
+                    </div>
+                    <div class="catalog__item-btn-request">
+                        <a class="btn btn-default btn-default--medium" href="#">Подать заявку на ипотеку</a>
+                    </div>
+                </div>
+            </div>
+            <div class="catalog__item-section">
+                <div class="catalog__item-main">
+                    <div class="catalog__item-main-section">
+                        <div class="catalog__item-info-section">
+                            <div class="catalog__item-title">{{ adSeo.pattern_title(advertisement)|e }}</div>
+                            <div class="catalog__item-adress">{{ advertisement.Advertisement.location_full|e }} </div>
+                            <div class="card-informers">
+                                {% set paramsValues = advertisement.CategoryParamValues ?? [] %}
+                                {% set floor = complexCategory.getViewAliasesOptions('floor', paramsValues) %}
+                                {% set floors = complexCategory.getViewAliasesOptions('floors', paramsValues) %}
+                                {% set roomsNum = complexCategory.getViewAliasesOptions('rooms_num', paramsValues) %}
+                                {% set area = complexCategory.getViewAliasesOptions('area', paramsValues) %}
+                                {% if(floor and floors) %}
+                                    <div class="card-informers__item">
+                                        <span class="icon-stages_gray card-informers__item-icon"></span>
+                                        <span>Этаж<strong>{{ floor }}/{{ floors }}</strong></span>
+                                    </div>
+                                {% endif %}
+                                {% if roomsNum %}
+                                    <div class="card-informers__item">
+                                        <span class="icon-bed_gray card-informers__item-icon"></span>
+                                        <span><strong>{{ roomsNum }}</strong> комнаты</span>
+                                    </div>
+                                {% endif %}
+                                {% if area %}
+                                    <div class="card-informers__item">
+                                        <span class="icon-house_gray card-informers__item-icon"></span>
+                                        <span><strong>{{ area }}</strong>м²</span>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="catalog__item-prices">
+                            <div class="price price--size-large">
+                                <span class="price__main">{{ price.format(advertisement.Advertisement.price) }}</span>
+                                <span class="price__currency">₽</span>
+                            </div>
+                            <div class="price price--size-large">
+                                <span
+                                    class="price__main">{{ price.format(advertisement.Advertisement.price_area) }}</span>
+                                <span class="price__currency">₽</span>
+                                <span class="price__footage">м²</span>
+                            </div>
+                            <div class="catalog__item-gallery is-lg-hidden">
+                                <div>
+                                    <div class="catalog__item-gallery-items">
+                                        {% for galleryItem in galleryList %}
+                                            <div><img src="{{ galleryItem.src }}" alt="{{ galleryItem.description }}">
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="catalog__item-buttons">
+                                        {{ html.link(html.tag('span', '', {'class': 'icon-heart_white'}), '#', {
+                                            'class': 'favorites-action btn btn-card' ~ favoriteActiveClass,
+                                            'escape': false,
+                                            'data-model': 'Advertisement',
+                                            'data-id': advertisement.Advertisement.id,
+                                            'data-action': favoriteAction
+                                        }) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if advertisement.Rieltor.id %}
+                        <div class="catalog__item-agent">
+                            <div class="catalog__item-agent-photo">
+                                {% set userPicture = '/uploads/assets/images/user.png' %}
+                                {% if advertisement.Rieltor.image %}
+                                    {% set userPicture = '/'~advertisement.Rieltor.image|trim('/', 'left') %}
+                                {% endif %}
+                                <img src="{{ userPicture }}" srcset="{{ userPicture }}"
+                                     alt="{{ advertisement.Rieltor.name }}">
+                            </div>
+                            <div class="catalog__item-agent-main">
+                                <div>ваш агент</div>
+                                <div class="catalog__item-agent-name">
+                                    <strong>{{ advertisement.Rieltor.name }}</strong>
+                                </div>
+                                {% if advertisement.Rieltor.phone %}
+                                    <div class="contact-item contact-item--size-mini">
+                                        <a class="contact-item__link" href="tel:{{ advertisement.Rieltor.phone }}">
+                                            <span class="contact-item__icon"><span class="icon-tel_blue"></span></span>
+                                            <span>{{ advertisement.Rieltor.phone }}</span>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                                {% if advertisement.Rieltor.email %}
+                                    <div class="contact-item contact-item--size-mini">
+                                        <a class="contact-item__link" href="mailto:{{ advertisement.Rieltor.email }}">
+                                            <span class="contact-item__icon"><span class="icon-mail_blue"></span></span>
+                                            <span>{{ advertisement.Rieltor.email }}</span>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                                <div class="catalog__item-agent-btn">
+                                    <a class="btn btn-default btn-default--medium" href="#contact_with_agent"
+                                       data-fancybox data-id="{{ advertisement.Advertisement.id }}">
+                                        Связаться с агентом
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="catalog__item-bottom">
+                    <div class="catalog__item-desc">{{ adView.getSiteText(advertisement)|striptags }}</div>
+                    <div
+                        class="catalog__item-date">{{ rusTime.formatDate(advertisement.Advertisement.created)|e }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row popup-advt__about">
+        <div class="col-12 col-md-4 col-xl-3">
+            <input type="hidden" id="address"
+                   value="{{ location.title(advertisement, 'country, locality, street, house_number') }}"/>
+            <input type="hidden" id="latitude" value="{{ adView.getCoordinateSite(advertisement).latitude }}"/>
+            <input type="hidden" id="longitude" value="{{ adView.getCoordinateSite(advertisement).longitude }}"/>
+            <div class="popup-advt__about-map" id="map"></div>
+        </div>
+        <div class="col-12 col-md-8 col-xl-9">
+            <div class="popup-advt__about-info">
+                <div class="popup-advt__about-inner styled-scrollbar">
+                    <div class="heading-base heading-base--medium">Сведения о недвижимости</div>
+                    <div class="popup-advt__about-row">
+                        <div class="popup-advt__about-col">
+                            <div>
+                                <label for="id" class="ui-label">ID</label>
+                                <input id="id" class="ui-input" type="text" value="{{ advertisement.Advertisement.id }}"
+                                       disabled>
+                            </div>
+                        </div>
+                        <div class="popup-advt__about-col"></div>
+                    </div>
+                    {% set params = advertisement.CategoryParamValues ? advertisement.CategoryParamValues : [] %}
+                    {% set viewCategoryParams = complexCategory.getParamAliases(params, 'show_on_main', [], 'weight') %}
+                    {% for categoryParam in viewCategoryParams|filter(item => item.display_value)|batch(2) %}
+                        <div class="popup-advt__about-row">
+                            {% for index,categoryParamItem in categoryParam %}
+                                <div class="popup-advt__about-col">
+                                    <div>
+                                        <label for="{{ index }}" class="ui-label">{{ categoryParamItem.name }}</label>
+                                        <input id="{{ index }}" class="ui-input" type="text"
+                                               value="{{ categoryParamItem.display_value|join(', ') }}" disabled>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if similarOffers %}
+        <div>
+            <div class="heading-base heading-base--medium heading-base--mod-margin">Похожие предложения</div>
+            <div class="row cards-carousel">
+                {% for item in similarOffers %}
+                    <div class="col-md-4">
+                        <div class="cards__item">
+                            <div class="cards__item-section">
+                                <div class="cards__item-top">
+                                    {% set favoriteActiveClass = '' %}
+                                    {% set favoriteAction = 'add' %}
+                                    {% if favorite.has('Advertisement', item.Advertisement.id) %}
+                                        {% set favoriteActiveClass = ' active' %}
+                                        {% set favoriteAction = 'remove' %}
+                                    {% endif %}
+                                    {{ html.link(html.tag('span', '', {'class': 'icon-heart_white'}), '#', {
+                                        'class': 'favorites-action btn btn-card' ~ favoriteActiveClass,
+                                        'escape': false,
+                                        'data-model': 'Advertisement',
+                                        'data-id': item.Advertisement.id,
+                                        'data-action': favoriteAction
+                                    }) }}
+                                </div>
+                                <div class="cards__item-gallery">
+                                    {% set gallery = adView.getGallery(item) %}
+                                    {% if gallery.items %}
+                                        {% set galleryList = gallery.items %}
+                                    {% else %}
+                                        {% set galleryList = [gallery.first] %}
+                                    {% endif %}
+                                    {% set galleryList = imageResized.resizePicture(galleryList, {'width': '325', 'height': '275', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_list'}) %}
+                                    {% for galleryItem in galleryList %}
+                                        <div><img src="{{ galleryItem.src }}" alt="{{ galleryItem.description }}"></div>
+                                    {% endfor %}
+                                </div>
+                                <div class="cards__item-desc">
+                                    <div class="row">
+                                        <div class="col col-12 col-md-6">
+                                            <div class="cards__item-info">
+                                                <strong>{{ adSeo.pattern_title(item)|e }}</strong>
+                                            </div>
+                                        </div>
+                                        <div class="col col-12 col-md-6">
+                                            <div class="price">
+                                                <span class="price__main">{{ price.format(item.Advertisement.price) }} </span><span class="price__currency">₽</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="cards__item-info row">
+                                        <div class="col col-12 col-md-6">{{ item.Advertisement.location_full|e }}</div>
+                                        <div class="col col-12 col-md-6 price">
+                                            <span class="price__main">{{ price.format(item.Advertisement.price_area) }}</span>
+                                            <span class="price__currency">₽</span>
+                                            <span class="price__footage"> м²</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cards__item-details card-informers">
+                                {% set paramsValues = item.CategoryParamValues ?? [] %}
+                                {% set floor = complexCategory.getViewAliasesOptions('floor', paramsValues) %}
+                                {% set floors = complexCategory.getViewAliasesOptions('floors', paramsValues) %}
+                                {% set roomsNum = complexCategory.getViewAliasesOptions('rooms_num', paramsValues) %}
+                                {% set area = complexCategory.getViewAliasesOptions('area', paramsValues) %}
+
+                                <div class="card-informers__item">
+                                    <span class="icon-stages_white card-informers__item-icon"></span>
+                                    <span>Этаж<strong>{{ floor }}/{{ floors }}</strong></span>
+                                </div>
+                                <div class="card-informers__item">
+                                    <span class="icon-bed_white card-informers__item-icon"></span>
+                                    <span><strong>{{ roomsNum }}</strong> комнаты</span>
+                                </div>
+                                <div class="card-informers__item">
+                                    <span class="icon-house_white card-informers__item-icon"></span>
+                                    <span><strong>{{ area }}</strong>м²</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+</div>
