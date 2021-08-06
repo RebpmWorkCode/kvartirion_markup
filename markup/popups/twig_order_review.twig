@@ -9,6 +9,11 @@
 {{ form.input('email', {'placeholder': 'E-mail','class': 'ui-input cleared-value', 'type': 'email'}) }}
 {{ form.input('annotation', {'placeholder': 'Заголовок','class': 'ui-input cleared-value','type': 'text'}) }}
 {{ form.input('text', {'placeholder': 'Ваш текст','class': 'ui-textarea cleared-value','type': 'textarea'}) }}
+<div>
+    <label class="ui-label ui-label--small">Ваша оценка</label>
+    {{ form.hidden('rating', {'min': 0, 'max': 5, 'step': 1}) }}
+    <div class="rateit" aria-valuenow="0" data-rateit-mode="font" data-rateit-backingfld="#ReviewRating" data-rateit-resetable="false"></div>
+</div>
 <div class="popup-callback__bottom">
     <div class="row flex-md-row-reverse">
         <div class="col-md-6">

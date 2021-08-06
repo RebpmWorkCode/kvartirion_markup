@@ -18,7 +18,13 @@
                     <div class="testimonials__item-info">
                         <div class="testimonials__item-name">{{ review.Review.sender }}</div>
                         <div class="testimonials__item-date">{{ review.Review.updated }}</div>
-
+                        <div>
+                            {% set countRating = review.Review.rating|default(0) %}
+                            {% for i in range(0, 4) %}
+                                {% set classRating = i < countRating ? 'icon-star_blue' : 'icon-star_gray' %}
+                                <div class="{{ classRating }}"></div>
+                            {% endfor %}
+                        </div>
                     </div>
                     <div class="testimonials__item-text">
                         <strong>{{ review.Review.annotation }}</strong><br>
