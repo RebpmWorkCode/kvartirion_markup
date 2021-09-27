@@ -5,18 +5,20 @@
     {{ form.input('name', {'class':'ui-input cleared-value','type': 'text', 'id': 'MessageName', 'placeholder': 'ФИО *', 'required': true,'div': 'col-md-6'}) }}
     {{ form.input('email', {'class':'ui-input cleared-value','type': 'email','id': 'MessageEmail', 'placeholder': 'E-mail *', 'required': true, 'div': 'col-md-6'}) }}
     {{ form.input('text', {'class':'ui-textarea cleared-value','type': 'textarea','id': 'MessageText', 'placeholder': 'Ваше сообщение','div': 'col-md-8'}) }}
-    <label class="ui-checkbox">
-        {{ form.checkbox('confirmation', {
-        'checked': 'checked',
-        'id': 'MessageConfirmation',
-        'hidden': true,
-        'hiddenField': false,
-        'value': 1,
-        'class': 'confirmation-checkbox'
-    }) }}
-        <span class="ui-checkbox__icon"><span class="icon-check_dark"></span></span>
-        <span class="ui-checkbox__text">заполняя данную форму, <br>вы даете согласие на обработку ваших данных</span>
-    </label>
+    <div class="col-md-6">
+        <label class="ui-checkbox">
+            {{ form.checkbox('confirmation', {
+                'checked': 'checked',
+                'id': 'MessageConfirmation',
+                'hidden': true,
+                'hiddenField': false,
+                'value': 1,
+                'class': 'confirmation-checkbox'
+            }) }}
+            <span class="ui-checkbox__icon"><span class="icon-check_dark"></span></span>
+            <span class="ui-checkbox__text">заполняя данную форму, <br>вы даете согласие на обработку ваших данных</span>
+        </label>
+    </div>
     {% if recaptcha.hasKey() %}
         {{ recaptcha.display_form({'id': 'footer_message', 'div': 'recaptcha-block'}) }}
     {% endif %}
