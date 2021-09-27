@@ -13,7 +13,7 @@
                         <img src="{{ userPicture }}" srcset="{{ userPicture }}" alt="">
                     </div>
                     <div class="team__item-name">{{ user.User.name }}</div>
-                    <div class="team__item-post">{{ user.Role.title }}</div>
+                    <div class="team__item-post">{{ posts[user.User.post_id] }}</div>
                 </div>
                 <div class="team__item-details">
                     <div class="card-informers__item"><span class="icon-tel_white card-informers__item-icon"></span>
@@ -30,7 +30,7 @@
     <div class="pagination">
         {{ paginator.first('<<') }}
         {{ paginator.prev('<') }}
-        {{ paginator.numbers({'separator': '', 'modulus': 3}) }}
+        {{ paginator.numbers({'separator': '', 'modulus': 7}) }}
         {{ paginator.next('>') }}
         {{ paginator.last('>>') }}
     </div>
@@ -54,7 +54,32 @@
             </div>
             <div class="col col-md-6">
                 <div class="location__map">
-                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A751f5b5f8b89960d9fb535f7098265c255fd0913a434c07c8375eb2742f11f4a&amp;source=constructor" width="630" height="442" frameborder="0"></iframe>
+                    <div id="contact-map" style="width: 630px; height: 442px"></div>
+
+                    {% if config.Contact.contact_point %}
+                        {% set map = siteInfo.setting('contact_point', '', 'Contact') %}
+                        {% set points = map.point ? [map] : map %}
+
+                        {{ html.script('https://api-maps.yandex.ru/2.1/?load=package.standard&lang=ru-RU', {inline: true}) }}
+                        <script type="text/javascript">
+                            ymaps.ready(function () {
+                                let map = new ymaps.Map("contact-map", {
+                                    center: [{{ points.0.point.lat }},{{ points.0.point.lon }}],
+                                    zoom: 9,
+                                    type: "yandex#map",
+                                    controls: ['zoomControl', 'typeSelector', 'fullscreenControl', 'geolocationControl']
+                                });
+                                let points = {{ points|json_encode }}, _yPoint = null;
+                                points.forEach((_point) => {
+                                    _yPoint = new ymaps.Placemark([_point.point.lat, _point.point.lon], {balloonContent: _point.title}, {preset: "twirl#redDotIcon"});
+                                    map.geoObjects.add(_yPoint);
+                                })
+                                map.setBounds(map.geoObjects.getBounds(), {checkZoomRange: false});
+                                map.behaviors.disable(['scrollZoom']);
+                                map.setZoom({{config.Contract.mapZoom|default(14)}}, {duration: 300});
+                            })
+                        </script>
+                    {% endif %}
                 </div>
             </div>
         </div>

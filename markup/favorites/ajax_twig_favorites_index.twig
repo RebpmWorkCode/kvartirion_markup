@@ -30,7 +30,7 @@
             </div>
             <div class="cards__item-gallery">
                 {% set galleryList = adView.getGallery(item)['items'] %}
-                {% set galleryList = imageResized.resizePicture(galleryList, {'width': '325', 'height': '275', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_list'}) %}
+                {% set galleryList = imageResized.resizePicture(galleryList, {'width': '650', 'height': '450', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_favorites'}) %}
                 {% for galleryItem in galleryList %}
                     <div><img src="{{ galleryItem.src }}" alt="{{ galleryItem.description }}"></div>
                 {% endfor %}

@@ -55,7 +55,7 @@
                         <div>
                             <div class="catalog__item-gallery-items">
                                 {% set galleryList = adView.getGallery(item)['items'] %}
-                                {% set galleryList = imageResized.resizePicture(galleryList, {'width': '325', 'height': '275', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_list'}) %}
+                                {% set galleryList = imageResized.resizePicture(galleryList, {'width': '650', 'height': '450', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_favorites'}) %}
                                 {% for galleryItem in galleryList %}
                                     <div><img src="{{ galleryItem.src }}" alt="{{ galleryItem.description }}"></div>
                                 {% endfor %}
@@ -119,11 +119,12 @@
                                         <span class="price__currency">₽</span>
                                         <span class="price__footage">м²</span>
                                     </div>
+                                    <div class="price price--size-large">цена за квадратный метр</div>
                                     <div class="catalog__item-gallery is-lg-hidden">
                                         <div>
                                             <div class="catalog__item-gallery-items">
                                                 {% set galleryList = adView.getGallery(item)['items'] %}
-                                                {% set galleryList = imageResized.resizePicture(galleryList, {'width': '325', 'height': '275', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_list'}) %}
+                                                {% set galleryList = imageResized.resizePicture(galleryList, {'width': '650', 'height': '450', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_favorites'}) %}
                                                 {% for galleryItem in galleryList %}
                                                     <div><img src="{{ galleryItem.src }}" alt="{{ galleryItem.description }}"></div>
                                                 {% endfor %}
@@ -177,8 +178,7 @@
                             {% endif %}
                         </div>
                         <div class="catalog__item-bottom">
-                            <div class="catalog__item-desc">{{ adView.getSiteText(item)|e }}</div>
-                            <div class="catalog__item-date">{{ rusTime.formatDate(item.Advertisement.created)|e }}</div>
+                            <div class="catalog__item-desc">{{ adView.getSiteText(item) }}</div>
                         </div>
                     </div>
                 </div>

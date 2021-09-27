@@ -1,23 +1,40 @@
 {{ html.script(['https://api-maps.yandex.ru/2.1/?lang=ru_RU', 'Agency.filter-map-site.js', 'YandexMaps.view-map.js'], {'inline': false}) }}
 {% set adView = _view.loadHelper('Agency.AdView') %}
+{% set adSeo = _view.loadHelper('Agency.AdSeo') %}
 {% set favorite = _view.loadHelper('Favorites.Favorite') %}
+{{ adView.setOgparh(advertisement) }}
+{{ adSeo.imageSrcLink(advertisement) }}
 {{ adView.setDefaults({default_picture: config.Site.no_photo_image}) }}
+
+{{ html.script(['FileUpload.blueimp-gallery.min', '/libraries/blueimp-gallery/js/jquery.blueimp-gallery.min.js'], {'inline': false}) }}
+{{ html.css(['FileUpload.blueimp-gallery.min'], {'inline': false}) }}
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter="*">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+</div>
 <div id="view_object_data">
     <div>
         <div class="heading-base heading-base--medium heading-base--mod-margin">Объявление</div>
         <div class="catalog__item">
             <div class="catalog__item-gallery is-lg-visible">
                 <div>
-                    <div class="catalog__item-gallery-items">
+                    <div class="catalog__item-gallery-items" id="gallery">
                         {% set gallery = adView.getGallery(advertisement) %}
                         {% if gallery.items %}
                             {% set galleryList = gallery.items %}
                         {% else %}
                             {% set galleryList = [gallery.first] %}
                         {% endif %}
-                        {% set galleryList = imageResized.resizePicture(galleryList, {'width': '325', 'height': '275', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_list'}) %}
+{#                        {% set galleryList = imageResized.resizePicture(galleryList, {'width': '650', 'height': '450', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_view'}) %}#}
                         {% for galleryItem in galleryList %}
-                            <div><img src="{{ galleryItem.src }}" alt="{{ galleryItem.description }}"></div>
+                            <a href="{{ galleryItem.src }}" title="{{ galleryItem.description }}" class="image-preview">
+                                <img src="{{ galleryItem.src }}" alt="{{ galleryItem.description }}">
+                            </a>
                         {% endfor %}
                     </div>
                     <div class="catalog__item-buttons">
@@ -83,6 +100,7 @@
                                 <span class="price__currency">₽</span>
                                 <span class="price__footage">м²</span>
                             </div>
+                            <div class="price price--size-large">цена за квадратный метр</div>
                             <div class="catalog__item-gallery is-lg-hidden">
                                 <div>
                                     <div class="catalog__item-gallery-items">
@@ -146,9 +164,7 @@
                     {% endif %}
                 </div>
                 <div class="catalog__item-bottom">
-                    <div class="catalog__item-desc">{{ adView.getSiteText(advertisement)|striptags }}</div>
-                    <div
-                        class="catalog__item-date">{{ rusTime.formatDate(advertisement.Advertisement.created)|e }}</div>
+                    <div class="catalog__item-desc">{{ adView.getSiteText(advertisement) }}</div>
                 </div>
             </div>
         </div>
@@ -199,6 +215,7 @@
             <div class="heading-base heading-base--medium heading-base--mod-margin">Похожие предложения</div>
             <div class="row cards-carousel">
                 {% for item in similarOffers %}
+                    {% set offerItem = adView.getInfo(item) %}
                     <div class="col-md-4">
                         <div class="cards__item">
                             <div class="cards__item-section">
@@ -224,7 +241,7 @@
                                     {% else %}
                                         {% set galleryList = [gallery.first] %}
                                     {% endif %}
-                                    {% set galleryList = imageResized.resizePicture(galleryList, {'width': '325', 'height': '275', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_list'}) %}
+                                    {% set galleryList = imageResized.resizePicture(galleryList, {'width': '650', 'height': '450', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_similar_offers'}) %}
                                     {% for galleryItem in galleryList %}
                                         <div><img src="{{ galleryItem.src }}" alt="{{ galleryItem.description }}"></div>
                                     {% endfor %}
@@ -232,9 +249,7 @@
                                 <div class="cards__item-desc">
                                     <div class="row">
                                         <div class="col col-12 col-md-6">
-                                            <div class="cards__item-info">
-                                                <strong>{{ adSeo.pattern_title(item)|e }}</strong>
-                                            </div>
+                                            {{ html.link(html.tag('strong', adSeo.pattern_title(item)|e), offerItem.url, {'class': 'cards__item-info', 'escape': false}) }}
                                         </div>
                                         <div class="col col-12 col-md-6">
                                             <div class="price">
@@ -279,3 +294,14 @@
         </div>
     {% endif %}
 </div>
+{{ html.scriptStart({'inline': false, 'safe': false, 'defer': true,}) }}
+$('#gallery').on('click', function (event) {
+event = event || window.event;
+let target = event.target || event.srcElement;
+let link = target.src ? target.parentNode : target
+let options = { index: link, event: event };
+let links = this.querySelectorAll('a:not(.slick-cloned)');
+blueimp.Gallery(links, options);
+});
+{{ html.scriptEnd() }}
+

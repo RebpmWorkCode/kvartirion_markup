@@ -1,3 +1,7 @@
+<div class="col">
+    {% set flash = _view.loadHelper('Flash') %}
+    {{ flash.render() }}
+</div>
 {{ form.create('Advertisement', {
     'enctype': 'multipart/form-data',
     'class': 'row popup-public__row',

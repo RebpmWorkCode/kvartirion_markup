@@ -53,7 +53,7 @@
                                 {% else %}
                                     {% set galleryList = [gallery.first] %}
                                 {% endif %}
-                                {% set galleryList = imageResized.resizePicture(galleryList, {'width': '325', 'height': '275', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_list'}) %}
+{#                                {% set galleryList = imageResized.resizePicture(galleryList, {'width': '650', 'height': '450', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_objects'}) %}#}
                                 {% for galleryItem in galleryList %}
                                     <div><img src="{{ galleryItem.src }}" alt="{{ galleryItem.description }}"></div>
                                 {% endfor %}
@@ -80,7 +80,6 @@
                             <div class="catalog__item-main-section">
                                 <div class="catalog__item-info-section">
                                     {{ html.link(adSeo.pattern_title(item)|e, offerItem.url, {'class': 'catalog__item-title'}) }}
-
                                     <div class="catalog__item-adress">{{ item.Advertisement.location_full|e }} </div>
                                     <div class="card-informers">
                                         {% set paramsValues = item.CategoryParamValues ?? [] %}
@@ -118,6 +117,7 @@
                                         <span class="price__currency">₽</span>
                                         <span class="price__footage">м²</span>
                                     </div>
+                                    <div class="price price--size-large">цена за квадратный метр</div>
                                     <div class="catalog__item-gallery is-lg-hidden">
                                         <div>
                                             <div class="catalog__item-gallery-items">
@@ -178,8 +178,7 @@
                             {% endif %}
                         </div>
                         <div class="catalog__item-bottom">
-                            <div class="catalog__item-desc">{{ adView.getSiteText(item)|striptags }}</div>
-                            <div class="catalog__item-date">{{ rusTime.formatDate(item.Advertisement.created)|e }}</div>
+                            <div class="catalog__item-desc">{{ adView.getSiteText(item) }}</div>
                         </div>
                     </div>
                 </div>

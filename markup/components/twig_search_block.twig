@@ -7,11 +7,12 @@
             <div class="filter__main">
                 <div class="filter__main-section filter__main-section--type">
                     <div class="filter__main-select">
-                        <div class="filter__main-select-title">{{ categories[categoryId] ?? 'Не выбрано' }}</div>
+                        {% set defaultCategory = 7 %}
+                        <div class="filter__main-select-title">{{ categories[categoryId] ?? attribute(categories, defaultCategory)|replace({'--': ''}) }}</div>
                         <span class="icon-expand-down_blue"></span>
                     </div>
                     <div class="filter__modal">
-                        {{ form.hidden('Advertisement.category_id') }}
+                        {{ form.hidden('Advertisement.category_id', {'default': defaultCategory}) }}
                         <ul class="list-flats">
                             {% for category in categoriesAll|cake_hash_nest %}
                                 <li>

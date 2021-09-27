@@ -58,7 +58,7 @@
                     </div>
                     <div class="services__item-details">
                         <div class="services__item-price row"><span class="col col-md-8">Юридическая помощь:</span><span class="col col-md-4 text-right">
-													<strong>0 ₽</strong></span></div>
+													<strong>Включена в стоимость комиссии</strong></span></div>
                     </div>
                     <div class="services__item-btn">
                         <a class="btn btn-default" href="#order_callback" data-fancybox>Оставить заявку</a>
@@ -93,7 +93,7 @@
                             <div class="about-team__name">
                                 <strong>{{ user.User.name }}</strong>
                             </div>
-                            <div class="about-team__post">{{ user.Role.title }}</div>
+                            <div class="about-team__post">{{ user.UserPost.title }}</div>
                             <div class="about-team__contact">
                                 <a href="tel:{{ user.User.phone }}">{{ user.User.phone }}</a>
                             </div>
@@ -150,10 +150,10 @@
                 <div class="col-lg-4 col-xl-3 heading-base">Лучшие объявления</div>
                 <div class="col-lg-8 col-xl-9">
                     <ul class="cards__tabs">
-                            <li class="current"><a class="js-link-tab" href="#" data-category="kvartiry">Квартиры</a></li>
-                            <li><a class="js-link-tab" href="#" data-category="komnaty">Комнаты</a></li>
-                            <li><a class="js-link-tab" href="#" data-category="doma">Дома, дачи, коттеджи</a></li>
-                            <li><a class="js-link-tab" href="#" data-category="kommercheskaya">Коммерческая недвижимость</a></li>
+                        <li class="current"><a class="js-link-tab" href="#" data-category="kvartiry">Квартиры</a></li>
+                        <li><a class="js-link-tab" href="#" data-category="komnaty">Комнаты</a></li>
+                        <li><a class="js-link-tab" href="#" data-category="doma">Дома, дачи, коттеджи</a></li>
+                        <li><a class="js-link-tab" href="#" data-category="kommercheskaya">Коммерческая недвижимость</a></li>
                     </ul>
                 </div>
             </div>
@@ -164,73 +164,73 @@
                     {% set limitOffers = {} %}
                     {% for item in hotOffers %}
                         {% if limitOffers[(item.Category.alias)] < 6 %}
-                        <div class="col-12 col-md-6 col-xl-4 realty-object" data-category="{{ item.Category.alias }}">
-                            <div class="cards__item">
-                                <div class="cards__item-section">
-                                    {% set offerItem = adView.getInfo(item) %}
-                                    <div class="catalog__item-buttons">
-                                        {% set favoriteActiveClass = '' %}
-                                        {% set favoriteAction = 'add' %}
-                                        {% if favorite.has('Advertisement', item.Advertisement.id) %}
-                                            {% set favoriteActiveClass = ' active' %}
-                                            {% set favoriteAction = 'remove' %}
-                                        {% endif %}
-                                        {{ html.link(html.tag('span', '', {'class': 'icon-heart_white'}), '#', {
-                                            'class': 'favorites-action btn btn-card btn-card--large' ~ favoriteActiveClass,
-                                            'escape': false,
-                                            'data-model': 'Advertisement',
-                                            'data-id': item.Advertisement.id,
-                                            'data-action': favoriteAction
-                                        }) }}
+                            <div class="col-12 col-md-6 col-xl-4 realty-object" data-category="{{ item.Category.alias }}">
+                                <div class="cards__item">
+                                    <div class="cards__item-section">
+                                        {% set offerItem = adView.getInfo(item) %}
+                                        <div class="catalog__item-buttons">
+                                            {% set favoriteActiveClass = '' %}
+                                            {% set favoriteAction = 'add' %}
+                                            {% if favorite.has('Advertisement', item.Advertisement.id) %}
+                                                {% set favoriteActiveClass = ' active' %}
+                                                {% set favoriteAction = 'remove' %}
+                                            {% endif %}
+                                            {{ html.link(html.tag('span', '', {'class': 'icon-heart_white'}), '#', {
+                                                'class': 'favorites-action btn btn-card btn-card--large' ~ favoriteActiveClass,
+                                                'escape': false,
+                                                'data-model': 'Advertisement',
+                                                'data-id': item.Advertisement.id,
+                                                'data-action': favoriteAction
+                                            }) }}
 
-                                    </div>
+                                        </div>
 
-                                    <div class="cards__item-gallery">
-                                        {% set gallery = adView.getGallery(item) %}
-                                        {% if gallery.items %}
-                                            {% set galleryList = gallery.items %}
-                                        {% else %}
-                                            {% set galleryList = [gallery.first] %}
-                                        {% endif %}
-                                        {% set galleryList = imageResized.resizePicture(galleryList, {'width': '325', 'height': '275', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_list'}) %}
-                                        {% for galleryItem in galleryList %}
-                                            <div><img src="{{ galleryItem.src }}" alt="{{ galleryItem.description }}"></div>
-                                        {% endfor %}
-                                    </div>
+                                        <div class="cards__item-gallery">
+                                            {% set gallery = adView.getGallery(item) %}
+                                            {% if gallery.items %}
+                                                {% set galleryList = gallery.items %}
+                                            {% else %}
+                                                {% set galleryList = [gallery.first] %}
+                                            {% endif %}
+                                            {#                                        {% set galleryList = imageResized.resizePicture(galleryList, {'width': '325', 'height': '275', 'mode': 'fit', 'paddings': false, 'folder': 'twig_fit_realty_list'}) %}#}
+                                            {% for galleryItem in galleryList %}
+                                                <div><img src="{{ galleryItem.src }}" alt="{{ galleryItem.description }}"></div>
+                                            {% endfor %}
+                                        </div>
 
-                                    <div class="cards__item-desc">
-                                        <div class="row">
-                                            <div class="col col-12 col-md-6">
-                                                <div class="cards__item-info">
-                                                    {{ html.link(adSeo.pattern_title(item)|e, offerItem.url, {'class': 'content_block', 'title': adSeo.pattern_title(item)|e}) }}
+                                        <div class="cards__item-desc">
+                                            <div class="row">
+                                                <div class="col col-12 col-md-6">
+                                                    <div class="cards__item-info" style="min-height: 130px">
+                                                        {{ html.link(html.tag('strong', adSeo.pattern_title(item)|e|slice(0, 87)~'...'), offerItem.url, {'class': 'cards__item-info', 'escape': false}) }}
+                                                    </div>
+                                                </div>
+                                                {% set paramsValues = item.CategoryParamValues ?? [] %}
+                                                {% set floor = complexCategory.getViewAliasesOptions('floor', paramsValues) %}
+                                                {% set floors = complexCategory.getViewAliasesOptions('floors', paramsValues) %}
+                                                {% set roomsNum = complexCategory.getViewAliasesOptions('rooms_num', paramsValues) %}
+                                                {% set area = complexCategory.getViewAliasesOptions('area', paramsValues) %}
+                                                <div class="col col-12 col-md-6">
+                                                    <div class="price"><span class="price__main">{{ price.format(item.Advertisement.price) }}</span><span class="price__currency">₽</span></div>
                                                 </div>
                                             </div>
-                                            {% set paramsValues = item.CategoryParamValues ?? [] %}
-                                            {% set floor = complexCategory.getViewAliasesOptions('floor', paramsValues) %}
-                                            {% set floors = complexCategory.getViewAliasesOptions('floors', paramsValues) %}
-                                            {% set roomsNum = complexCategory.getViewAliasesOptions('rooms_num', paramsValues) %}
-                                            {% set area = complexCategory.getViewAliasesOptions('area', paramsValues) %}
-                                            <div class="col col-12 col-md-6">
-                                                <div class="price"><span class="price__main">{{ price.format(item.Advertisement.price) }}</span><span class="price__currency">₽</span></div>
+                                            <div class="cards__item-info row">
+                                                <div class="col col-12 col-md-6">{{ item.Advertisement.location_full|e }}</div>
+                                                <div class="col col-12 col-md-6 price"><span class="price__main">{{ price.format(item.Advertisement.price_area) }} </span><span class="price__currency">₽</span><span class="price__footage"> м²</span></div>
                                             </div>
                                         </div>
-                                        <div class="cards__item-info row">
-                                            <div class="col col-12 col-md-6">{{ item.Advertisement.location_full|e }}</div>
-                                            <div class="col col-12 col-md-6 price"><span class="price__main">{{ price.format(item.Advertisement.price_area) }} </span><span class="price__currency">₽</span><span class="price__footage"> м²</span></div>
-                                        </div>
+                                    </div>
+
+                                    <div class="cards__item-details card-informers">
+                                        <div class="card-informers__item"><span class="icon-stages_white card-informers__item-icon"></span><span>Этаж
+																	<strong>{{ floor }}/{{ floors }}</strong></span></div>
+                                        <div class="card-informers__item"><span class="icon-bed_white card-informers__item-icon"></span><span>
+																	<strong>{{ roomsNum }}</strong> комнаты</span></div>
+                                        <div class="card-informers__item"><span class="icon-house_white card-informers__item-icon"></span><span>
+																	<strong>{{ area }}</strong>м²</span></div>
                                     </div>
                                 </div>
-
-                                <div class="cards__item-details card-informers">
-                                    <div class="card-informers__item"><span class="icon-stages_white card-informers__item-icon"></span><span>Этаж
-																	<strong>{{ floor }}/{{ floors }}</strong></span></div>
-                                    <div class="card-informers__item"><span class="icon-bed_white card-informers__item-icon"></span><span>
-																	<strong>{{ roomsNum }}</strong> комнаты</span></div>
-                                    <div class="card-informers__item"><span class="icon-house_white card-informers__item-icon"></span><span>
-																	<strong>{{ area }}</strong>м²</span></div>
-                                </div>
                             </div>
-                        </div>
                             {% if limitOffers[item.Category.alias] is empty %}
                                 {% set limitOffers = limitOffers|merge({(item.Category.alias) : 1}) %}
                             {% else %}

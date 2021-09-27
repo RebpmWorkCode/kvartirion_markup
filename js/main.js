@@ -66,6 +66,26 @@ $(() => {
     $('[href="#order_review"]').on('click', e => {
         $('#order_review').find('.cleared-value').val('');
     })
+    $('[href="#create_object"]').on('click', e => {
+        $.ajax({
+            type: 'GET',
+            url: '/agency/realty/add?ajax_twig=1',
+            success: function (result) {
+                $('#create_object').html(result);
+                let $AdvertisementCategoryId = $('#AdvertisementCategoryId', $('#AdvertisementAddForm'));
+                $AdvertisementCategoryId.on('change', e => {loadParams($(e.target).val())})
+                loadParams($AdvertisementCategoryId.val());
+                $('select[name="data[Advertisement][category_id]"]').select2({width: "100%"})
+                Location.init('.location-select2');
+
+                $('.JS-add-photo').on('click', function (event) {
+                    event.preventDefault();
+                    $('.fileinput-button input').click();
+                });
+                onloadRecaptchaCallback()
+            }
+        })
+    })
     $('[href="#popup-favorites"]').on('click', e => {
         $.ajax({
             type: 'GET',
@@ -114,6 +134,9 @@ $(() => {
             }
         })
     })
+
+    $('select[name="data[Advertisement][category_id]"]').select2('destroy')
+    $('select[name="data[Advertisement][category_id]"]').select2({width: "100%"})
 
     $('.location-select2').select2('destroy');
     Location.init('.location-select2');

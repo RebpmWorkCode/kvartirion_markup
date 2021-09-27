@@ -136,3 +136,14 @@ a.list-flats__text:hover {
 #flashMessage.message {position: relative;padding: 1rem 1rem;margin-bottom: 1rem;border: 1px solid transparent;border-radius: .25rem;}
 #flashMessage.message.success {color: #0f5132;background-color: #d1e7dd;border-color: #badbcc;}
 #flashMessage.message.error {color: #842029;background-color: #f8d7da;border-color: #f5c2c7;}
+
+.team__item-photo img {
+    object-fit: contain;
+}
+
+.cards__item-info.row .price__main,
+.price--size-large:nth-child(2) .price__main {
+    color: #ff8cbcbf;
+}
+
+
